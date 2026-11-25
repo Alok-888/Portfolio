@@ -3,1556 +3,3170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alok Gupta — Computer Science (AI & ML) student at Newton School of Technology, ADYPU. Portfolio featuring S&AI open-source contributions, AI/ML projects, and technical skills." />
+  <title>Alok Gupta — Computer Science Student &amp; Software Developer</title>
+  <meta name="description" content="Portfolio of Alok Gupta — First-year B.Tech Computer Science (AI &amp; ML) student at Newton School of Technology, ADYPU. Projects in AI tooling, browser-side language models, 3D visualisation, and S-AI-Projects open-source contributions." />
   <meta name="author" content="Alok Gupta" />
-  <title>Alok Gupta — Portfolio</title>
+  <meta name="theme-color" content="#0B0B0D" />
+  <link rel="canonical" href="https://alok-gupta-portfolio.vercel.app/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alok-gupta-portfolio.vercel.app/" />
+  <meta property="og:title" content="Alok Gupta — Building Software. Exploring Intelligence." />
+  <meta property="og:description" content="Computer Science (AI &amp; ML) student at Newton School of Technology, ADYPU. Selected projects, technical expertise, and open-source pull requests." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Alok Gupta — Portfolio" />
+  <meta name="twitter:description" content="Building Software. Exploring Intelligence. AI tooling, browser ML playgrounds, 3D visualisations, and open-source engineering." />
+
+  <!-- Inline Swiss Monogram Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B0B0D'/%3E%3Crect x='2' y='2' width='60' height='60' fill='none' stroke='%23292929' stroke-width='2'/%3E%3Ctext x='11' y='43' font-family='system-ui,sans-serif' font-weight='700' font-size='28' letter-spacing='-1' fill='%23F2F0EC'%3EAG%3C/text%3E%3Ccircle cx='51' cy='40' r='4' fill='%23C43B45'/%3E%3C/svg%3E" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alok Gupta",
+      "url": "https://alok-gupta-portfolio.vercel.app/",
+      "email": "mailto:e26b07f0573@adypu.edu.in",
+      "jobTitle": "Computer Science Student",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Newton School of Technology, Ajeenkya DY Patil University"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://github.com/Alok-888",
+        "https://codeforces.com/profile/Alok888",
+        "https://leetcode.com/u/alok-888/"
+      ]
+    }
+  </script>
+
+  <!-- Progressive Enhancement Flag -->
+  <script>
+    document.documentElement.classList.add('js-enhanced');
+  </script>
+
+  <!-- Typography: Space Grotesk, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* ==========================================================================
+       01. Design Tokens & Editorial Foundation
+       ========================================================================== */
     :root {
-      --bg: #050811;
-      --bg-alt: #080d1a;
-      --surface: rgba(15, 23, 42, 0.65);
-      --surface-solid: #0f172a;
-      --surface-hover: rgba(24, 36, 66, 0.85);
-      --border: rgba(148, 163, 184, 0.16);
-      --border-light: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(56, 189, 248, 0.45);
-      --text: #f8fafc;
-      --text-soft: #cbd5e1;
-      --muted: #94a3b8;
-      --cyan: #38bdf8;
-      --indigo: #818cf8;
-      --purple: #a855f7;
-      --emerald: #34d399;
-      --radius: 18px;
-      --max-w: 1120px;
+      --bg: #0B0B0D;
+      --bg-surface: #111114;
+      --bg-hover: #16161A;
+      --text-primary: #F2F0EC;
+      --text-secondary: #92908D;
+      --accent: #C43B45;
+      --accent-soft: rgba(196, 59, 69, 0.14);
+      --accent-text: #E25C65;
+      --border: #292929;
+      --border-strong: #3E3E42;
+
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+      --max-w: 1280px;
+      --gutter: clamp(20px, 4vw, 56px);
+      --section-py: clamp(80px, 9.5vw, 132px);
+      --header-h: 72px;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
     html {
       scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
       margin: 0;
-      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
       line-height: 1.65;
+      background-color: var(--bg);
+      color: var(--text-primary);
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Ambient layers */
-    #bgCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      pointer-events: none;
+    ::selection {
+      background: var(--accent);
+      color: var(--text-primary);
     }
 
-    .ambient-orbs {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(600px circle at 12% 14%, rgba(56, 189, 248, 0.12), transparent 60%),
-        radial-gradient(650px circle at 88% 22%, rgba(168, 85, 247, 0.12), transparent 60%),
-        radial-gradient(500px circle at 50% 85%, rgba(52, 211, 153, 0.07), transparent 60%);
-    }
-
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--purple));
-      z-index: 200;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
     }
 
     a {
-      color: var(--cyan);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--cyan);
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
-      border-radius: 6px;
     }
 
-    .skip-link {
+    .sr-only {
       position: absolute;
-      left: -9999px;
-      top: 12px;
-      background: linear-gradient(135deg, var(--cyan), var(--indigo));
-      color: #050811;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 10px;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Skip Link */
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: var(--gutter);
       z-index: 1000;
-      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+      padding: 10px 18px;
+      background: var(--text-primary);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: top 0.2s var(--ease-out-expo);
     }
 
     .skip-link:focus {
-      left: 16px;
+      top: 16px;
     }
 
+    /* Scroll Progress Hairline */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform-origin: left center;
+      transform: scaleX(0);
+      z-index: 400;
+      pointer-events: none;
+    }
+
+    /* Layout Container & Reusable Editorial Grid */
     .container {
+      width: 100%;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 22px;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
     }
 
-    /* Header & Navigation */
+    .section {
+      padding-top: var(--section-py);
+      padding-bottom: var(--section-py);
+      border-top: 1px solid var(--border);
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 24px;
+      align-items: end;
+      margin-bottom: clamp(44px, 6vw, 72px);
+    }
+
+    .section-label-col {
+      grid-column: 1 / 5;
+    }
+
+    .section-heading-col {
+      grid-column: 5 / 13;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      margin: 18px 0 0;
+      max-width: 62ch;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    /* Animated Editorial Underline Link */
+    .ed-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color 0.22s ease;
+    }
+
+    .ed-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.32s var(--ease-out-expo);
+    }
+
+    .ed-link:hover {
+      color: var(--text-primary);
+    }
+
+    .ed-link:hover::after,
+    .ed-link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+
+    .ed-link .arrow {
+      display: inline-block;
+      transition: transform 0.28s var(--ease-out-expo);
+    }
+
+    .ed-link:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* Architectural Buttons */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      background: transparent;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease-out-expo);
+    }
+
+    .btn:hover {
+      border-color: var(--text-primary);
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--text-primary);
+    }
+
+    .btn-primary:hover {
+      background: #D44650;
+      border-color: #D44650;
+    }
+
+    .btn .btn-arrow {
+      display: inline-block;
+      transition: transform 0.25s var(--ease-out-expo);
+    }
+
+    .btn:hover .btn-arrow-down {
+      transform: translateY(2px);
+    }
+
+    .btn:hover .btn-arrow-diag {
+      transform: translate(2px, -2px);
+    }
+
+    /* ==========================================================================
+       02. Navigation Header & Mobile Drawer
+       ========================================================================== */
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(5, 8, 17, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      z-index: 300;
+      height: var(--header-h);
+      background: rgba(11, 11, 13, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.25s ease, box-shadow 0.25s ease;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
-    .site-header.scrolled {
-      background: rgba(5, 8, 17, 0.9);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    .site-header.is-scrolled {
+      background: rgba(11, 11, 13, 0.96);
+      border-bottom-color: var(--border-strong);
     }
 
-    .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 14px 22px;
+    .nav-bar {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 24px;
     }
 
-    .brand {
-      font-family: "JetBrains Mono", monospace;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .monogram {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
       font-weight: 700;
-      font-size: 1.08rem;
-      color: var(--text);
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .monogram .dot {
+      color: var(--accent);
+    }
+
+    .availability-indicator {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
     }
 
-    .brand:hover {
-      text-decoration: none;
+    .availability-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      animation: pulse-availability 2.8s ease-in-out infinite;
     }
 
-    .brand-mark {
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(168, 85, 247, 0.16));
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: var(--cyan);
+    @keyframes pulse-availability {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.45;
+        transform: scale(0.85);
+      }
     }
 
-    .nav-links {
+    .nav-list {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: clamp(16px, 2vw, 28px);
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.9rem;
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      padding: 6px 0;
+      font-size: 0.875rem;
       font-weight: 500;
-      padding: 7px 12px;
-      border-radius: 8px;
-      transition: color 0.18s ease, background 0.18s ease;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      white-space: nowrap;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-      background: rgba(56, 189, 248, 0.1);
-      text-decoration: none;
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.28s var(--ease-out-expo);
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--text-primary);
+    }
+
+    .nav-link.is-active::after,
+    .nav-link:hover::after {
+      transform: scaleX(1);
     }
 
     .menu-toggle {
       display: none;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 7px 12px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      cursor: pointer;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border-strong);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-primary);
     }
 
-    /* Section Headings */
-    section {
-      padding: 84px 0;
-      position: relative;
+    .menu-toggle:hover {
+      border-color: var(--text-primary);
     }
 
-    section.alt {
-      background: linear-gradient(180deg, rgba(8, 13, 26, 0.72), rgba(10, 16, 32, 0.85));
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 290;
+      background: var(--bg);
       border-top: 1px solid var(--border);
+      padding: 28px var(--gutter) 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.28s var(--ease-out-expo), transform 0.28s var(--ease-out-expo), visibility 0.28s;
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-nav-list li {
       border-bottom: 1px solid var(--border);
     }
 
-    .section-head {
-      margin-bottom: 34px;
-    }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.78rem;
+    .mobile-nav-link {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 18px 0;
+      font-family: var(--font-display);
+      font-size: 1.55rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cyan);
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      margin-bottom: 10px;
-    }
-
-    h2.section-title {
-      margin: 0 0 10px;
-      font-family: "Syne", "Space Grotesk", sans-serif;
-      font-size: clamp(1.7rem, 3.2vw, 2.25rem);
-      line-height: 1.18;
       letter-spacing: -0.02em;
+      color: var(--text-primary);
+      transition: color 0.2s ease, padding-left 0.25s var(--ease-out-expo);
     }
 
-    .text-gradient {
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .mobile-nav-link:hover {
+      color: var(--accent-text);
+      padding-left: 8px;
     }
 
-    .section-lead {
-      margin: 0;
-      color: var(--muted);
-      max-width: 720px;
-      font-size: 1rem;
+    .mobile-nav-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-secondary);
     }
 
-    /* Glass & Elevated Card */
-    .glass-card {
-      position: relative;
-      background: var(--surface);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow:
-        0 18px 40px -18px rgba(0, 0, 0, 0.75),
-        inset 0 1px 0 0 var(--border-light);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    .mobile-drawer-foot {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
 
-    .glass-card:hover {
-      border-color: var(--border-glow);
-      box-shadow:
-        0 24px 48px -18px rgba(0, 0, 0, 0.85),
-        0 0 28px -8px rgba(56, 189, 248, 0.2),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
-    }
-
-    /* Hero */
+    /* ==========================================================================
+       03. Hero Section (Monumental Typography + Architectural Geometry)
+       ========================================================================== */
     .hero {
-      padding: 86px 0 78px;
-      overflow: hidden;
+      padding-top: clamp(28px, 4vw, 48px);
+      padding-bottom: clamp(64px, 8vw, 112px);
+      scroll-margin-top: var(--header-h);
     }
 
-    .hero-grid-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse 75% 75% at 50% 35%, #000 35%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 35%, #000 35%, transparent 100%);
-      pointer-events: none;
+    .hero-meta-rail {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .hero-availability-mobile {
+      display: none;
     }
 
     .hero-grid {
-      position: relative;
       display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 44px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+      gap: clamp(36px, 5vw, 72px);
+      padding-top: clamp(36px, 5vw, 68px);
+      align-items: start;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-      color: #a7f3d0;
-      font-size: 0.84rem;
+    .hero-primary,
+    .hero-aside,
+    .section-label-col,
+    .section-heading-col,
+    .about-prose-col,
+    .about-dossier-col,
+    .project-visual-col,
+    .project-content-col,
+    .chronology-col {
+      min-width: 0;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(3.35rem, 8.8vw, 7.25rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.045em;
+      color: var(--text-primary);
+    }
+
+    .hero-name-line {
+      display: block;
+    }
+
+    .hero-name-line .accent-dot {
+      color: var(--accent);
+    }
+
+    .hero-role-stack {
+      margin-top: clamp(24px, 3vw, 36px);
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-role-kicker {
+      margin: 0 0 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .hero-tagline {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.5vw, 2.05rem);
       font-weight: 500;
-      margin-bottom: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
     }
 
-    .status-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
-      animation: pulse-dot 2s infinite;
-    }
-
-    @keyframes pulse-dot {
-      0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
-      70% { box-shadow: 0 0 0 9px rgba(52, 211, 153, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-    }
-
-    .hero h1 {
-      margin: 0 0 10px;
-      font-family: "Syne", "Space Grotesk", sans-serif;
-      font-size: clamp(2.5rem, 5.5vw, 3.8rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-role {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #e2e8f0;
-      margin: 0 0 12px;
-    }
-
-    .typewriter-line {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.94rem;
-      color: var(--cyan);
-      margin: 0 0 18px;
-      min-height: 1.5em;
-    }
-
-    .tw-cursor {
-      display: inline-block;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .hero-desc {
-      margin: 0 0 10px;
-      color: var(--text-soft);
-      font-size: 1.04rem;
-      max-width: 590px;
+    .hero-intro {
+      margin: 20px 0 0;
+      max-width: 56ch;
+      font-size: 1.06rem;
+      line-height: 1.72;
+      color: var(--text-secondary);
     }
 
     .hero-exploring {
-      margin: 0 0 26px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .hero-exploring strong {
-      color: var(--text);
-    }
-
-    .hero-links {
+      margin: 24px 0 0;
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
+      align-items: baseline;
+      gap: 8px 16px;
+      font-size: 0.94rem;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.93rem;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.78);
-      color: var(--text);
-      box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.7);
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    .hero-exploring-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-glow);
-      background: var(--surface-hover);
-      text-decoration: none;
+    .hero-exploring-value {
+      color: var(--text-primary);
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #0ea5e9, #6366f1);
-      color: #ffffff;
-      border: none;
-      box-shadow: 0 10px 26px -6px rgba(56, 189, 248, 0.45);
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
-      box-shadow: 0 14px 32px -6px rgba(56, 189, 248, 0.6);
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      max-width: 520px;
-    }
-
-    .metric-box {
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.55);
-      border: 1px solid var(--border);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .metric-val {
-      display: block;
-      font-family: "Syne", sans-serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.2;
-    }
-
-    .metric-lbl {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* Profile Card 3D Frame */
-    .profile-wrap {
-      position: relative;
+    .hero-actions {
+      margin-top: 32px;
       display: flex;
-      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
     }
 
-    .profile-frame {
-      position: relative;
-      width: 100%;
-      max-width: 330px;
-      padding: 16px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.92));
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      box-shadow:
-        0 28px 60px -18px rgba(0, 0, 0, 0.85),
-        0 0 40px -12px rgba(56, 189, 248, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.14);
-      transform-style: preserve-3d;
-      transition: transform 0.2s ease;
+    .hero-profiles {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
     }
 
-    .profile-img-box {
+    .hero-profiles-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    /* Right Hero Column: Precision Geometric Schematic (No Portrait) */
+    .hero-aside {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+
+    .hero-plate {
       position: relative;
-      border-radius: 16px;
+      aspect-ratio: 4 / 3.6;
       overflow: hidden;
-      aspect-ratio: 1 / 1;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #0b1120;
+      border-bottom: 1px solid var(--border);
+      background:
+        linear-gradient(to right, rgba(41, 41, 41, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(41, 41, 41, 0.35) 1px, transparent 1px);
+      background-size: 32px 32px;
     }
 
-    .profile-img-box img {
+    .hero-schematic-svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
     }
 
-    .profile-img-box::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 58%, rgba(5, 8, 17, 0.82) 100%);
-      pointer-events: none;
+    .schematic-orbit {
+      transform-origin: 240px 210px;
+      animation: schematic-rotate 46s linear infinite;
     }
 
-    .profile-meta {
+    .schematic-orbit-reverse {
+      transform-origin: 240px 210px;
+      animation: schematic-rotate-rev 34s linear infinite;
+    }
+
+    .schematic-scan {
+      animation: schematic-scan 8s ease-in-out infinite;
+    }
+
+    @keyframes schematic-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes schematic-rotate-rev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes schematic-scan {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50% { transform: translateY(220px); opacity: 0.9; }
+    }
+
+    .hero-plate-caption {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 4px 2px;
-      gap: 10px;
-    }
-
-    .profile-meta strong {
-      display: block;
-      font-size: 1.02rem;
-    }
-
-    .profile-meta span {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-family: "JetBrains Mono", monospace;
-    }
-
-    .profile-tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.74rem;
-      padding: 4px 9px;
-      border-radius: 8px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: var(--cyan);
-      white-space: nowrap;
-    }
-
-    /* About Card */
-    .about-card {
-      padding: 30px 32px;
-      border-left: 3px solid var(--cyan);
-    }
-
-    .about-card p {
-      margin: 0;
-      font-size: 1.08rem;
-      color: #e2e8f0;
-      line-height: 1.78;
-    }
-
-    /* Tables */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.94rem;
-      min-width: 640px;
-    }
-
-    th, td {
-      padding: 15px 18px;
-      text-align: left;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
-    th {
-      background: rgba(8, 13, 26, 0.9);
-      color: var(--muted);
-      font-size: 0.78rem;
-      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
-      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      color: var(--text-secondary);
     }
 
-    tbody tr {
-      transition: background 0.16s ease;
-    }
-
-    tbody tr:hover {
-      background: rgba(56, 189, 248, 0.05);
-    }
-
-    tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .skill-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: var(--text);
-      padding: 5px 12px;
-      border-radius: 10px;
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      white-space: nowrap;
-    }
-
-    .skill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-    }
-
-    .pr-badge {
-      display: inline-block;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 8px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: var(--cyan);
-    }
-
-    .pr-badge:hover {
-      background: rgba(56, 189, 248, 0.22);
-      text-decoration: none;
-    }
-
-    .task-badge {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.82rem;
-      color: #c4b5fd;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      padding: 4px 9px;
-      border-radius: 7px;
-      white-space: nowrap;
-    }
-
-    /* Projects */
-    .projects-grid {
+    .hero-ledger {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .project-card {
-      overflow: hidden;
+    .ledger-cell {
+      padding: 18px 16px;
+      border-right: 1px solid var(--border);
+    }
+
+    .ledger-cell:last-child {
+      border-right: none;
+    }
+
+    .ledger-value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .ledger-label {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       04. About Section (Two-Column Editorial Layout)
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+
+    .about-prose-col {
+      grid-column: 1 / 8;
+    }
+
+    .about-prose-lead {
+      margin: 0 0 22px;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.1vw, 1.55rem);
+      font-weight: 500;
+      line-height: 1.42;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+    }
+
+    .about-prose-body {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .about-dossier-col {
+      grid-column: 8 / 13;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .dossier-list {
+      margin: 0;
+    }
+
+    .dossier-row {
+      display: grid;
+      grid-template-columns: minmax(105px, 130px) 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    .dossier-row dt {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .dossier-row dd {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       05. Technical Expertise (Grouped Index Matrix, Zero Percentages)
+       ========================================================================== */
+    .expertise-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.is-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text-primary);
+    }
+
+    .expertise-count {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .expertise-list {
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .expertise-row {
+      display: grid;
+      grid-template-columns: 56px 210px 150px minmax(0, 1fr);
+      gap: 16px 24px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .expertise-row[hidden] {
+      display: none;
+    }
+
+    .expertise-row:hover {
+      border-bottom-color: var(--border-strong);
+    }
+
+    .expertise-index {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      transition: color 0.25s ease;
+    }
+
+    .expertise-row:hover .expertise-index {
+      color: var(--accent-text);
+    }
+
+    .expertise-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      transition: transform 0.28s var(--ease-out-expo);
+    }
+
+    .expertise-row:hover .expertise-name {
+      transform: translateX(6px);
+    }
+
+    .expertise-domain {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .expertise-evidence {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .expertise-evidence a {
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       06. Selected Projects (Centrepiece Alternating Editorial Showcases)
+       ========================================================================== */
+    .projects-stack {
       display: flex;
       flex-direction: column;
+      border-top: 1px solid var(--border-strong);
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .proj-banner {
-      padding: 18px 22px;
+    .project-showcase {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: clamp(28px, 4.5vw, 60px);
+      padding: clamp(48px, 6.5vw, 88px) 0;
       border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .project-visual-col {
+      grid-column: 1 / 6;
+    }
+
+    .project-content-col {
+      grid-column: 6 / 13;
+    }
+
+    .project-showcase.is-reversed .project-visual-col {
+      grid-column: 8 / 13;
+      order: 2;
+    }
+
+    .project-showcase.is-reversed .project-content-col {
+      grid-column: 1 / 8;
+      order: 1;
+    }
+
+    .project-frame {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      overflow: hidden;
+      transition: border-color 0.35s var(--ease-out-expo);
+    }
+
+    .project-showcase:hover .project-frame {
+      border-color: var(--border-strong);
+    }
+
+    .project-frame-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
     }
 
-    .proj-banner.b1 { background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(99, 102, 241, 0.16)); }
-    .proj-banner.b2 { background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(56, 189, 248, 0.14)); }
-    .proj-banner.b3 { background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(14, 165, 233, 0.14)); }
-    .proj-banner.b4 { background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(239, 68, 68, 0.14)); }
-
-    .proj-banner h3 {
-      margin: 0;
-      font-size: 1.15rem;
-      line-height: 1.3;
+    .project-frame-bar .status-tag {
+      color: var(--accent-text);
     }
 
-    .proj-type {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.74rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(5, 8, 17, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: var(--text-soft);
-      white-space: nowrap;
+    .project-svg-wrap {
+      aspect-ratio: 14 / 10;
+      overflow: hidden;
+      background: #0D0D10;
     }
 
-    .proj-body {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
+    .project-svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s var(--ease-out-expo);
     }
 
-    .project-block {
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      margin: 0;
+    .project-showcase:hover .project-svg {
+      transform: scale(1.025);
     }
 
-    .project-block strong {
-      color: var(--text);
-    }
-
-    .project-list {
-      margin: 6px 0 0;
-      padding-left: 18px;
-      color: var(--text-soft);
-      font-size: 0.91rem;
-    }
-
-    .project-list li {
-      margin-bottom: 4px;
-    }
-
-    .note-box {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      background: rgba(139, 92, 246, 0.08);
-      border-left: 3px solid var(--indigo);
-      padding: 8px 12px;
-      border-radius: 0 8px 8px 0;
-      margin: 0;
-    }
-
-    .tech-tags {
+    .project-meta-head {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 2px;
-    }
-
-    .tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.76rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      color: #bae6fd;
-    }
-
-    .project-links {
-      margin-top: auto;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn-sm {
-      padding: 8px 14px;
-      font-size: 0.85rem;
-      border-radius: 9px;
-    }
-
-    .contrib-actions {
-      margin-top: 20px;
-    }
-
-    /* Education Timeline & Achievements */
-    .edu-ach-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .edu-card,
-    .ach-card {
-      padding: 26px;
-    }
-
-    .card-heading {
-      margin: 0 0 18px;
-      font-size: 1.15rem;
-      display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
-    .timeline {
-      position: relative;
-      padding-left: 22px;
-      border-left: 2px solid rgba(56, 189, 248, 0.28);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .project-number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent-text);
     }
 
-    .tl-item {
-      position: relative;
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
     }
 
-    .tl-item::before {
-      content: "";
-      position: absolute;
-      left: -29px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-      border: 2px solid var(--bg);
+    .project-title {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.1vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
     }
 
-    .tl-item h4 {
-      margin: 0 0 4px;
-      font-size: 1.02rem;
+    .project-summary {
+      margin: 0 0 26px;
+      font-size: 1.06rem;
+      line-height: 1.65;
+      color: var(--text-primary);
+      max-width: 60ch;
     }
 
-    .tl-meta {
+    .project-details {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-detail-row {
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    .project-detail-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .project-detail-body {
       margin: 0;
-      color: var(--muted);
-      font-size: 0.89rem;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
     }
 
-    .ach-list {
+    .project-detail-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .project-modes {
       margin: 0;
       padding: 0;
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 8px;
     }
 
-    .ach-list li {
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: rgba(8, 13, 26, 0.55);
+    .project-note {
+      margin: 20px 0 0;
+      padding: 12px 16px;
+      border-left: 2px solid var(--accent);
+      background: var(--bg-surface);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .project-note strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .project-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tech-token {
+      padding: 4px 10px;
       border: 1px solid var(--border);
-      font-size: 0.92rem;
-      color: var(--text-soft);
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
 
-    .ach-list strong {
-      color: var(--text);
+    .project-showcase:hover .tech-token {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
     }
 
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    .project-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 24px;
+    }
+
+    /* ==========================================================================
+       07. Open Source Contributions (Editorial Ledger Table)
+       ========================================================================== */
+    .os-table-wrap {
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .os-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .os-table thead th {
+      padding: 14px 20px 14px 0;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-strong);
+      white-space: nowrap;
+    }
+
+    .os-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s ease;
+    }
+
+    .os-table tbody tr:hover {
+      background: var(--bg-surface);
+    }
+
+    .os-table td {
+      padding: 18px 18px 18px 0;
+      vertical-align: top;
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .os-table td:last-child,
+    .os-table th:last-child {
+      padding-right: 0;
+    }
+
+    .os-pr-link {
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .os-task-id {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-text);
+      white-space: nowrap;
+    }
+
+    .os-contrib-text {
+      color: var(--text-primary);
+    }
+
+    .os-table code {
+      font-family: var(--font-mono);
+      font-size: 0.84em;
+      padding: 1px 5px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+
+    .os-footer {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
       gap: 16px;
     }
 
-    .contact-card {
-      padding: 20px 22px;
+    .os-meta-note {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       08. Education & Milestones (Editorial Chronology)
+       ========================================================================== */
+    .background-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: clamp(40px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .chronology-col {
+      grid-column: span 6;
+    }
+
+    .chronology-heading {
+      margin: 0 0 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-strong);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .timeline {
+      position: relative;
+      margin: 0;
+      padding: 0 0 0 24px;
+      list-style: none;
+      border-left: 1px solid var(--border-strong);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 34px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      background: var(--text-secondary);
+      border: 1px solid var(--bg);
+    }
+
+    .timeline-item.is-current::before {
+      background: var(--accent);
+    }
+
+    .timeline-period {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .timeline-item.is-current .timeline-period {
+      color: var(--accent-text);
+    }
+
+    .timeline-title {
+      margin: 0 0 6px;
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+    }
+
+    .timeline-desc {
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .timeline-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    /* ==========================================================================
+       09. Contact Closing & Footer
+       ========================================================================== */
+    .contact-closing {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: clamp(32px, 5vw, 56px);
     }
 
-    .contact-card:hover {
-      transform: translateY(-3px);
-      text-decoration: none;
+    .contact-email-block {
+      padding: clamp(28px, 4vw, 48px) 0;
+      border-top: 1px solid var(--border-strong);
+      border-bottom: 1px solid var(--border);
     }
 
-    .contact-label {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.76rem;
+    .contact-kicker {
+      display: block;
+      margin-bottom: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
+      color: var(--text-secondary);
     }
 
-    .contact-value {
+    .contact-email-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .contact-email-link {
+      position: relative;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 14px;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 4.1vw, 3.2rem);
       font-weight: 600;
-      font-size: 0.98rem;
-      color: var(--cyan);
-      word-break: break-word;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      overflow-wrap: anywhere;
+      transition: color 0.25s ease;
     }
 
-    /* Scroll reveal */
-    .reveal {
+    .contact-email-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.38s var(--ease-out-expo);
+    }
+
+    .contact-email-link:hover::after,
+    .contact-email-link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+
+    .contact-email-arrow {
+      font-size: 0.75em;
+      color: var(--accent-text);
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+
+    .contact-email-link:hover .contact-email-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    .copy-feedback {
+      min-width: 140px;
+    }
+
+    .contact-profiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--border);
+    }
+
+    .contact-profile-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px;
+      border-right: 1px solid var(--border);
+      transition: background-color 0.25s ease;
+    }
+
+    .contact-profile-item:last-child {
+      border-right: none;
+    }
+
+    .contact-profile-item:hover {
+      background: var(--bg-surface);
+    }
+
+    .profile-platform {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .profile-arrow {
+      color: var(--text-secondary);
+      transition: transform 0.28s var(--ease-out-expo), color 0.25s ease;
+    }
+
+    .contact-profile-item:hover .profile-arrow {
+      transform: translate(3px, -3px);
+      color: var(--accent-text);
+    }
+
+    .profile-handle {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .profile-url {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       10. Entrance & Scroll-Triggered Reveals
+       ========================================================================== */
+    .js-enhanced .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(16px);
+      transition: opacity 0.48s var(--ease-out-expo), transform 0.48s var(--ease-out-expo);
     }
 
-    .reveal.visible {
+    .js-enhanced .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 30px 22px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.88rem;
-      background: rgba(5, 8, 17, 0.85);
+    .js-enhanced .hero-title {
+      animation: hero-title-enter 0.48s var(--ease-out-expo) both;
     }
 
-    @media (max-width: 860px) {
-      .hero-grid,
-      .projects-grid,
-      .edu-ach-grid {
-        grid-template-columns: 1fr;
+    .js-enhanced .hero-stagger {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: hero-enter 0.48s var(--ease-out-expo) forwards;
+    }
+
+    .js-enhanced .hero-stagger-1 { animation-delay: 0.02s; }
+    .js-enhanced .hero-stagger-2 { animation-delay: 0.08s; }
+    .js-enhanced .hero-stagger-3 { animation-delay: 0.14s; }
+    .js-enhanced .hero-stagger-4 { animation-delay: 0.2s; }
+
+    @keyframes hero-title-enter {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes hero-enter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       11. Responsive Breakpoints (Laptop, Tablet, Mobile)
+       ========================================================================== */
+    @media (max-width: 1080px) {
+      .nav-left .availability-indicator {
+        display: none;
       }
 
-      .profile-wrap {
-        order: -1;
+      .hero-availability-mobile {
+        display: inline-flex;
+      }
+
+      .section-header,
+      .project-showcase {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-label-col,
+      .section-heading-col {
+        grid-column: 1 / -1;
+      }
+
+      .section-header {
+        gap: 12px;
+      }
+
+      .project-visual-col,
+      .project-showcase.is-reversed .project-visual-col {
+        grid-column: 1 / -1;
+        order: 1;
+      }
+
+      .project-content-col,
+      .project-showcase.is-reversed .project-content-col {
+        grid-column: 1 / -1;
+        order: 2;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .nav-list {
+        display: none;
       }
 
       .menu-toggle {
-        display: inline-block;
+        display: inline-flex;
       }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(5, 8, 17, 0.97);
+      .hero-grid,
+      .about-grid,
+      .background-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-prose-col,
+      .about-dossier-col,
+      .chronology-col {
+        grid-column: 1 / -1;
+      }
+
+      .expertise-row {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 8px 16px;
+      }
+
+      .expertise-domain {
+        grid-column: 2;
+      }
+
+      .expertise-evidence {
+        grid-column: 2;
+      }
+
+      .contact-profiles {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-profile-item {
+        border-right: none;
         border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        padding: 14px 22px;
-        gap: 6px;
-        align-items: stretch;
       }
 
-      .nav-links.open {
-        display: flex;
+      .contact-profile-item:last-child {
+        border-bottom: none;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * {
-        animation: none !important;
-        transition: none !important;
+    @media (max-width: 760px) {
+      .os-table,
+      .os-table thead,
+      .os-table tbody,
+      .os-table tr,
+      .os-table td {
+        display: block;
+        width: 100%;
       }
-      .reveal {
-        opacity: 1;
-        transform: none;
+
+      .os-table thead {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+      }
+
+      .os-table tbody tr {
+        padding: 18px 0;
+      }
+
+      .os-table td {
+        position: relative;
+        padding: 5px 0 5px 118px;
+        min-height: 28px;
+      }
+
+      .os-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 106px;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+      }
+
+      .project-detail-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero-ledger {
+        grid-template-columns: 1fr;
+      }
+
+      .ledger-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ledger-cell:last-child {
+        border-bottom: none;
+      }
+
+      .dossier-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+    }
+
+    /* ==========================================================================
+       12. Reduced Motion Respect
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .js-enhanced .reveal,
+      .js-enhanced .hero-stagger {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
 </head>
 <body>
-  <canvas id="bgCanvas" aria-hidden="true"></canvas>
-  <div class="ambient-orbs" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Header & Top Navigation -->
   <header class="site-header" id="siteHeader">
-    <nav class="nav-inner" aria-label="Main navigation">
-      <a href="#hero" class="brand"><span class="brand-mark">&lt;AG/&gt;</span><span>Alok Gupta</span></a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contributions">Open Source Contributions</a></li>
-        <li><a href="#achievements">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container nav-bar">
+      <div class="nav-left">
+        <a href="#hero" class="monogram" aria-label="Alok Gupta — Home">AG<span class="dot">.</span></a>
+        <div class="availability-indicator" aria-label="Availability status: Open to SWE and AI/ML Internships">
+          <span class="availability-dot" aria-hidden="true"></span>
+          <span>Open to SWE &amp; AI/ML Internships</span>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list" id="desktopNav">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#expertise" class="nav-link">Expertise</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#open-source" class="nav-link">Open Source</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-expanded="false"
+        aria-controls="mobileDrawer"
+        aria-label="Open navigation menu"
+      >
+        <span id="menuToggleText">Menu</span>
+      </button>
+    </div>
   </header>
 
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav-list">
+        <li>
+          <a href="#about" class="mobile-nav-link">
+            <span>About</span>
+            <span class="mobile-nav-num">01</span>
+          </a>
+        </li>
+        <li>
+          <a href="#expertise" class="mobile-nav-link">
+            <span>Expertise</span>
+            <span class="mobile-nav-num">02</span>
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="mobile-nav-link">
+            <span>Projects</span>
+            <span class="mobile-nav-num">03</span>
+          </a>
+        </li>
+        <li>
+          <a href="#open-source" class="mobile-nav-link">
+            <span>Open Source</span>
+            <span class="mobile-nav-num">04</span>
+          </a>
+        </li>
+        <li>
+          <a href="#education" class="mobile-nav-link">
+            <span>Education</span>
+            <span class="mobile-nav-num">05</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="mobile-nav-link">
+            <span>Contact</span>
+            <span class="mobile-nav-num">06</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer-foot">
+      <div class="availability-indicator">
+        <span class="availability-dot" aria-hidden="true"></span>
+        <span>Open to SWE &amp; AI/ML Internships</span>
+      </div>
+      <div class="hero-profiles">
+        <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="ed-link">GitHub <span class="arrow" aria-hidden="true">&#8599;</span></a>
+        <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="ed-link">Codeforces <span class="arrow" aria-hidden="true">&#8599;</span></a>
+        <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="ed-link">LeetCode <span class="arrow" aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </div>
+
   <main id="main-content">
-    <!-- Hero -->
+    <!-- Hero Section (No Portrait — Typography & Precision Geometry) -->
     <section id="hero" class="hero">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div>
-          <div class="status-pill">
-            <span class="status-dot" aria-hidden="true"></span>
+      <div class="container">
+        <div class="hero-meta-rail hero-stagger hero-stagger-1">
+          <span>00 / PORTFOLIO &mdash; PUNE, INDIA</span>
+          <div class="availability-indicator hero-availability-mobile">
+            <span class="availability-dot" aria-hidden="true"></span>
             <span>Open to SWE &amp; AI/ML Internships</span>
           </div>
-          <h1><span class="text-gradient">Alok Gupta</span></h1>
-          <p class="hero-role">Computer Science Student | AI/ML Enthusiast | Software Developer</p>
-          <p class="typewriter-line" aria-live="polite">&gt; <span id="typewriterText"></span><span class="tw-cursor">|</span></p>
-          <p class="hero-desc">I build things, experiment with technology, and enjoy understanding how software works beneath the surface.</p>
-          <p class="hero-exploring"><strong>Currently exploring:</strong> AI/ML, backend development, software engineering and open source.</p>
-          <div class="hero-links">
-            <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub (@Alok-888)</a>
-            <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="btn">Codeforces</a>
-            <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="btn">LeetCode</a>
+          <span>B.TECH CSE (AI &amp; ML) &middot; NST ADYPU</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-primary">
+            <h1 class="hero-title">
+              <span class="hero-name-line">ALOK</span>
+              <span class="hero-name-line">GUPTA<span class="accent-dot">.</span></span>
+            </h1>
+
+            <div class="hero-role-stack hero-stagger hero-stagger-2">
+              <p class="hero-role-kicker">Computer Science Student</p>
+              <p class="hero-tagline">Building Software. Exploring Intelligence.</p>
+            </div>
+
+            <p class="hero-intro hero-stagger hero-stagger-3">
+              I'm interested in building software, understanding intelligent systems, and exploring the engineering behind modern AI applications.
+            </p>
+
+            <div class="hero-exploring hero-stagger hero-stagger-3">
+              <span class="hero-exploring-label">Currently exploring</span>
+              <span class="hero-exploring-value">AI/ML, backend development, software engineering.</span>
+            </div>
+
+            <div class="hero-actions hero-stagger hero-stagger-4">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
+                <span class="btn-arrow btn-arrow-down" aria-hidden="true">&#8595;</span>
+              </a>
+              <a href="#contact" class="btn">
+                <span>Contact Me</span>
+                <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+
+            <div class="hero-profiles hero-stagger hero-stagger-4">
+              <span class="hero-profiles-label">Profiles /</span>
+              <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="ed-link">
+                GitHub <span class="arrow" aria-hidden="true">&#8599;</span>
+              </a>
+              <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="ed-link">
+                Codeforces <span class="arrow" aria-hidden="true">&#8599;</span>
+              </a>
+              <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="ed-link">
+                LeetCode <span class="arrow" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
           </div>
-          <div class="hero-metrics">
-            <div class="metric-box">
-              <span class="metric-val">10</span>
-              <span class="metric-lbl">S&amp;AI PRs (#51&ndash;#60)</span>
+
+          <!-- Architectural Geometric Schematic & Factual Ledger -->
+          <aside class="hero-aside hero-stagger hero-stagger-3" aria-label="Portfolio technical summary">
+            <div class="hero-plate-caption">
+              <span>FIG 00 / SYSTEM TOPOLOGY</span>
+              <span>AI &middot; SYSTEMS</span>
             </div>
-            <div class="metric-box">
-              <span class="metric-val">4</span>
-              <span class="metric-lbl">Featured Projects</span>
+            <div class="hero-plate" id="heroPlate">
+              <svg
+                class="hero-schematic-svg"
+                viewBox="0 0 480 420"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <!-- Orthogonal Swiss Reference Axes -->
+                <line x1="240" y1="24" x2="240" y2="396" stroke="#292929" stroke-width="1" />
+                <line x1="24" y1="210" x2="456" y2="210" stroke="#292929" stroke-width="1" />
+                <rect x="44" y="44" width="392" height="332" stroke="#292929" stroke-width="1" stroke-dasharray="3 5" />
+
+                <!-- Gentle Scanning Reference Rule -->
+                <line class="schematic-scan" x1="44" y1="100" x2="436" y2="100" stroke="#C43B45" stroke-width="1" stroke-opacity="0.45" />
+
+                <!-- Outer Concentric Geometric Circles -->
+                <g class="schematic-orbit">
+                  <circle cx="240" cy="210" r="146" stroke="#292929" stroke-width="1" />
+                  <circle cx="240" cy="64" r="3.5" fill="#F2F0EC" />
+                  <circle cx="386" cy="210" r="3" fill="#92908D" />
+                  <line x1="240" y1="64" x2="343" y2="313" stroke="#292929" stroke-width="1" />
+                </g>
+
+                <g class="schematic-orbit-reverse">
+                  <circle cx="240" cy="210" r="102" stroke="#3E3E42" stroke-width="1" stroke-dasharray="6 6" />
+                  <rect x="168" y="138" width="144" height="144" stroke="#292929" stroke-width="1" />
+                  <circle cx="312" cy="138" r="4" fill="#C43B45" />
+                </g>
+
+                <!-- Inner Focal Crosshair -->
+                <circle cx="240" cy="210" r="44" stroke="#F2F0EC" stroke-opacity="0.35" stroke-width="1" />
+                <circle cx="240" cy="210" r="5" fill="#C43B45" />
+                <line x1="226" y1="210" x2="254" y2="210" stroke="#F2F0EC" stroke-width="1" />
+                <line x1="240" y1="196" x2="240" y2="224" stroke="#F2F0EC" stroke-width="1" />
+
+                <!-- Reticle Layer Controlled Subtly by Pointer -->
+                <g id="heroReticle">
+                  <line x1="240" y1="210" x2="312" y2="138" stroke="#C43B45" stroke-width="1" stroke-opacity="0.7" />
+                  <circle cx="312" cy="138" r="9" stroke="#C43B45" stroke-width="1" stroke-opacity="0.6" />
+                </g>
+
+                <!-- Technical Monospace Coordinates -->
+                <text x="52" y="64" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">00.00 // PUNE_IN</text>
+                <text x="330" y="64" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">N 18.52 / E 73.85</text>
+                <text x="52" y="364" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">SYS: SWE + AI/ML</text>
+                <text x="342" y="364" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="10">PR #51&#8211;#60</text>
+              </svg>
             </div>
-            <div class="metric-box">
-              <span class="metric-val">AI &amp; ML</span>
-              <span class="metric-lbl">B.Tech CSE, NST</span>
+
+            <div class="hero-ledger">
+              <div class="ledger-cell">
+                <span class="ledger-value">10</span>
+                <span class="ledger-label">S&amp;AI Open-Source PRs (#51&ndash;#60)</span>
+              </div>
+              <div class="ledger-cell">
+                <span class="ledger-value">04</span>
+                <span class="ledger-label">Selected Engineering Builds</span>
+              </div>
+              <div class="ledger-cell">
+                <span class="ledger-value">AI &amp; ML</span>
+                <span class="ledger-label">B.Tech CSE, NST ADYPU</span>
+              </div>
             </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 / About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">01 / ABOUT</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Engineering with curiosity.</h2>
           </div>
         </div>
 
-        <div class="profile-wrap">
-          <div class="profile-frame" id="profileFrame">
-            <div class="profile-img-box">
-              <img src="profile.jpg" alt="Portrait of Alok Gupta" />
+        <div class="about-grid reveal">
+          <div class="about-prose-col">
+            <p class="about-prose-lead">
+              I'm a first-year B.Tech Computer Science student specialising in Artificial Intelligence and Machine Learning at Newton School of Technology, ADYPU.
+            </p>
+            <p class="about-prose-body">
+              I'm interested in building software, understanding intelligent systems, and exploring the engineering behind modern AI applications. My current focus includes Python, JavaScript, data structures and algorithms, backend development, and practical AI projects. I'm actively contributing to open-source projects while working towards software engineering and AI/ML internship opportunities.
+            </p>
+          </div>
+
+          <div class="about-dossier-col">
+            <dl class="dossier-list">
+              <div class="dossier-row">
+                <dt>Degree</dt>
+                <dd>B.Tech Computer Science &amp; Engineering (AI &amp; ML)</dd>
+              </div>
+              <div class="dossier-row">
+                <dt>Institution</dt>
+                <dd>Newton School of Technology, ADYPU</dd>
+              </div>
+              <div class="dossier-row">
+                <dt>Location</dt>
+                <dd>Pune, Maharashtra, India</dd>
+              </div>
+              <div class="dossier-row">
+                <dt>Core Focus</dt>
+                <dd>Python, JavaScript, DSA, Backend, Practical AI</dd>
+              </div>
+              <div class="dossier-row">
+                <dt>Open Source</dt>
+                <dd>Active contributor &mdash; S-AI-Projects</dd>
+              </div>
+              <div class="dossier-row">
+                <dt>Looking For</dt>
+                <dd>SWE &amp; AI/ML Internships</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / Technical Expertise -->
+    <section id="expertise" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">02 / EXPERTISE</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Tools I work with.</h2>
+            <p class="section-subtitle">
+              Each technology below is anchored to shipped projects or open-source pull requests demonstrating practical application.
+            </p>
+          </div>
+        </div>
+
+        <div class="expertise-controls reveal">
+          <div class="filter-group" role="group" aria-label="Filter tools by domain">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All (09)</button>
+            <button type="button" class="filter-btn" data-filter="lang" aria-pressed="false">Languages</button>
+            <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI &amp; 3D</button>
+            <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+            <button type="button" class="filter-btn" data-filter="infra" aria-pressed="false">Testing &amp; Infra</button>
+          </div>
+          <span class="expertise-count" id="expertiseCount">Showing 09 / 09 tools</span>
+        </div>
+
+        <div class="expertise-list reveal" id="expertiseList">
+          <article class="expertise-row" data-domain="lang">
+            <span class="expertise-index">01</span>
+            <h3 class="expertise-name">Python</h3>
+            <span class="expertise-domain">Language</span>
+            <p class="expertise-evidence">
+              AI integration, backend workflows, and automated security-scenario rubric evaluation across
+              <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer" class="ed-link">Bug Slayer <span class="arrow" aria-hidden="true">&#8599;</span></a>
+              and
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer" class="ed-link">PR #56 <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="lang">
+            <span class="expertise-index">02</span>
+            <h3 class="expertise-name">JavaScript</h3>
+            <span class="expertise-domain">Language</span>
+            <p class="expertise-evidence">
+              Game lifecycle management, asset handling, application logic, and state persistence in
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer" class="ed-link">PR #53 <span class="arrow" aria-hidden="true">&#8599;</span></a>,
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer" class="ed-link">PR #54 <span class="arrow" aria-hidden="true">&#8599;</span></a>,
+              and
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer" class="ed-link">PR #60 <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="web">
+            <span class="expertise-index">03</span>
+            <h3 class="expertise-name">HTML5</h3>
+            <span class="expertise-domain">Markup &amp; A11y</span>
+            <p class="expertise-evidence">
+              Semantic landmarks, keyboard accessibility, and safe DOM rendering using <code>textContent</code> in
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer" class="ed-link">PR #51 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+              and
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer" class="ed-link">PR #58 <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="web">
+            <span class="expertise-index">04</span>
+            <h3 class="expertise-name">CSS3</h3>
+            <span class="expertise-domain">Layout &amp; UI</span>
+            <p class="expertise-evidence">
+              Responsive layouts, reduced-motion support, focus visibility, and automotive UI styling in
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer" class="ed-link">PR #52 <span class="arrow" aria-hidden="true">&#8599;</span></a>,
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer" class="ed-link">PR #59 <span class="arrow" aria-hidden="true">&#8599;</span></a>,
+              and
+              <a href="https://github.com/Alok-888/Vanta" target="_blank" rel="noopener noreferrer" class="ed-link">Vanta <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="infra">
+            <span class="expertise-index">05</span>
+            <h3 class="expertise-name">Playwright</h3>
+            <span class="expertise-domain">Browser Testing</span>
+            <p class="expertise-evidence">
+              Automated browser regression suites, keyboard navigation verification, responsive checks, and mutation tests across
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="ed-link">PR #51&ndash;#60 <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="infra">
+            <span class="expertise-index">06</span>
+            <h3 class="expertise-name">Git &amp; GitHub</h3>
+            <span class="expertise-domain">Version Control</span>
+            <p class="expertise-evidence">
+              Collaborative pull requests, repository inspection, and open-source workflows across
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="ed-link">S-AI-Projects/Web-Dev-For-Beginners (PR #51&ndash;#60) <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="infra">
+            <span class="expertise-index">07</span>
+            <h3 class="expertise-name">Docker</h3>
+            <span class="expertise-domain">Containers</span>
+            <p class="expertise-evidence">
+              Controlled, isolated execution environment for parsing and verifying repository setup workflows in
+              <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer" class="ed-link">Bug Slayer <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="ai">
+            <span class="expertise-index">08</span>
+            <h3 class="expertise-name">Three.js</h3>
+            <span class="expertise-domain">3D Visualisation</span>
+            <p class="expertise-evidence">
+              Interactive 3D vector-space environment and coordinate projection in
+              <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer" class="ed-link">LLM Tokenizer &amp; Vector Lab <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+
+          <article class="expertise-row" data-domain="ai">
+            <span class="expertise-index">09</span>
+            <h3 class="expertise-name">Transformers.js</h3>
+            <span class="expertise-domain">Browser ML</span>
+            <p class="expertise-evidence">
+              Client-side DistilGPT-2 inference, negative log-likelihood perplexity calculation, and token probability inspection in
+              <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer" class="ed-link">Perplexity Explorer <span class="arrow" aria-hidden="true">&#8599;</span></a>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 / Selected Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">03 / SELECTED WORK</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Things I've built.</h2>
+            <p class="section-subtitle">
+              AI developer tooling, browser-side language model playgrounds, interactive 3D educational visualisations, and custom frontend interfaces.
+            </p>
+          </div>
+        </div>
+
+        <div class="projects-stack">
+          <!-- Project 01: Bug Slayer -->
+          <article class="project-showcase reveal">
+            <div class="project-visual-col">
+              <div class="project-frame">
+                <div class="project-frame-bar">
+                  <span>FIG 01 / ARCHITECTURE</span>
+                  <span class="status-tag">HEALER &middot; ARCHITECT</span>
+                </div>
+                <div class="project-svg-wrap">
+                  <svg class="project-svg" viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture schematic for Bug Slayer showing repository parsing, Docker execution, Gemma analysis, and README synthesis">
+                    <!-- Structural Grid -->
+                    <line x1="280" y1="24" x2="280" y2="376" stroke="#292929" stroke-width="1" stroke-dasharray="3 4" />
+                    <line x1="36" y1="200" x2="524" y2="200" stroke="#292929" stroke-width="1" />
+
+                    <!-- Top Node: Repository Source -->
+                    <rect x="190" y="34" width="180" height="46" fill="#111114" stroke="#3E3E42" stroke-width="1" />
+                    <text x="206" y="54" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">INPUT</text>
+                    <text x="206" y="70" fill="#F2F0EC" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600">Target Repository</text>
+
+                    <!-- Branch Arrows -->
+                    <path d="M235 80 V120 H140 V146" stroke="#92908D" stroke-width="1" />
+                    <path d="M325 80 V120 H420 V146" stroke="#92908D" stroke-width="1" />
+
+                    <!-- Left Column: Healer Mode -->
+                    <rect x="44" y="146" width="192" height="106" fill="#111114" stroke="#C43B45" stroke-width="1" />
+                    <text x="60" y="168" fill="#E25C65" font-family="JetBrains Mono, monospace" font-size="10">MODE 01 // HEALER</text>
+                    <text x="60" y="190" fill="#F2F0EC" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Controlled Execution</text>
+                    <text x="60" y="212" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">1. Parse setup commands</text>
+                    <text x="60" y="229" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">2. Run inside Docker sandbox</text>
+                    <text x="60" y="244" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">3. Diagnose &amp; test fixes</text>
+
+                    <!-- Right Column: Architect Mode -->
+                    <rect x="324" y="146" width="192" height="106" fill="#111114" stroke="#3E3E42" stroke-width="1" />
+                    <text x="340" y="168" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">MODE 02 // ARCHITECT</text>
+                    <text x="340" y="190" fill="#F2F0EC" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Repo Inspection</text>
+                    <text x="340" y="212" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">1. Traverse file hierarchy</text>
+                    <text x="340" y="229" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">2. Extract entrypoints</text>
+                    <text x="340" y="244" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">3. Generate README</text>
+
+                    <!-- Convergence to AI Engine -->
+                    <path d="M140 252 V290 H210" stroke="#C43B45" stroke-width="1" />
+                    <path d="M420 252 V290 H350" stroke="#92908D" stroke-width="1" />
+
+                    <rect x="176" y="294" width="208" height="68" fill="#151519" stroke="#F2F0EC" stroke-opacity="0.35" stroke-width="1" />
+                    <circle cx="194" cy="316" r="4" fill="#C43B45" />
+                    <text x="206" y="320" fill="#F2F0EC" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600">Gemma &amp; Gemini API</text>
+                    <text x="194" y="344" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">Verified Setup + Fix Output</text>
+                  </svg>
+                </div>
+              </div>
             </div>
-            <div class="profile-meta">
+
+            <div class="project-content-col">
+              <div class="project-meta-head">
+                <span class="project-number">01 / 04</span>
+                <span class="project-category">AI Tooling &amp; Backend</span>
+              </div>
+              <h3 class="project-title">Bug Slayer</h3>
+              <p class="project-summary">
+                An AI-powered repository assistant with Healer and Architect modes for repository analysis, controlled execution, AI integration, and verified README generation.
+              </p>
+
+              <div class="project-details">
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Problem</span>
+                  <p class="project-detail-body">
+                    Setting up unfamiliar repositories can be difficult when README instructions are outdated, dependencies fail, and developers have to debug installation issues manually.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Solution</span>
+                  <div class="project-detail-body">
+                    <ul class="project-modes">
+                      <li><strong>Healer Mode:</strong> Parses setup instructions, executes commands inside a controlled environment, analyses failures using Gemma, and tests suggested fixes.</li>
+                      <li><strong>Architect Mode:</strong> Inspects a repository's structure and generates a README with verified setup instructions.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Contribution</span>
+                  <p class="project-detail-body">
+                    Worked on AI integration and backend development, connecting the AI model to the application's repository-analysis and problem-solving workflows.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="project-tech-list" aria-label="Technologies used in Bug Slayer">
+                <li class="tech-token">Python</li>
+                <li class="tech-token">Gemma</li>
+                <li class="tech-token">Gemini API</li>
+                <li class="tech-token">Docker</li>
+                <li class="tech-token">Git</li>
+                <li class="tech-token">Rich</li>
+              </ul>
+
+              <div class="project-actions">
+                <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <span>GitHub Repository</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: Perplexity Explorer -->
+          <article class="project-showcase is-reversed reveal">
+            <div class="project-visual-col">
+              <div class="project-frame">
+                <div class="project-frame-bar">
+                  <span>FIG 02 / LOG-LIKELIHOOD</span>
+                  <span class="status-tag">DISTILGPT-2 IN BROWSER</span>
+                </div>
+                <div class="project-svg-wrap">
+                  <svg class="project-svg" viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visual diagram representing token probabilities, next-token candidates, and perplexity formula in Perplexity Explorer">
+                    <!-- Token Sequence Header -->
+                    <text x="36" y="46" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">TOKEN SEQUENCE // P(w_t | w_&lt;t)</text>
+
+                    <rect x="36" y="64" width="112" height="44" fill="#111114" stroke="#3E3E42" stroke-width="1" />
+                    <text x="50" y="84" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="12">Building</text>
+                    <text x="50" y="99" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="9">p = 0.42</text>
+
+                    <rect x="158" y="64" width="116" height="44" fill="#111114" stroke="#3E3E42" stroke-width="1" />
+                    <text x="172" y="84" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="12">software</text>
+                    <text x="172" y="99" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="9">p = 0.68</text>
+
+                    <rect x="284" y="64" width="96" height="44" fill="#111114" stroke="#3E3E42" stroke-width="1" />
+                    <text x="298" y="84" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="12">with</text>
+                    <text x="298" y="99" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="9">p = 0.51</text>
+
+                    <rect x="390" y="64" width="134" height="44" fill="#151519" stroke="#C43B45" stroke-width="1" />
+                    <text x="404" y="84" fill="#E25C65" font-family="JetBrains Mono, monospace" font-size="12">[next token]</text>
+                    <text x="404" y="99" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="9">softmax(logits)</text>
+
+                    <!-- Probability Distribution Bars -->
+                    <line x1="36" y1="142" x2="524" y2="142" stroke="#292929" stroke-width="1" />
+                    <text x="36" y="168" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">NEXT-TOKEN CANDIDATES</text>
+
+                    <!-- Bar 1 -->
+                    <text x="36" y="200" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="11">intelligence</text>
+                    <rect x="164" y="189" width="276" height="14" fill="#C43B45" />
+                    <text x="454" y="200" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="11">0.38</text>
+
+                    <!-- Bar 2 -->
+                    <text x="36" y="232" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="11">clarity</text>
+                    <rect x="164" y="221" width="192" height="14" fill="#3E3E42" />
+                    <text x="370" y="232" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="11">0.24</text>
+
+                    <!-- Bar 3 -->
+                    <text x="36" y="264" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="11">precision</text>
+                    <rect x="164" y="253" width="128" height="14" fill="#292929" />
+                    <text x="306" y="264" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="11">0.16</text>
+
+                    <!-- Bottom Formula Block -->
+                    <rect x="36" y="302" width="488" height="66" fill="#111114" stroke="#292929" stroke-width="1" />
+                    <text x="54" y="328" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">NEGATIVE LOG-LIKELIHOOD // PERPLEXITY</text>
+                    <text x="54" y="350" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="13">PPL = exp( -1/N &#x2211; log P(w_i | w_&lt;i) )</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div class="project-meta-head">
+                <span class="project-number">02 / 04</span>
+                <span class="project-category">Client-Side ML Playground</span>
+              </div>
+              <h3 class="project-title">Perplexity Explorer</h3>
+              <p class="project-summary">
+                An interactive browser-based language model playground featuring token probabilities, perplexity calculations, and next-token predictions.
+              </p>
+
+              <div class="project-details">
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Problem</span>
+                  <p class="project-detail-body">
+                    Language-model concepts such as token probabilities and perplexity can be difficult to understand without inspecting the underlying calculations directly.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Solution</span>
+                  <p class="project-detail-body">
+                    Processes user text through DistilGPT-2 directly in the browser, visualising per-token probabilities, computing perplexity via negative log-likelihood, presenting likely next-token predictions, and offering a probability exploration sandbox.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Contribution</span>
+                  <p class="project-detail-body">
+                    Built the interactive interface and implemented the browser-side model inference and probability visualisation workflow.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="project-tech-list" aria-label="Technologies used in Perplexity Explorer">
+                <li class="tech-token">HTML</li>
+                <li class="tech-token">CSS</li>
+                <li class="tech-token">JavaScript</li>
+                <li class="tech-token">Transformers.js</li>
+                <li class="tech-token">DistilGPT-2</li>
+              </ul>
+
+              <div class="project-actions">
+                <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <span>Live Demo</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+                <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer" class="btn">
+                  <span>GitHub Repository</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: LLM Tokenizer & Vector Lab -->
+          <article class="project-showcase reveal">
+            <div class="project-visual-col">
+              <div class="project-frame">
+                <div class="project-frame-bar">
+                  <span>FIG 03 / VECTOR PROJECTION</span>
+                  <span class="status-tag">THREE.JS LAB</span>
+                </div>
+                <div class="project-svg-wrap">
+                  <svg class="project-svg" viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3D coordinate space diagram showing token IDs, positional encoding, and simulated vector clusters in LLM Tokenizer &amp; Vector Lab">
+                    <!-- Token ID Header Strip -->
+                    <text x="36" y="42" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">TOKENIZER // ID MAPPING + POSITIONAL ENCODING</text>
+                    <rect x="36" y="54" width="110" height="32" fill="#111114" stroke="#292929" stroke-width="1" />
+                    <text x="48" y="74" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="10">"token" [214]</text>
+                    <rect x="156" y="54" width="118" height="32" fill="#111114" stroke="#292929" stroke-width="1" />
+                    <text x="168" y="74" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="10">"vector" [891]</text>
+                    <rect x="284" y="54" width="116" height="32" fill="#111114" stroke="#C43B45" stroke-width="1" />
+                    <text x="296" y="74" fill="#E25C65" font-family="JetBrains Mono, monospace" font-size="10">"space" [402]</text>
+
+                    <!-- 3D Isometric Axes -->
+                    <line x1="280" y1="248" x2="280" y2="112" stroke="#3E3E42" stroke-width="1.2" />
+                    <line x1="280" y1="248" x2="452" y2="322" stroke="#3E3E42" stroke-width="1.2" />
+                    <line x1="280" y1="248" x2="108" y2="322" stroke="#3E3E42" stroke-width="1.2" />
+
+                    <text x="288" y="122" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">+Y</text>
+                    <text x="456" y="328" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">+X</text>
+                    <text x="84" y="328" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">+Z</text>
+
+                    <!-- Wireframe Reference Plane -->
+                    <polygon points="280,152 410,208 280,264 150,208" fill="none" stroke="#292929" stroke-width="1" stroke-dasharray="4 4" />
+                    <polygon points="280,188 370,228 280,268 190,228" fill="none" stroke="#292929" stroke-width="1" />
+
+                    <!-- Vector Rays & Cluster Nodes -->
+                    <line x1="280" y1="248" x2="210" y2="176" stroke="#92908D" stroke-width="1" />
+                    <circle cx="210" cy="176" r="5" fill="#F2F0EC" />
+                    <circle cx="182" cy="194" r="3" fill="#92908D" />
+                    <circle cx="232" cy="162" r="3" fill="#92908D" />
+
+                    <line x1="280" y1="248" x2="356" y2="168" stroke="#C43B45" stroke-width="1.4" />
+                    <circle cx="356" cy="168" r="6" fill="#C43B45" />
+                    <circle cx="384" cy="184" r="3.5" fill="#E25C65" />
+                    <circle cx="344" cy="144" r="3" fill="#E25C65" />
+
+                    <line x1="280" y1="248" x2="318" y2="296" stroke="#92908D" stroke-width="1" />
+                    <circle cx="318" cy="296" r="4.5" fill="#F2F0EC" />
+
+                    <text x="36" y="372" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">NOTE: DETERMINISTIC SIMULATED VECTORS</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div class="project-meta-head">
+                <span class="project-number">03 / 04</span>
+                <span class="project-category">3D Visualisation &amp; EdTech</span>
+              </div>
+              <h3 class="project-title">LLM Tokenizer &amp; Vector Lab</h3>
+              <p class="project-summary">
+                An interactive educational application demonstrating tokenization, token IDs, embeddings, positional encoding, and 3D vector-space visualisation.
+              </p>
+
+              <div class="project-details">
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Problem</span>
+                  <p class="project-detail-body">
+                    Understanding how text moves through an LLM pipeline&mdash;from tokenization to numerical representations&mdash;is challenging when concepts are presented only theoretically.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Solution</span>
+                  <p class="project-detail-body">
+                    An interactive educational pipeline demonstrating text processing, tokenization, token IDs, embedding concepts, positional encoding, and vector-space visualisation where users can experiment with vocabulary and inspect word positions in a 3D environment.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Contribution</span>
+                  <p class="project-detail-body">
+                    Developed the interactive pipeline experience, vocabulary tools, and 3D vector-space visualisation.
+                  </p>
+                </div>
+              </div>
+
+              <p class="project-note">
+                <strong>Technical clarification:</strong> The current vector visualisation uses simulated deterministic vectors and semantic clusters rather than embeddings extracted from a trained model.
+              </p>
+
+              <ul class="project-tech-list" aria-label="Technologies used in LLM Tokenizer &amp; Vector Lab">
+                <li class="tech-token">HTML</li>
+                <li class="tech-token">CSS</li>
+                <li class="tech-token">JavaScript</li>
+                <li class="tech-token">Three.js</li>
+              </ul>
+
+              <div class="project-actions">
+                <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <span>Live Demo</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+                <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer" class="btn">
+                  <span>GitHub Repository</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Vanta — Automotive Web Experience -->
+          <article class="project-showcase is-reversed reveal">
+            <div class="project-visual-col">
+              <div class="project-frame">
+                <div class="project-frame-bar">
+                  <span>FIG 04 / CHASSIS &amp; LAYOUT</span>
+                  <span class="status-tag">VANTA UI</span>
+                </div>
+                <div class="project-svg-wrap">
+                  <svg class="project-svg" viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minimalist wireframe proportion study representing Vanta automotive frontend experience">
+                    <!-- Proportion Grid -->
+                    <line x1="36" y1="290" x2="524" y2="290" stroke="#C43B45" stroke-width="1" />
+                    <line x1="36" y1="120" x2="524" y2="120" stroke="#292929" stroke-width="1" stroke-dasharray="3 4" />
+                    <line x1="158" y1="54" x2="158" y2="338" stroke="#292929" stroke-width="1" stroke-dasharray="3 4" />
+                    <line x1="402" y1="54" x2="402" y2="338" stroke="#292929" stroke-width="1" stroke-dasharray="3 4" />
+
+                    <!-- Aerodynamic Silhouette Study -->
+                    <path
+                      d="M72 252 L114 214 L204 166 C252 146 332 146 392 172 L462 204 L496 238 L492 264 H442 M198 264 H362 M118 264 H72 Z"
+                      stroke="#F2F0EC"
+                      stroke-width="1.4"
+                      fill="none"
+                    />
+                    <path d="M196 172 C256 154 328 156 376 178" stroke="#92908D" stroke-width="1" />
+
+                    <!-- Wheel Geometry -->
+                    <circle cx="158" cy="264" r="38" fill="#0D0D10" stroke="#F2F0EC" stroke-width="1.3" />
+                    <circle cx="158" cy="264" r="20" stroke="#3E3E42" stroke-width="1" />
+                    <circle cx="158" cy="264" r="4" fill="#C43B45" />
+
+                    <circle cx="402" cy="264" r="38" fill="#0D0D10" stroke="#F2F0EC" stroke-width="1.3" />
+                    <circle cx="402" cy="264" r="20" stroke="#3E3E42" stroke-width="1" />
+                    <circle cx="402" cy="264" r="4" fill="#C43B45" />
+
+                    <!-- Elevation Callouts -->
+                    <text x="36" y="44" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">VANTA // FRONTEND DESIGN SYSTEM</text>
+                    <text x="36" y="366" fill="#92908D" font-family="JetBrains Mono, monospace" font-size="10">RESPONSIVE GRID &middot; SEMANTIC DOM</text>
+                    <text x="412" y="366" fill="#F2F0EC" font-family="JetBrains Mono, monospace" font-size="10">60 FPS UI</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content-col">
+              <div class="project-meta-head">
+                <span class="project-number">04 / 04</span>
+                <span class="project-category">Frontend &amp; Interactive Design</span>
+              </div>
+              <h3 class="project-title">Vanta &mdash; Automotive Web Experience</h3>
+              <p class="project-summary">
+                A futuristic automotive-themed frontend experience focused on responsive design, visual presentation, and interactive elements.
+              </p>
+
+              <div class="project-details">
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Problem</span>
+                  <p class="project-detail-body">
+                    Showcasing automotive product design online requires clean visual hierarchy, responsive layout, and smooth interactive presentation.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Solution</span>
+                  <p class="project-detail-body">
+                    A futuristic automotive-themed web experience focused on visual presentation and frontend craftsmanship, built with semantic layout, responsive breakpoints, and custom styling.
+                  </p>
+                </div>
+                <div class="project-detail-row">
+                  <span class="project-detail-label">Contribution</span>
+                  <p class="project-detail-body">
+                    Designed and built the frontend interface, layout structure, and styling from scratch.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="project-tech-list" aria-label="Technologies used in Automotive Web Experience">
+                <li class="tech-token">HTML</li>
+                <li class="tech-token">CSS</li>
+                <li class="tech-token">JavaScript</li>
+              </ul>
+
+              <div class="project-actions">
+                <a href="https://vanta-five-phi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <span>Live Demo</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+                <a href="https://github.com/Alok-888/Vanta" target="_blank" rel="noopener noreferrer" class="btn">
+                  <span>GitHub Repository</span>
+                  <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 / Open Source Contributions -->
+    <section id="open-source" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">04 / OPEN SOURCE</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Contributing beyond the classroom.</h2>
+            <p class="section-subtitle">
+              Ten pull requests (#51&ndash;#60) contributed to
+              <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners" target="_blank" rel="noopener noreferrer" class="ed-link">S-AI-Projects/Web-Dev-For-Beginners <span class="arrow" aria-hidden="true">&#8599;</span></a>,
+              covering browser testing, accessibility, application reliability, security, and frontend behaviour.
+            </p>
+          </div>
+        </div>
+
+        <div class="os-table-wrap reveal">
+          <table class="os-table">
+            <thead>
+              <tr>
+                <th scope="col">Pull Request</th>
+                <th scope="col">Task ID</th>
+                <th scope="col">Contribution</th>
+                <th scope="col">Technical Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #51 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T011</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added skip-to-content navigation, focus styling, and Playwright keyboard-navigation checks.</td>
+                <td data-label="Technical Impact">Improve keyboard accessibility and usability.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #52 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T012</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added responsive-layout tests at mobile and desktop viewport sizes.</td>
+                <td data-label="Technical Impact">Detect layout breakage and horizontal overflow.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #53 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T013</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added fallback texture handling, image-load error handling, and browser tests.</td>
+                <td data-label="Technical Impact">Keep the application usable when assets fail to load.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #54 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T014</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added event-listener and timer cleanup, including game lifecycle cleanup.</td>
+                <td data-label="Technical Impact">Prevent duplicate listeners, timers, and resource leaks.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/55" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #55 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T015</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added deterministic browser tests using isolated contexts and session-reset checks.</td>
+                <td data-label="Technical Impact">Verify consistent behaviour across independent sessions.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #56 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T016</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Developed a Python security-scenario rubric checker with validation tests.</td>
+                <td data-label="Technical Impact">Automate security-scenario evaluation and improve consistency.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/57" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #57 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T017</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Fixed null-array handling in account parsing and added login, registration, and dashboard tests.</td>
+                <td data-label="Technical Impact">Improve reliability of account and dashboard workflows.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #58 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T018</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Replaced unsafe DOM rendering with <code>textContent</code> and added injection tests.</td>
+                <td data-label="Technical Impact">Prevent user-controlled text from being interpreted as HTML.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #59 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T019</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Added reduced-motion support, keyboard focus handling, and responsive canvas tests.</td>
+                <td data-label="Technical Impact">Improve accessibility and cross-device usability.</td>
+              </tr>
+              <tr>
+                <td data-label="Pull Request">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer" class="ed-link os-pr-link">PR #60 <span class="arrow" aria-hidden="true">&#8599;</span></a>
+                </td>
+                <td data-label="Task ID"><span class="os-task-id">R59-T020</span></td>
+                <td data-label="Contribution" class="os-contrib-text">Implemented form submission, <code>localStorage</code> persistence, and Playwright mutation checks.</td>
+                <td data-label="Technical Impact">Ensure application state and user data behave correctly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="os-footer reveal">
+          <p class="os-meta-note">Repository: S-AI-Projects/Web-Dev-For-Beginners &middot; Author: @Alok-888</p>
+          <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="btn">
+            <span>View All Contributions on GitHub</span>
+            <span class="btn-arrow btn-arrow-diag" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 / Education & Milestones -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">05 / BACKGROUND</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Where I'm learning and growing.</h2>
+          </div>
+        </div>
+
+        <div class="background-grid reveal">
+          <div class="chronology-col">
+            <h3 class="chronology-heading">Academic Track</h3>
+            <ol class="timeline">
+              <li class="timeline-item is-current">
+                <span class="timeline-period">2026 &ndash; 2030 &middot; Pune, Maharashtra, India</span>
+                <h4 class="timeline-title">Newton School of Technology &mdash; ADYPU</h4>
+                <p class="timeline-desc">
+                  B.Tech Computer Science and Engineering (AI &amp; ML), Ajeenkya DY Patil University.
+                </p>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-period">Completed in 2025</span>
+                <h4 class="timeline-title">Higher Secondary Education (Class 12)</h4>
+                <p class="timeline-desc">
+                  Completed senior secondary schooling in 2025.
+                </p>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-period">Completed in 2023</span>
+                <h4 class="timeline-title">Secondary Education (Class 10)</h4>
+                <p class="timeline-desc">
+                  Completed secondary schooling in 2023.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="chronology-col">
+            <h3 class="chronology-heading">Development &amp; Open-Source Milestones</h3>
+            <ol class="timeline">
+              <li class="timeline-item is-current">
+                <span class="timeline-period">Nov 2026</span>
+                <h4 class="timeline-title">S&amp;AI Open-Source Contributions</h4>
+                <p class="timeline-desc">
+                  Contributed ten pull requests (#51&ndash;#60) to S-AI-Projects/Web-Dev-For-Beginners covering Playwright automation, accessibility, DOM safety, and Python validation.
+                </p>
+                <div class="timeline-links">
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    Verify PRs <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-period">2026</span>
+                <h4 class="timeline-title">Bug Slayer AI Assistant</h4>
+                <p class="timeline-desc">
+                  Worked on AI integration and backend development for Bug Slayer with Healer and Architect modes.
+                </p>
+                <div class="timeline-links">
+                  <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    Verify Repository <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-period">2026</span>
+                <h4 class="timeline-title">Interactive AI &amp; 3D Web Apps</h4>
+                <p class="timeline-desc">
+                  Built and deployed interactive web projects exploring client-side language model inference and 3D vector-space visualisations.
+                </p>
+                <div class="timeline-links">
+                  <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    Perplexity Explorer <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                  <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    LLM Tokenizer <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-period">2025 &ndash; Present</span>
+                <h4 class="timeline-title">Competitive Programming</h4>
+                <p class="timeline-desc">
+                  Regular algorithmic problem solving and data structures practice across online judges.
+                </p>
+                <div class="timeline-links">
+                  <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    Codeforces (@Alok888) <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                  <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="ed-link">
+                    LeetCode (@alok-888) <span class="arrow" aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label-col">
+            <span class="eyebrow">06 / CONTACT</span>
+          </div>
+          <div class="section-heading-col">
+            <h2 class="section-title">Have something interesting in mind?</h2>
+            <p class="section-subtitle">
+              I'm interested in software engineering, AI/ML, open-source collaboration, and opportunities to build meaningful things.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-closing reveal">
+          <div class="contact-email-block">
+            <span class="contact-kicker">Direct Email</span>
+            <div class="contact-email-row">
+              <a href="mailto:e26b07f0573@adypu.edu.in" class="contact-email-link">
+                <span>e26b07f0573@adypu.edu.in</span>
+                <span class="contact-email-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+              <button type="button" class="btn copy-feedback" id="copyEmailBtn" data-email="e26b07f0573@adypu.edu.in">
+                Copy Email
+              </button>
+              <span class="sr-only" id="copyStatus" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="contact-profiles">
+            <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="contact-profile-item">
+              <div class="profile-platform">
+                <span>GitHub</span>
+                <span class="profile-arrow" aria-hidden="true">&#8599;</span>
+              </div>
               <div>
-                <strong>Alok Gupta</strong>
-                <span>@Alok-888 &bull; Pune</span>
+                <div class="profile-handle">@Alok-888</div>
+                <div class="profile-url">github.com/Alok-888</div>
               </div>
-              <span class="profile-tag">NST ADYPU</span>
-            </div>
+            </a>
+
+            <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="contact-profile-item">
+              <div class="profile-platform">
+                <span>Codeforces</span>
+                <span class="profile-arrow" aria-hidden="true">&#8599;</span>
+              </div>
+              <div>
+                <div class="profile-handle">@Alok888</div>
+                <div class="profile-url">codeforces.com/profile/Alok888</div>
+              </div>
+            </a>
+
+            <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="contact-profile-item">
+              <div class="profile-platform">
+                <span>LeetCode</span>
+                <span class="profile-arrow" aria-hidden="true">&#8599;</span>
+              </div>
+              <div>
+                <div class="profile-handle">@alok-888</div>
+                <div class="profile-url">leetcode.com/u/alok-888</div>
+              </div>
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 1. About Me -->
-    <section id="about" class="alt">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">01 &bull; About Me</span>
-          <h2 class="section-title">Engineering <span class="text-gradient">Background</span> &amp; Focus</h2>
-        </div>
-        <div class="glass-card about-card">
-          <p>
-            I'm a first-year B.Tech Computer Science student specialising in Artificial Intelligence and Machine Learning at Newton School of Technology, ADYPU. I'm interested in building software, understanding intelligent systems, and exploring the engineering behind modern AI applications. My current focus includes Python, JavaScript, data structures and algorithms, backend development, and practical AI projects. I'm actively contributing to open-source projects while working towards software engineering and AI/ML internship opportunities.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Technical Skills -->
-    <section id="skills">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">02 &bull; Technical Skills</span>
-          <h2 class="section-title">Skills &amp; <span class="text-gradient">Verified Evidence</span></h2>
-          <p class="section-lead">Each skill below is connected directly to a project or open-source pull request demonstrating its practical use.</p>
-        </div>
-        <div class="glass-card table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Skill</th>
-                <th>Practical Evidence</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>HTML5</span></td>
-                <td>
-                  Accessibility and safe DOM rendering &mdash;
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer">PR #51</a> and
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer">PR #58</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>CSS3</span></td>
-                <td>
-                  Responsive design and accessibility &mdash;
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer">PR #52</a> and
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer">PR #59</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>JavaScript</span></td>
-                <td>
-                  Game lifecycle, asset handling and application logic &mdash;
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer">PR #53</a>,
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer">PR #54</a> and
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer">PR #60</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Python</span></td>
-                <td>
-                  <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Bug Slayer</a> and
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer">PR #56</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Playwright</span></td>
-                <td>
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Browser automation and regression tests &mdash; PR #51&ndash;#60</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Git &amp; GitHub</span></td>
-                <td>
-                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Open-source contributions (PR #51&ndash;#60)</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Docker</span></td>
-                <td>
-                  <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Bug Slayer (controlled execution environment)</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Three.js</span></td>
-                <td>
-                  <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer">LLM Tokenizer &amp; Vector Lab</a>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="skill-pill"><span class="skill-dot"></span>Transformers.js</span></td>
-                <td>
-                  <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer">Perplexity Explorer</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Featured Projects -->
-    <section id="projects" class="alt">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">03 &bull; Featured Projects</span>
-          <h2 class="section-title">Selected <span class="text-gradient">Engineering Work</span></h2>
-          <p class="section-lead">AI tooling, browser-side language model playgrounds, 3D visualisations, and frontend applications.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="glass-card project-card">
-            <div class="proj-banner b1">
-              <h3>Bug Slayer &mdash; AI-Powered Repository Assistant</h3>
-              <span class="proj-type">AI / Backend</span>
-            </div>
-            <div class="proj-body">
-              <p class="project-block"><strong>Problem Statement:</strong> Setting up unfamiliar repositories can be difficult. README instructions may be outdated, dependencies may fail, and developers often have to debug installation problems manually.</p>
-              <div class="project-block">
-                <strong>Solution Architecture:</strong> Bug Slayer is an AI-powered repository assistant with two modes:
-                <ul class="project-list">
-                  <li><strong>Healer:</strong> Parses setup instructions, executes commands in a controlled environment, analyses failures using Gemma, and tests suggested fixes.</li>
-                  <li><strong>Architect:</strong> Inspects a repository's structure and generates a README with verified setup instructions.</li>
-                </ul>
-              </div>
-              <p class="project-block"><strong>Individual Contribution:</strong> Worked on AI integration and backend development, contributing to the connection between the AI model and the application's repository-analysis and problem-solving workflows.</p>
-              <div class="tech-tags">
-                <span class="tag">Python</span><span class="tag">Gemma</span><span class="tag">Gemini API</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Rich</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub Repository</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="glass-card project-card">
-            <div class="proj-banner b2">
-              <h3>Perplexity Explorer &mdash; Language Model Playground</h3>
-              <span class="proj-type">ML in Browser</span>
-            </div>
-            <div class="proj-body">
-              <p class="project-block"><strong>Problem Statement:</strong> Language-model concepts such as token probabilities and perplexity can be difficult to understand without seeing the underlying calculations.</p>
-              <p class="project-block"><strong>Solution Architecture:</strong> An interactive browser-based application that accepts text, processes it through DistilGPT-2, displays token probabilities, calculates perplexity using negative log-likelihood, and presents likely next-token predictions. It also includes a probability exploration sandbox.</p>
-              <p class="project-block"><strong>Individual Contribution:</strong> Built the interactive interface and implemented the browser-side model inference and probability visualisation workflow.</p>
-              <div class="tech-tags">
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Transformers.js</span><span class="tag">DistilGPT-2</span>
-              </div>
-              <div class="project-links">
-                <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-                <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub Repository</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="glass-card project-card">
-            <div class="proj-banner b3">
-              <h3>LLM Tokenizer &amp; Vector Lab</h3>
-              <span class="proj-type">3D Visualisation</span>
-            </div>
-            <div class="proj-body">
-              <p class="project-block"><strong>Problem Statement:</strong> Understanding how text moves through an LLM pipeline&mdash;from tokenization to numerical representations&mdash;is challenging when concepts are presented only theoretically.</p>
-              <p class="project-block"><strong>Solution Architecture:</strong> An interactive educational tool that demonstrates text processing, tokenization, token IDs, embedding concepts, positional encoding, and vector-space visualisation. Users can experiment with vocabulary and inspect word positions in a 3D environment.</p>
-              <p class="project-block"><strong>Individual Contribution:</strong> Developed the interactive pipeline experience, vocabulary tools, and 3D vector-space visualisation.</p>
-              <p class="note-box"><strong>Technical note:</strong> The current vector visualisation uses simulated deterministic vectors and semantic clusters rather than embeddings extracted from a trained model.</p>
-              <div class="tech-tags">
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Three.js</span>
-              </div>
-              <div class="project-links">
-                <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-                <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub Repository</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="glass-card project-card">
-            <div class="proj-banner b4">
-              <h3>Vanta &mdash; Automotive Web Experience</h3>
-              <span class="proj-type">Frontend UI</span>
-            </div>
-            <div class="proj-body">
-              <p class="project-block"><strong>Problem Statement:</strong> Showcasing automotive product design online requires clean visual hierarchy, responsive layout, and smooth interactive presentation.</p>
-              <p class="project-block"><strong>Solution Architecture:</strong> A futuristic automotive-themed web experience focused on visual presentation and frontend development, built with responsive semantic layout and custom styling.</p>
-              <p class="project-block"><strong>Individual Contribution:</strong> Designed and built the frontend interface, layout structure, and styling from scratch.</p>
-              <div class="tech-tags">
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-              </div>
-              <div class="project-links">
-                <a href="https://vanta-five-phi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-                <a href="https://github.com/Alok-888/Vanta" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub Repository</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Open Source Contributions -->
-    <section id="contributions">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">04 &bull; Open Source Contributions</span>
-          <h2 class="section-title">Open Source &mdash; <span class="text-gradient">S&amp;AI Contributions</span></h2>
-          <p class="section-lead">
-            Contributing to <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners" target="_blank" rel="noopener noreferrer"><strong>S-AI-Projects/Web-Dev-For-Beginners</strong></a>, working on browser testing, accessibility, application reliability, security, and frontend behaviour across Pull Requests <strong>#51&ndash;#60</strong>.
-          </p>
-        </div>
-
-        <div class="glass-card table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>PR</th>
-                <th>Task ID</th>
-                <th>Code Changes</th>
-                <th>Rationale</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer">#51</a></td>
-                <td><span class="task-badge">R59-T011</span></td>
-                <td>Added skip-to-content navigation, focus styling, and Playwright keyboard-navigation checks.</td>
-                <td>Improve keyboard accessibility and usability.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer">#52</a></td>
-                <td><span class="task-badge">R59-T012</span></td>
-                <td>Added responsive-layout tests at mobile and desktop viewport sizes.</td>
-                <td>Detect layout breakage and horizontal overflow.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer">#53</a></td>
-                <td><span class="task-badge">R59-T013</span></td>
-                <td>Added fallback texture handling, image-load error handling, and browser tests.</td>
-                <td>Keep the application usable when assets fail to load.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer">#54</a></td>
-                <td><span class="task-badge">R59-T014</span></td>
-                <td>Added event-listener and timer cleanup, including game lifecycle cleanup.</td>
-                <td>Prevent duplicate listeners, timers, and resource leaks.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/55" target="_blank" rel="noopener noreferrer">#55</a></td>
-                <td><span class="task-badge">R59-T015</span></td>
-                <td>Added deterministic browser tests using isolated contexts and session-reset checks.</td>
-                <td>Verify consistent behaviour across independent sessions.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer">#56</a></td>
-                <td><span class="task-badge">R59-T016</span></td>
-                <td>Developed a Python security-scenario rubric checker with validation tests.</td>
-                <td>Automate security-scenario evaluation and improve consistency.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/57" target="_blank" rel="noopener noreferrer">#57</a></td>
-                <td><span class="task-badge">R59-T017</span></td>
-                <td>Fixed null-array handling in account parsing and added login, registration, and dashboard tests.</td>
-                <td>Improve reliability of account and dashboard workflows.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer">#58</a></td>
-                <td><span class="task-badge">R59-T018</span></td>
-                <td>Replaced unsafe DOM rendering with <code>textContent</code> and added injection tests.</td>
-                <td>Prevent user-controlled text from being interpreted as HTML.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer">#59</a></td>
-                <td><span class="task-badge">R59-T019</span></td>
-                <td>Added reduced-motion support, keyboard focus handling, and responsive canvas tests.</td>
-                <td>Improve accessibility and cross-device usability.</td>
-              </tr>
-              <tr>
-                <td><a class="pr-badge" href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer">#60</a></td>
-                <td><span class="task-badge">R59-T020</span></td>
-                <td>Implemented form submission, <code>localStorage</code> persistence, and Playwright mutation checks.</td>
-                <td>Ensure application state and user data behave correctly.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="contrib-actions">
-          <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="btn">View all contributions on GitHub &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Education & Achievements -->
-    <section id="achievements" class="alt">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">05 &bull; Education &amp; Achievements</span>
-          <h2 class="section-title">Academic Track &amp; <span class="text-gradient">Milestones</span></h2>
-        </div>
-
-        <div class="edu-ach-grid">
-          <div class="glass-card edu-card">
-            <h3 class="card-heading">Education</h3>
-            <div class="timeline">
-              <div class="tl-item">
-                <h4>Newton School of Technology &mdash; Ajeenkya DY Patil University</h4>
-                <p class="tl-meta">B.Tech in Computer Science and Engineering (AI &amp; ML)</p>
-                <p class="tl-meta">2026 &ndash; 2030 | Pune, Maharashtra, India</p>
-              </div>
-              <div class="tl-item">
-                <h4>Higher Secondary Education</h4>
-                <p class="tl-meta">Class 12 &mdash; Completed in 2025</p>
-              </div>
-              <div class="tl-item">
-                <h4>Secondary Education</h4>
-                <p class="tl-meta">Class 10 &mdash; Completed in 2023</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-card ach-card">
-            <h3 class="card-heading">Open Source &amp; Development</h3>
-            <ul class="ach-list">
-              <li>
-                <strong>S&amp;AI Open-Source Contributions (Nov 2026):</strong> Contributed ten pull requests (#51&ndash;#60) to the <code>S-AI-Projects/Web-Dev-For-Beginners</code> repository &mdash;
-                <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Verify PRs</a>
-              </li>
-              <li>
-                <strong>Bug Slayer AI Assistant (2026):</strong> Worked on AI integration and backend development for Bug Slayer &mdash;
-                <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Verify Repository</a>
-              </li>
-              <li>
-                <strong>Interactive AI &amp; 3D Web Apps (2026):</strong> Built and deployed interactive web projects involving language models and 3D visualisation &mdash;
-                <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer">Perplexity Explorer</a> &middot;
-                <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer">LLM Tokenizer</a>
-              </li>
-              <li>
-                <strong>Competitive Programming (2025&ndash;Present):</strong> Regular problem solving on
-                <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer">Codeforces (@Alok888)</a> and
-                <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer">LeetCode (@alok-888)</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. Contact -->
-    <section id="contact">
-      <div class="container reveal">
-        <div class="section-head">
-          <span class="section-eyebrow">06 &bull; Contact</span>
-          <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
-          <p class="section-lead">Interested in software engineering, AI/ML, open-source collaboration, and internship opportunities.</p>
-        </div>
-
-        <div class="contact-grid">
-          <a href="mailto:e26b07f0573@adypu.edu.in" class="glass-card contact-card">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">e26b07f0573@adypu.edu.in</span>
-          </a>
-          <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="glass-card contact-card">
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">github.com/Alok-888</span>
-          </a>
-          <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="glass-card contact-card">
-            <span class="contact-label">Codeforces</span>
-            <span class="contact-value">codeforces.com/profile/Alok888</span>
-          </a>
-          <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="glass-card contact-card">
-            <span class="contact-label">LeetCode</span>
-            <span class="contact-value">leetcode.com/u/alok-888</span>
-          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      &copy; 2026 Alok Gupta &bull; B.Tech CSE (AI &amp; ML), NST ADYPU &bull; Pune, India
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Alok Gupta</span>
+      <span>B.Tech CSE (AI &amp; ML) &middot; Newton School of Technology, ADYPU &middot; Pune, India</span>
+      <a href="#hero" class="ed-link">Back to top <span class="arrow" aria-hidden="true">&#8593;</span></a>
     </div>
   </footer>
 
   <script>
-    // Mobile Menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(isOpen));
-      });
-      navLinks.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', 'false');
+    (() => {
+      'use strict';
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ----------------------------------------------------------------------
+         Legacy Anchor Compatibility (#skills, #contributions, #achievements)
+         ---------------------------------------------------------------------- */
+      const legacyHashMap = {
+        '#skills': '#expertise',
+        '#contributions': '#open-source',
+        '#achievements': '#education'
+      };
+
+      function redirectLegacyHash() {
+        const mapped = legacyHashMap[window.location.hash];
+        if (mapped) {
+          const target = document.querySelector(mapped);
+          if (target) {
+            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+          }
+        }
+      }
+
+      window.addEventListener('hashchange', redirectLegacyHash);
+      if (window.location.hash && legacyHashMap[window.location.hash]) {
+        requestAnimationFrame(redirectLegacyHash);
+      }
+
+      /* ----------------------------------------------------------------------
+         Scroll Progress Hairline & Sticky Header Elevation
+         ---------------------------------------------------------------------- */
+      const scrollProgress = document.getElementById('scrollProgress');
+      const siteHeader = document.getElementById('siteHeader');
+      let scrollTicking = false;
+
+      function updateScrollUI() {
+        const scrollTop = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollProgress && maxScroll > 0) {
+          const ratio = Math.min(1, Math.max(0, scrollTop / maxScroll));
+          scrollProgress.style.transform = `scaleX(${ratio})`;
+        }
+        if (siteHeader) {
+          siteHeader.classList.toggle('is-scrolled', scrollTop > 24);
+        }
+        scrollTicking = false;
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!scrollTicking) {
+            requestAnimationFrame(updateScrollUI);
+            scrollTicking = true;
+          }
+        },
+        { passive: true }
+      );
+      updateScrollUI();
+
+      /* ----------------------------------------------------------------------
+         Mobile Navigation Drawer
+         ---------------------------------------------------------------------- */
+      const menuToggle = document.getElementById('menuToggle');
+      const menuToggleText = document.getElementById('menuToggleText');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      function setDrawerState(open) {
+        if (!menuToggle || !mobileDrawer) return;
+        mobileDrawer.classList.toggle('is-open', open);
+        mobileDrawer.setAttribute('aria-hidden', String(!open));
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        if (menuToggleText) {
+          menuToggleText.textContent = open ? 'Close' : 'Menu';
+        }
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      if (menuToggle && mobileDrawer) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.contains('is-open');
+          setDrawerState(!isOpen);
         });
-      });
-    }
 
-    // Scroll Progress & Sticky Header State
-    const scrollProgress = document.getElementById('scrollProgress');
-    const siteHeader = document.getElementById('siteHeader');
-    window.addEventListener('scroll', () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max > 0 && scrollProgress) {
-        scrollProgress.style.width = ((window.scrollY / max) * 100) + '%';
-      }
-      if (siteHeader) {
-        siteHeader.classList.toggle('scrolled', window.scrollY > 40);
-      }
-    }, { passive: true });
+        mobileDrawer.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => setDrawerState(false));
+        });
 
-    // Active Nav Highlight
-    const sections = document.querySelectorAll('main section[id]');
-    const navItems = document.querySelectorAll('.nav-links a');
-    const navObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navItems.forEach((item) => item.classList.remove('active'));
-            const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
-            if (active) active.classList.add('active');
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && mobileDrawer.classList.contains('is-open')) {
+            setDrawerState(false);
+            menuToggle.focus();
           }
         });
-      },
-      { threshold: 0.35 }
-    );
-    sections.forEach((sec) => navObserver.observe(sec));
 
-    // Scroll Reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 920 && mobileDrawer.classList.contains('is-open')) {
+            setDrawerState(false);
           }
         });
-      },
-      { threshold: 0.08 }
-    );
-    revealEls.forEach((el) => revealObserver.observe(el));
-
-    // Typewriter Effect
-    const twEl = document.getElementById('typewriterText');
-    const phrases = [
-      'exploring AI/ML & LLM internals',
-      'building backend workflows in Python',
-      'shipping 10 verified S&AI PRs',
-      'practising DSA & algorithms'
-    ];
-    let pIdx = 0, cIdx = 0, deleting = false;
-    function tickTypewriter() {
-      if (!twEl) return;
-      const cur = phrases[pIdx];
-      if (deleting) {
-        cIdx--;
-        twEl.textContent = cur.slice(0, cIdx);
-        if (cIdx === 0) {
-          deleting = false;
-          pIdx = (pIdx + 1) % phrases.length;
-          setTimeout(tickTypewriter, 350);
-          return;
-        }
-        setTimeout(tickTypewriter, 45);
-      } else {
-        cIdx++;
-        twEl.textContent = cur.slice(0, cIdx);
-        if (cIdx === cur.length) {
-          deleting = true;
-          setTimeout(tickTypewriter, 1900);
-          return;
-        }
-        setTimeout(tickTypewriter, 75);
       }
-    }
-    tickTypewriter();
 
-    // Subtle 3D Tilt on Profile Frame (respects reduced motion)
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const profileFrame = document.getElementById('profileFrame');
-    if (profileFrame && !reduceMotion) {
-      profileFrame.addEventListener('mousemove', (e) => {
-        const r = profileFrame.getBoundingClientRect();
-        const rx = -((e.clientY - r.top - r.height / 2) / (r.height / 2)) * 7;
-        const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * 7;
-        profileFrame.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-      });
-      profileFrame.addEventListener('mouseleave', () => {
-        profileFrame.style.transform = '';
-      });
-    }
+      /* ----------------------------------------------------------------------
+         Active Section Tracking
+         ---------------------------------------------------------------------- */
+      const navLinks = Array.from(document.querySelectorAll('#desktopNav .nav-link'));
+      const trackedSections = Array.from(document.querySelectorAll('main section[id]'));
 
-    // Subtle Ambient Particle Constellation
-    const canvas = document.getElementById('bgCanvas');
-    if (canvas && !reduceMotion) {
-      const ctx = canvas.getContext('2d');
-      let W = 0, H = 0, particles = [];
-      function setupCanvas() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-        const count = Math.min(Math.floor((W * H) / 18000), 65);
-        particles = Array.from({ length: count }, () => ({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.28,
-          vy: (Math.random() - 0.5) * 0.28,
-          r: Math.random() * 1.4 + 0.5
-        }));
+      if (navLinks.length && trackedSections.length && 'IntersectionObserver' in window) {
+        const navObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const targetId = `#${entry.target.id}`;
+                navLinks.forEach((link) => {
+                  link.classList.toggle('is-active', link.getAttribute('href') === targetId);
+                });
+              }
+            });
+          },
+          { rootMargin: '-28% 0px -55% 0px', threshold: 0 }
+        );
+
+        trackedSections.forEach((section) => navObserver.observe(section));
       }
-      function drawParticles() {
-        ctx.clearRect(0, 0, W, H);
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0 || p.x > W) p.vx *= -1;
-          if (p.y < 0 || p.y > H) p.vy *= -1;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
-          ctx.fill();
-          for (let j = i + 1; j < particles.length; j++) {
-            const q = particles[j];
-            const dist = Math.hypot(p.x - q.x, p.y - q.y);
-            if (dist < 130) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(q.x, q.y);
-              ctx.strokeStyle = `rgba(129, 140, 248, ${(1 - dist / 130) * 0.14})`;
-              ctx.lineWidth = 0.7;
-              ctx.stroke();
+
+      /* ----------------------------------------------------------------------
+         Scroll-Triggered Section Reveals
+         ---------------------------------------------------------------------- */
+      const revealEls = Array.from(document.querySelectorAll('.reveal'));
+      if (revealEls.length) {
+        if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+          revealEls.forEach((el) => el.classList.add('is-visible'));
+        } else {
+          const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.04, rootMargin: '0px 0px -10px 0px' }
+          );
+
+          revealEls.forEach((el) => revealObserver.observe(el));
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         Restrained Hero Schematic Pointer Micro-Response
+         ---------------------------------------------------------------------- */
+      const heroPlate = document.getElementById('heroPlate');
+      const heroReticle = document.getElementById('heroReticle');
+      if (heroPlate && heroReticle && !prefersReducedMotion) {
+        heroPlate.addEventListener('pointermove', (event) => {
+          const rect = heroPlate.getBoundingClientRect();
+          const nx = ((event.clientX - rect.left) / rect.width - 0.5) * 20;
+          const ny = ((event.clientY - rect.top) / rect.height - 0.5) * 20;
+          heroReticle.style.transform = `translate(${nx.toFixed(1)}px, ${ny.toFixed(1)}px)`;
+        });
+
+        heroPlate.addEventListener('pointerleave', () => {
+          heroReticle.style.transform = 'translate(0px, 0px)';
+        });
+      }
+
+      /* ----------------------------------------------------------------------
+         Expertise Domain Filter
+         ---------------------------------------------------------------------- */
+      const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+      const expertiseRows = Array.from(document.querySelectorAll('#expertiseList .expertise-row'));
+      const expertiseCount = document.getElementById('expertiseCount');
+
+      if (filterButtons.length && expertiseRows.length) {
+        filterButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const selected = button.dataset.filter || 'all';
+            let visibleCount = 0;
+
+            filterButtons.forEach((btn) => {
+              const active = btn === button;
+              btn.classList.toggle('is-active', active);
+              btn.setAttribute('aria-pressed', String(active));
+            });
+
+            expertiseRows.forEach((row) => {
+              const show = selected === 'all' || row.dataset.domain === selected;
+              row.hidden = !show;
+              if (show) visibleCount += 1;
+            });
+
+            if (expertiseCount) {
+              const padded = String(visibleCount).padStart(2, '0');
+              expertiseCount.textContent = `Showing ${padded} / 09 tools`;
             }
-          }
-        }
-        requestAnimationFrame(drawParticles);
+          });
+        });
       }
-      setupCanvas();
-      drawParticles();
-      window.addEventListener('resize', setupCanvas);
-    }
+
+      /* ----------------------------------------------------------------------
+         Copy Email Action
+         ---------------------------------------------------------------------- */
+      const copyEmailBtn = document.getElementById('copyEmailBtn');
+      const copyStatus = document.getElementById('copyStatus');
+      let copyTimer = null;
+
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', async () => {
+          const email = copyEmailBtn.dataset.email || 'e26b07f0573@adypu.edu.in';
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(email);
+            } else {
+              const tempInput = document.createElement('input');
+              tempInput.value = email;
+              document.body.appendChild(tempInput);
+              tempInput.select();
+              document.execCommand('copy');
+              document.body.removeChild(tempInput);
+            }
+            copyEmailBtn.textContent = 'Copied';
+            if (copyStatus) copyStatus.textContent = 'Email address copied to clipboard.';
+          } catch {
+            copyEmailBtn.textContent = 'Use mailto link';
+            if (copyStatus) copyStatus.textContent = 'Could not copy automatically. Please use the email link.';
+          }
+
+          clearTimeout(copyTimer);
+          copyTimer = setTimeout(() => {
+            copyEmailBtn.textContent = 'Copy Email';
+          }, 2200);
+        });
+      }
+    })();
   </script>
 </body>
 </html>
