@@ -1,617 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alok Gupta — B.Tech CSE (AI & ML) student at NST ADYPU. Competitive Programmer, Web Developer, AI/ML Enthusiast.">
-  <meta name="keywords" content="Alok Gupta, NST ADYPU, AI ML, CP, DSA, Codeforces, LeetCode, Portfolio">
-  <meta name="author" content="Alok Gupta">
-  <title>Alok Gupta | Developer & Problem Solver</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alok Gupta — Computer Science (AI & ML) student at Newton School of Technology, ADYPU. Portfolio featuring S&AI open-source contributions, AI/ML projects, and technical skills." />
+  <meta name="author" content="Alok Gupta" />
+  <title>Alok Gupta — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-alt: #0c1220;
+      --surface: rgba(15, 23, 42, 0.78);
+      --surface-hover: rgba(22, 33, 58, 0.92);
+      --border: rgba(148, 163, 184, 0.16);
+      --border-strong: rgba(56, 189, 248, 0.35);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --radius: 14px;
+      --max-w: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(129, 140, 248, 0.08), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      background: var(--accent);
+      color: #070b14;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Sections */
+    section {
+      padding: 68px 0;
+    }
+
+    section.alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    h2.section-title {
+      margin: 0 0 10px;
+      font-size: 1.85rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 76px 0 68px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-strong);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-role {
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--accent-2);
+      margin: 0 0 16px;
+    }
+
+    .hero-desc {
+      margin: 0 0 12px;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+    }
+
+    .hero-exploring {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-hover);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #070b14;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .hero-photo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .hero-photo-card img {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      margin: 0 auto 12px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-photo-caption {
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .about-card p {
+      margin: 0;
+      font-size: 1.03rem;
+      color: #e2e8f0;
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+      min-width: 620px;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(56, 189, 248, 0.03);
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.86rem;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .project-block {
+      font-size: 0.93rem;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .project-block strong {
+      color: var(--text);
+    }
+
+    .project-list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+
+    .project-list li {
+      margin-bottom: 4px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      color: #bae6fd;
+    }
+
+    .project-links {
+      margin-top: auto;
+      padding-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .note-box {
+      font-size: 0.86rem;
+      color: var(--muted);
+      border-left: 3px solid var(--accent-2);
+      padding-left: 10px;
+      margin: 0;
+    }
+
+    /* Contributions footer link */
+    .contrib-actions {
+      margin-top: 18px;
+    }
+
+    /* Education & Achievements */
+    .edu-ach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .edu-item {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .edu-item h3,
+    .ach-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+    }
+
+    .edu-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .ach-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .contact-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-weight: 600;
+      color: var(--accent);
+      word-break: break-word;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid,
+      .projects-grid,
+      .edu-ach-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-card {
+        order: -1;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(7, 11, 20, 0.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 16px 20px;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
-  <canvas id="bgCanvas"></canvas>
-  <div class="scroll-progress" id="scrollProgress"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="site-header" id="siteHeader">
-    <div class="nav-container">
-      <a href="#hero" class="brand-logo" aria-label="Alok Gupta">
-        <span class="logo-bracket">&lt;</span><span class="logo-text">AG</span><span class="logo-bracket">/&gt;</span>
-      </a>
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#achievements" class="nav-link">Achievements</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-actions">
-        <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="btn-ghost" aria-label="GitHub">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        </a>
-        <a href="#contact" class="btn-primary-nav">Hire Me</a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
+
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="#hero" class="brand">&lt;<span>AG</span>/&gt; Alok Gupta</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contributions">S&amp;AI Contributions</a></li>
+        <li><a href="#achievements">Education &amp; Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main id="main-content">
-    <section id="hero" class="hero-section">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-container">
-        <div class="hero-left">
-          <div class="status-pill reveal-fade">
-            <span class="status-ping"></span>
-            <span class="status-ping-dot"></span>
-            <span>Available for Internships &amp; Collaborations</span>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-badge">B.Tech CSE (AI &amp; ML) &bull; NST ADYPU</span>
+          <h1>Alok Gupta</h1>
+          <p class="hero-role">Computer Science Student | AI/ML Enthusiast | Software Developer</p>
+          <p class="hero-desc">I build things, experiment with technology, and enjoy understanding how software works beneath the surface.</p>
+          <p class="hero-exploring"><strong>Currently exploring:</strong> AI/ML, backend development, software engineering and open source.</p>
+          <div class="hero-links">
+            <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub</a>
+            <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="btn">Codeforces</a>
+            <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="btn">LeetCode</a>
           </div>
-          <h1 class="hero-heading reveal-up">
-            <span class="hero-greeting">Hello, I'm</span>
-            <span class="hero-name">Alok <span class="text-gradient">Gupta</span></span>
-          </h1>
-          <div class="hero-typewriter reveal-up delay-1">
-            <span class="tw-prefix">$ </span>
-            <span class="tw-text" id="typewriterText"></span>
-            <span class="tw-cursor">|</span>
-          </div>
-          <p class="hero-bio reveal-up delay-2">
-            1st Year <strong>B.Tech CSE (AI &amp; ML)</strong> student at <strong>Newton School of Technology, ADYPU</strong>, Pune.
-            I architect intelligent solutions, slay algorithmic beasts, and build stunning digital experiences from first principles.
+        </div>
+        <div class="hero-photo-card">
+          <img src="profile.jpg" alt="Portrait of Alok Gupta" />
+          <div class="hero-photo-caption">Alok Gupta &bull; @Alok-888</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. About Me -->
+    <section id="about" class="alt">
+      <div class="container">
+        <span class="section-eyebrow">Section 01</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="card about-card">
+          <p>
+            I'm a first-year B.Tech Computer Science student specialising in Artificial Intelligence and Machine Learning at Newton School of Technology, ADYPU. I'm interested in building software, understanding intelligent systems, and exploring the engineering behind modern AI applications. My current focus includes Python, JavaScript, data structures and algorithms, backend development, and practical AI projects. I'm actively contributing to open-source projects while working towards software engineering and AI/ML internship opportunities.
           </p>
-          <div class="hero-cta reveal-up delay-3">
-            <a href="#projects" class="btn-glow">
-              <span>View Projects</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="#about" class="btn-outline-hero"><span>About Me</span></a>
-          </div>
-          <div class="hero-socials reveal-fade delay-4">
-            <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              <span>Alok-888</span>
-            </a>
-            <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Codeforces">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="10" width="4.5" height="11" rx="1.5" fill="#FFC107"/><rect x="9.75" y="3.5" width="4.5" height="17.5" rx="1.5" fill="#2196F3"/><rect x="17" y="7" width="4.5" height="14" rx="1.5" fill="#F44336"/></svg>
-              <span>Alok888</span>
-            </a>
-            <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LeetCode">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFA116"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c.058-.087.122-.168.192-.244L14.444 2.5a1.38 1.38 0 0 0-.961-2.5zM15 15.5H8a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3z"/></svg>
-              <span>alok-888</span>
-            </a>
-          </div>
-        </div>
-        <div class="hero-right reveal-scale">
-          <div class="profile-3d-wrapper" id="profileCard">
-            <div class="profile-3d-inner">
-              <div class="profile-glow-ring"></div>
-              <div class="profile-img-wrapper">
-                <img src="profile.jpg" alt="Alok Gupta" class="profile-img" loading="eager">
-                <div class="profile-img-overlay"></div>
-              </div>
-              <div class="profile-info-overlay">
-                <div class="profile-name-card">
-                  <span class="profile-card-name">Alok Gupta</span>
-                  <span class="profile-card-role">CSE (AI/ML) &bull; NST ADYPU</span>
-                </div>
-              </div>
-              <div class="float-badge fb-1"><span>&#9889;</span><span>C++ &amp; DSA</span></div>
-              <div class="float-badge fb-2"><span>&#129302;</span><span>AI / ML</span></div>
-              <div class="float-badge fb-3"><span>&#127942;</span><span>Hacktober 2025</span></div>
-            </div>
-          </div>
-          <div class="hero-stats-row">
-            <div class="stat-bubble">
-              <span class="stat-num" data-target="100">0</span><span class="stat-unit">+</span>
-              <span class="stat-lbl">Problems Solved</span>
-            </div>
-            <div class="stat-bubble">
-              <span class="stat-num" data-target="3">0</span><span class="stat-unit">+</span>
-              <span class="stat-lbl">Projects</span>
-            </div>
-            <div class="stat-bubble">
-              <span class="stat-num" data-target="1">0</span><span class="stat-unit">st</span>
-              <span class="stat-lbl">Year B.Tech</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-hint">
-        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-        <span>Scroll to explore</span>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header reveal-up">
-          <span class="section-eyebrow">Who Am I</span>
-          <h2 class="section-title">The <span class="text-gradient">Story</span> Behind The Code</h2>
-          <p class="section-sub">Combining theoretical CS rigor with relentless hackathon energy and algorithmic thinking.</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-card glass-card reveal-left">
-            <div class="about-card-header">
-              <div class="about-icon-ring">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <h3>Passionate Developer &amp; Bug Slayer</h3>
-            </div>
-            <p>Currently pursuing <strong>B.Tech in CSE (Artificial Intelligence &amp; Machine Learning)</strong> at <strong>Newton School of Technology, Ajeenkya DY Patil University (ADYPU), Pune</strong>. My passion lives at the intersection of raw algorithmic power and intelligent systems.</p>
-            <p>From visual computing with Scratch to conquering <strong>C/C++</strong> and <strong>Python</strong>, I've built a strong foundation in data structures, competitive programming, and rapid hackathon prototyping. I competed in <strong>Hacktober 2025 at NST ADYPU</strong> and have been consistently pushing my competitive programming rating.</p>
-            <div class="highlight-strip">
-              <div class="hs-icon">&#127919;</div>
-              <div><strong>Current Mission:</strong> Mastering DSA in C++, building full-stack apps, and diving deep into applied AI/ML systems.</div>
-            </div>
-          </div>
-          <div class="about-card glass-card reveal-right">
-            <div class="about-card-header">
-              <div class="about-icon-ring">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <h3>Education &amp; Coursework</h3>
-            </div>
-            <div class="edu-timeline">
-              <div class="edu-item active">
-                <div class="edu-dot"></div>
-                <div class="edu-body">
-                  <span class="edu-badge">2025 &ndash; Present (Expected 2029)</span>
-                  <h4>B.Tech &mdash; CSE (AI &amp; Machine Learning)</h4>
-                  <p class="edu-inst">Newton School of Technology &bull; ADYPU, Pune</p>
-                  <div class="edu-chips">
-                    <span class="chip c-cpp">C / C++</span>
-                    <span class="chip py">Python</span>
-                    <span class="chip web">Web Dev</span>
-                    <span class="chip dsa">DSA</span>
-                    <span class="chip cp">Competitive Programming</span>
-                    <span class="chip git">Git &amp; GitHub</span>
-                    <span class="chip ai">AI / ML</span>
-                    <span class="chip scratch">Scratch</span>
-                  </div>
-                </div>
-              </div>
-              <div class="edu-item">
-                <div class="edu-dot"></div>
-                <div class="edu-body">
-                  <span class="edu-badge">Pre-2025</span>
-                  <h4>Higher Secondary Education</h4>
-                  <p class="edu-inst">Strong foundation in Mathematics, Physics &amp; Computer Science</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="about-philosophy reveal-up">
-            <div class="philosophy-card"><div class="ph-icon">&#9889;</div><h4>Speed &amp; Precision</h4><p>Competitive programming sharpens my ability to write optimal solutions under pressure.</p></div>
-            <div class="philosophy-card"><div class="ph-icon">&#129504;</div><h4>First Principles</h4><p>I break every problem into its smallest components before building back up.</p></div>
-            <div class="philosophy-card"><div class="ph-icon">&#128640;</div><h4>Ship &amp; Iterate</h4><p>Hackathon culture taught me to prototype fast, test immediately, and improve relentlessly.</p></div>
-            <div class="philosophy-card"><div class="ph-icon">&#129309;</div><h4>Collaborative</h4><p>Best solutions emerge from diverse teams with strong communication and shared vision.</p></div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section section-alt">
+    <!-- 2. Technical Skills -->
+    <section id="skills">
       <div class="container">
-        <div class="section-header reveal-up">
-          <span class="section-eyebrow">Technical Arsenal</span>
-          <h2 class="section-title">Skills &amp; <span class="text-gradient">Technologies</span></h2>
-          <p class="section-sub">Languages, frameworks, tools, and platforms I actively use and study.</p>
-        </div>
-        <div class="skills-universe reveal-up">
-          <div class="skill-block glass-card">
-            <div class="skill-block-header"><span class="skill-block-icon">&#128187;</span><h3>Languages</h3></div>
-            <div class="skill-items">
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#9881;</span><div><span class="skill-name">C / C++</span><span class="skill-sublabel">DSA &amp; CP Primary</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"><div class="skill-bar-fill"></div></div><span class="skill-pct">88%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128013;</span><div><span class="skill-name">Python</span><span class="skill-sublabel">AI/ML &amp; Scripting</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"><div class="skill-bar-fill"></div></div><span class="skill-pct">82%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#127760;</span><div><span class="skill-name">HTML5 &amp; CSS3</span><span class="skill-sublabel">Web Frontends</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"><div class="skill-bar-fill"></div></div><span class="skill-pct">92%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#9889;</span><div><span class="skill-name">JavaScript</span><span class="skill-sublabel">DOM &amp; Logic</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%"><div class="skill-bar-fill"></div></div><span class="skill-pct">75%</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="skill-block glass-card">
-            <div class="skill-block-header"><span class="skill-block-icon">&#128295;</span><h3>Tools &amp; Platforms</h3></div>
-            <div class="skill-items">
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128060;</span><div><span class="skill-name">Git &amp; GitHub</span><span class="skill-sublabel">Version Control</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"><div class="skill-bar-fill"></div></div><span class="skill-pct">85%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128187;</span><div><span class="skill-name">VS Code</span><span class="skill-sublabel">Primary Editor</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"><div class="skill-bar-fill"></div></div><span class="skill-pct">90%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128039;</span><div><span class="skill-name">Linux CLI</span><span class="skill-sublabel">Terminal &amp; Shell</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"><div class="skill-bar-fill"></div></div><span class="skill-pct">72%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128293;</span><div><span class="skill-name">Competitive Arenas</span><span class="skill-sublabel">CF + LC + Hacktober</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:78%"><div class="skill-bar-fill"></div></div><span class="skill-pct">78%</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="skill-block glass-card">
-            <div class="skill-block-header"><span class="skill-block-icon">&#129504;</span><h3>CS Concepts</h3></div>
-            <div class="skill-items">
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#128202;</span><div><span class="skill-name">Data Structures</span><span class="skill-sublabel">Arrays, Trees, Graphs</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"><div class="skill-bar-fill"></div></div><span class="skill-pct">85%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#9889;</span><div><span class="skill-name">Algorithms</span><span class="skill-sublabel">Sorting, DP, Search</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"><div class="skill-bar-fill"></div></div><span class="skill-pct">82%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#129302;</span><div><span class="skill-name">Machine Learning</span><span class="skill-sublabel">ML Fundamentals</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:68%"><div class="skill-bar-fill"></div></div><span class="skill-pct">68%</span></div>
-              </div>
-              <div class="skill-row">
-                <div class="skill-meta"><span class="skill-icon-emoji">&#127760;</span><div><span class="skill-name">OOP Design</span><span class="skill-sublabel">Classes, Patterns</span></div></div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tech-cloud reveal-up">
-          <p class="tech-cloud-label">Technologies &amp; Platforms</p>
-          <div class="tech-pills">
-            <span class="tech-pill">C++</span><span class="tech-pill">Python</span><span class="tech-pill">HTML5</span>
-            <span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Git</span>
-            <span class="tech-pill">GitHub</span><span class="tech-pill">VS Code</span><span class="tech-pill">Codeforces</span>
-            <span class="tech-pill">LeetCode</span><span class="tech-pill">Linux CLI</span><span class="tech-pill">Scratch</span>
-            <span class="tech-pill">DSA</span><span class="tech-pill">OOP</span><span class="tech-pill">NumPy</span>
-            <span class="tech-pill">Vercel</span><span class="tech-pill">Algorithms</span><span class="tech-pill">AI/ML</span>
-          </div>
+        <span class="section-eyebrow">Section 02</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-lead">Each skill below is connected to a project or contribution demonstrating its practical use.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Practical Evidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="skill-name">HTML5</td>
+                <td>
+                  Accessibility and safe DOM rendering &mdash;
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer">PR #51</a> and
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer">PR #58</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">CSS3</td>
+                <td>
+                  Responsive design and accessibility &mdash;
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer">PR #52</a> and
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer">PR #59</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">JavaScript</td>
+                <td>
+                  Game lifecycle, asset handling and application logic &mdash;
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer">PR #53</a>,
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer">PR #54</a> and
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer">PR #60</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Python</td>
+                <td>
+                  <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Bug Slayer</a> and
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer">PR #56</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Playwright</td>
+                <td>
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Browser automation and regression tests &mdash; PR #51&ndash;#60</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Git &amp; GitHub</td>
+                <td>
+                  <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Open-source contributions (PR #51&ndash;#60)</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Docker</td>
+                <td>
+                  <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Bug Slayer (controlled execution environment)</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Three.js</td>
+                <td>
+                  <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer">LLM Tokenizer &amp; Vector Lab</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-name">Transformers.js</td>
+                <td>
+                  <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer">Perplexity Explorer</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <!-- 3. Featured Projects -->
+    <section id="projects" class="alt">
       <div class="container">
-        <div class="section-header reveal-up">
-          <span class="section-eyebrow">Featured Work</span>
-          <h2 class="section-title">Projects &amp; <span class="text-gradient">Codebases</span></h2>
-          <p class="section-sub">Real projects born from hackathons, coursework, and self-driven midnight coding sprints.</p>
-        </div>
+        <span class="section-eyebrow">Section 03</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-lead">Selected software engineering, AI/ML, and interactive web projects with architecture notes and source repositories.</p>
+
         <div class="projects-grid">
-          <article class="project-card tilt-card reveal-up">
-            <div class="proj-glow" style="--glow-color:0,212,255"></div>
-            <div class="proj-header">
-              <div class="proj-header-bg" style="background:linear-gradient(135deg,#0d1b2a 0%,#1a1040 100%)"></div>
-              <div class="proj-header-content">
-                <div class="proj-icon">&#128737;</div>
-                <div class="proj-badges"><span class="proj-badge hackathon">Hackathon</span><span class="proj-badge featured">&#11088; Featured</span></div>
-              </div>
-              <div class="proj-code-deco">
-                <span class="code-line"><span class="code-kw">def</span> slay_bug(<span class="code-param">code</span>):</span>
-                <span class="code-line">&nbsp;&nbsp;<span class="code-ret">return</span> debug(code)</span>
-              </div>
+          <article class="card project-card">
+            <h3>Bug Slayer &mdash; AI-Powered Repository Assistant</h3>
+            <p class="project-block"><strong>Problem Statement:</strong> Setting up unfamiliar repositories can be difficult. README instructions may be outdated, dependencies may fail, and developers often have to debug installation problems manually.</p>
+            <div class="project-block">
+              <strong>Solution Architecture:</strong> Bug Slayer is an AI-powered repository assistant with two modes:
+              <ul class="project-list">
+                <li><strong>Healer:</strong> Parses setup instructions, executes commands in a controlled environment, analyses failures using Gemma, and tests suggested fixes.</li>
+                <li><strong>Architect:</strong> Inspects a repository's structure and generates a README with verified setup instructions.</li>
+              </ul>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Bug Slayer</h3>
-              <p class="proj-desc">An automated software diagnostic utility that hunts down, analyzes, and eliminates programming bugs with surgical precision. Built with Python and modular CLI scripts during an intensive hackathon at NST ADYPU.</p>
-              <div class="proj-details">
-                <div class="proj-detail-item"><span class="pd-icon">&#127919;</span><span>Automated bug detection &amp; reporting</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#9881;</span><span>Modular CLI architecture</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#128193;</span><span>Open source on GitHub</span></div>
-              </div>
-              <div class="proj-stack"><span class="stack-tag st-python">Python</span><span class="stack-tag st-git">Git</span><span class="stack-tag st-cli">CLI</span><span class="stack-tag st-auto">Automation</span></div>
-              <div class="proj-links">
-                <a href="https://github.com/Alok-888/Bug-slayer.git" target="_blank" rel="noopener noreferrer" class="proj-link-btn primary">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+            <p class="project-block"><strong>Individual Contribution:</strong> Worked on AI integration and backend development, contributing to the connection between the AI model and the application's repository-analysis and problem-solving workflows.</p>
+            <div class="tech-tags">
+              <span class="tag">Python</span><span class="tag">Gemma</span><span class="tag">Gemini API</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Rich</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">GitHub Repository &rarr;</a>
             </div>
           </article>
 
-          <article class="project-card tilt-card reveal-up delay-1">
-            <div class="proj-glow" style="--glow-color:139,92,246"></div>
-            <div class="proj-header">
-              <div class="proj-header-bg" style="background:linear-gradient(135deg,#042f2e 0%,#1a1040 100%)"></div>
-              <div class="proj-header-content">
-                <div class="proj-icon">&#127760;</div>
-                <div class="proj-badges"><span class="proj-badge web">Web App</span><span class="proj-badge live">&#128308; Live</span></div>
-              </div>
-              <div class="proj-code-deco">
-                <span class="code-line"><span class="code-kw">const</span> portfolio = {</span>
-                <span class="code-line">&nbsp;&nbsp;stack: [<span class="code-str">'HTML5'</span>, <span class="code-str">'CSS3'</span>]</span>
-              </div>
+          <article class="card project-card">
+            <h3>Perplexity Explorer &mdash; Language Model Playground</h3>
+            <p class="project-block"><strong>Problem Statement:</strong> Language-model concepts such as token probabilities and perplexity can be difficult to understand without seeing the underlying calculations.</p>
+            <p class="project-block"><strong>Solution Architecture:</strong> An interactive browser-based application that accepts text, processes it through DistilGPT-2, displays token probabilities, calculates perplexity using negative log-likelihood, and presents likely next-token predictions. It also includes a probability exploration sandbox.</p>
+            <p class="project-block"><strong>Individual Contribution:</strong> Built the interactive interface and implemented the browser-side model inference and probability visualisation workflow.</p>
+            <div class="tech-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Transformers.js</span><span class="tag">DistilGPT-2</span>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Personal Developer Portfolio</h3>
-              <p class="proj-desc">A high-performance, responsive, and accessible portfolio engineered with semantic HTML5, modern CSS3, smooth scroll-driven effects, glassmorphism, particle animations, and a cinematic dark UI — deployed on Vercel.</p>
-              <div class="proj-details">
-                <div class="proj-detail-item"><span class="pd-icon">&#10024;</span><span>Glassmorphism &amp; particle animations</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#128241;</span><span>Fully responsive, mobile-first</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#128640;</span><span>Deployed on Vercel</span></div>
-              </div>
-              <div class="proj-stack"><span class="stack-tag st-html">HTML5</span><span class="stack-tag st-css">CSS3</span><span class="stack-tag st-js">JavaScript</span><span class="stack-tag st-vercel">Vercel</span></div>
-              <div class="proj-links">
-                <a href="https://alok-gupta-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-link-btn primary">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Live Preview
-                </a>
-                <a href="https://github.com/Alok-888/Portfolio" target="_blank" rel="noopener noreferrer" class="proj-link-btn secondary">Source</a>
-              </div>
+            <div class="project-links">
+              <a href="https://github.com/Alok-888/perplexity-explorer" target="_blank" rel="noopener noreferrer">GitHub Repository &rarr;</a>
+              <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
             </div>
           </article>
 
-          <article class="project-card tilt-card reveal-up delay-2">
-            <div class="proj-glow" style="--glow-color:16,185,129"></div>
-            <div class="proj-header">
-              <div class="proj-header-bg" style="background:linear-gradient(135deg,#021218 0%,#0f172a 100%)"></div>
-              <div class="proj-header-content">
-                <div class="proj-icon">&#9889;</div>
-                <div class="proj-badges"><span class="proj-badge dsa-b">CP &amp; DSA</span></div>
-              </div>
-              <div class="proj-code-deco">
-                <span class="code-line"><span class="code-kw">for</span> (auto&amp; node : graph)</span>
-                <span class="code-line">&nbsp;&nbsp;bfs(node, <span class="code-str">visited</span>);</span>
-              </div>
+          <article class="card project-card">
+            <h3>LLM Tokenizer &amp; Vector Lab</h3>
+            <p class="project-block"><strong>Problem Statement:</strong> Understanding how text moves through an LLM pipeline&mdash;from tokenization to numerical representations&mdash;is challenging when concepts are presented only theoretically.</p>
+            <p class="project-block"><strong>Solution Architecture:</strong> An interactive educational tool that demonstrates text processing, tokenization, token IDs, embedding concepts, positional encoding, and vector-space visualisation. Users can experiment with vocabulary and inspect word positions in a 3D environment.</p>
+            <p class="project-block"><strong>Individual Contribution:</strong> Developed the interactive pipeline experience, vocabulary tools, and 3D vector-space visualisation.</p>
+            <p class="note-box"><strong>Technical note:</strong> The current vector visualisation uses simulated deterministic vectors and semantic clusters rather than embeddings extracted from a trained model.</p>
+            <div class="tech-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Three.js</span>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Algorithmic Problem Solutions</h3>
-              <p class="proj-desc">Curated algorithmic solutions and patterns in C++ and Python covering arrays, two-pointers, recursion, DP, BFS/DFS, and advanced search algorithms — solved on Codeforces and LeetCode consistently.</p>
-              <div class="proj-details">
-                <div class="proj-detail-item"><span class="pd-icon">&#128290;</span><span>100+ problems solved</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#127941;</span><span>Active on CF (Alok888) &amp; LC (alok-888)</span></div>
-                <div class="proj-detail-item"><span class="pd-icon">&#128200;</span><span>Growing rating &amp; streak</span></div>
-              </div>
-              <div class="proj-stack"><span class="stack-tag st-cpp">C++</span><span class="stack-tag st-python">Python</span><span class="stack-tag st-dsa">DSA</span></div>
-              <div class="proj-links">
-                <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="proj-link-btn primary">LeetCode &rarr;</a>
-                <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="proj-link-btn secondary">Codeforces &rarr;</a>
-              </div>
+            <div class="project-links">
+              <a href="https://github.com/Alok-888/LLM-TOKENIZER" target="_blank" rel="noopener noreferrer">GitHub Repository &rarr;</a>
+              <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <h3>Vanta &mdash; Automotive Web Experience</h3>
+            <p class="project-block"><strong>Problem Statement:</strong> Showcasing automotive product design online requires clean visual hierarchy, responsive layout, and smooth interactive presentation.</p>
+            <p class="project-block"><strong>Solution Architecture:</strong> A futuristic automotive-themed web experience focused on visual presentation and frontend development, built with responsive semantic layout and custom styling.</p>
+            <p class="project-block"><strong>Individual Contribution:</strong> Designed and built the frontend interface, layout structure, and styling from scratch.</p>
+            <div class="tech-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Alok-888/Vanta" target="_blank" rel="noopener noreferrer">GitHub Repository &rarr;</a>
+              <a href="https://vanta-five-phi.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="achievements" class="section section-alt">
+    <!-- 4. S&AI Open-Source Contributions -->
+    <section id="contributions">
       <div class="container">
-        <div class="section-header reveal-up">
-          <span class="section-eyebrow">Milestones</span>
-          <h2 class="section-title">Achievements &amp; <span class="text-gradient">Hackathons</span></h2>
-          <p class="section-sub">Every challenge conquered, every sprint completed &mdash; building momentum, one commit at a time.</p>
+        <span class="section-eyebrow">Section 04</span>
+        <h2 class="section-title">Open-Source Contributions</h2>
+        <p class="section-lead">
+          Contributing to <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners" target="_blank" rel="noopener noreferrer"><strong>S-AI-Projects/Web-Dev-For-Beginners</strong></a>, working on browser testing, accessibility, application reliability, security, and frontend behaviour across Pull Requests <strong>#51&ndash;#60</strong>.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>PR</th>
+                <th>Task ID</th>
+                <th>Code Changes</th>
+                <th>Technical Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51" target="_blank" rel="noopener noreferrer">#51</a></td>
+                <td class="mono">R59-T011</td>
+                <td>Added skip-to-content navigation, focus styling, and Playwright keyboard-navigation checks.</td>
+                <td>Improve keyboard accessibility and usability.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52" target="_blank" rel="noopener noreferrer">#52</a></td>
+                <td class="mono">R59-T012</td>
+                <td>Added responsive-layout tests at mobile and desktop viewport sizes.</td>
+                <td>Detect layout breakage and horizontal overflow.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53" target="_blank" rel="noopener noreferrer">#53</a></td>
+                <td class="mono">R59-T013</td>
+                <td>Added fallback texture handling, image-load error handling, and browser tests.</td>
+                <td>Keep the application usable when assets fail to load.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54" target="_blank" rel="noopener noreferrer">#54</a></td>
+                <td class="mono">R59-T014</td>
+                <td>Added event-listener and timer cleanup, including game lifecycle cleanup.</td>
+                <td>Prevent duplicate listeners, timers, and resource leaks.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/55" target="_blank" rel="noopener noreferrer">#55</a></td>
+                <td class="mono">R59-T015</td>
+                <td>Added deterministic browser tests using isolated contexts and session-reset checks.</td>
+                <td>Verify consistent behaviour across independent sessions.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56" target="_blank" rel="noopener noreferrer">#56</a></td>
+                <td class="mono">R59-T016</td>
+                <td>Developed a Python security-scenario rubric checker with validation tests.</td>
+                <td>Automate security-scenario evaluation and improve consistency.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/57" target="_blank" rel="noopener noreferrer">#57</a></td>
+                <td class="mono">R59-T017</td>
+                <td>Fixed null-array handling in account parsing and added login, registration, and dashboard tests.</td>
+                <td>Improve reliability of account and dashboard workflows.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58" target="_blank" rel="noopener noreferrer">#58</a></td>
+                <td class="mono">R59-T018</td>
+                <td>Replaced unsafe DOM rendering with <code>textContent</code> and added injection tests.</td>
+                <td>Prevent user-controlled text from being interpreted as HTML.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59" target="_blank" rel="noopener noreferrer">#59</a></td>
+                <td class="mono">R59-T019</td>
+                <td>Added reduced-motion support, keyboard focus handling, and responsive canvas tests.</td>
+                <td>Improve accessibility and cross-device usability.</td>
+              </tr>
+              <tr>
+                <td class="mono"><a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60" target="_blank" rel="noopener noreferrer">#60</a></td>
+                <td class="mono">R59-T020</td>
+                <td>Implemented form submission, <code>localStorage</code> persistence, and Playwright mutation checks.</td>
+                <td>Ensure application state and user data behave correctly.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="achievements-layout">
-          <div class="ach-timeline reveal-left">
-            <div class="ach-item">
-              <div class="ach-marker"><span class="ach-icon">&#127942;</span></div>
-              <div class="ach-content glass-card">
-                <span class="ach-date">October 2025</span>
-                <h3>Hacktober 2025 &mdash; NST ADYPU</h3>
-                <p>Competed in the flagship Hacktober hackathon hosted at Newton School of Technology, ADYPU. Collaborated under intense time pressure to design and prototype innovative tech solutions.</p>
-                <div class="ach-tags"><span>Hackathon</span><span>Teamwork</span><span>Rapid Prototyping</span></div>
-              </div>
+
+        <div class="contrib-actions">
+          <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer" class="btn">View all contributions on GitHub &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Education & Achievements -->
+    <section id="achievements" class="alt">
+      <div class="container">
+        <span class="section-eyebrow">Section 05</span>
+        <h2 class="section-title">Education &amp; Achievements</h2>
+        <div class="edu-ach-grid">
+          <div class="card">
+            <div class="edu-item">
+              <h3>Newton School of Technology &mdash; Ajeenkya DY Patil University</h3>
+              <p class="edu-meta">B.Tech in Computer Science and Engineering (AI &amp; ML)</p>
+              <p class="edu-meta">2026 &ndash; 2030 | Pune, Maharashtra, India</p>
             </div>
-            <div class="ach-item">
-              <div class="ach-marker"><span class="ach-icon">&#128640;</span></div>
-              <div class="ach-content glass-card">
-                <span class="ach-date">2025 &ndash; Present</span>
-                <h3>Active Competitive Programmer</h3>
-                <p>Regularly solving problems on Codeforces (<strong>Alok888</strong>) and LeetCode (<strong>alok-888</strong>), building algorithmic intuition through consistent daily practice.</p>
-                <div class="ach-tags"><span>Codeforces</span><span>LeetCode</span><span>DSA</span></div>
-              </div>
+            <div class="edu-item">
+              <h3>Higher Secondary Education</h3>
+              <p class="edu-meta">Class 12 &mdash; Completed in 2025</p>
             </div>
-            <div class="ach-item">
-              <div class="ach-marker"><span class="ach-icon">&#127891;</span></div>
-              <div class="ach-content glass-card">
-                <span class="ach-date">2025</span>
-                <h3>Joined NST ADYPU &mdash; B.Tech CSE AI/ML</h3>
-                <p>Enrolled in <strong>Newton School of Technology</strong> at ADYPU, Pune, specializing in Artificial Intelligence &amp; Machine Learning &mdash; one of the most sought-after CSE specializations.</p>
-                <div class="ach-tags"><span>NST ADYPU</span><span>AI/ML</span><span>Computer Science</span></div>
-              </div>
-            </div>
-            <div class="ach-item future">
-              <div class="ach-marker"><span class="ach-icon">&#127775;</span></div>
-              <div class="ach-content glass-card">
-                <span class="ach-date">2026 &amp; Beyond</span>
-                <h3>Upcoming Goals</h3>
-                <p>Land an impactful internship, build AI-powered products, reach Codeforces rating 1400+, and contribute to meaningful open-source projects.</p>
-                <div class="ach-tags"><span>Internship</span><span>Open Source</span><span>AI/ML Projects</span></div>
-              </div>
+            <div class="edu-item">
+              <h3>Secondary Education</h3>
+              <p class="edu-meta">Class 10 &mdash; Completed in 2023</p>
             </div>
           </div>
-          <div class="ach-stats reveal-right">
-            <div class="ach-stat-card glass-card">
-              <div class="ach-stat-icon">&#9889;</div>
-              <div class="ach-stat-num counter" data-target="100">0</div>
-              <div class="ach-stat-plus">+</div>
-              <div class="ach-stat-label">Problems Solved</div>
-              <div class="ach-stat-sub">Codeforces &amp; LeetCode</div>
-            </div>
-            <div class="ach-stat-card glass-card">
-              <div class="ach-stat-icon">&#127942;</div>
-              <div class="ach-stat-num counter" data-target="1">0</div>
-              <div class="ach-stat-plus"></div>
-              <div class="ach-stat-label">Hackathon</div>
-              <div class="ach-stat-sub">Hacktober 2025</div>
-            </div>
-            <div class="ach-stat-card glass-card">
-              <div class="ach-stat-icon">&#128230;</div>
-              <div class="ach-stat-num counter" data-target="3">0</div>
-              <div class="ach-stat-plus">+</div>
-              <div class="ach-stat-label">Projects Built</div>
-              <div class="ach-stat-sub">Open source &amp; personal</div>
-            </div>
-            <div class="ach-stat-card glass-card">
-              <div class="ach-stat-icon">&#127919;</div>
-              <div class="ach-stat-num counter" data-target="4">0</div>
-              <div class="ach-stat-plus"></div>
-              <div class="ach-stat-label">Years to Graduate</div>
-              <div class="ach-stat-sub">Expected 2029</div>
-            </div>
+
+          <div class="card ach-card">
+            <h3>Open Source &amp; Development</h3>
+            <ul class="ach-list">
+              <li>
+                <strong>S&amp;AI Open-Source Contributions (Nov 2026):</strong> Contributed ten pull requests (#51&ndash;#60) to the <code>S-AI-Projects/Web-Dev-For-Beginners</code> repository &mdash;
+                <a href="https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888" target="_blank" rel="noopener noreferrer">Verify PRs</a>
+              </li>
+              <li>
+                <strong>Bug Slayer AI Assistant (2026):</strong> Worked on AI integration and backend development for Bug Slayer &mdash;
+                <a href="https://github.com/Alok-888/Bug-slayer" target="_blank" rel="noopener noreferrer">Verify Repository</a>
+              </li>
+              <li>
+                <strong>Interactive AI &amp; 3D Web Apps (2026):</strong> Built and deployed interactive web projects involving language models and 3D visualisation &mdash;
+                <a href="https://perplexity-explorer-orpin.vercel.app/" target="_blank" rel="noopener noreferrer">Perplexity Explorer</a> &middot;
+                <a href="https://llm-tokenizer-three.vercel.app/" target="_blank" rel="noopener noreferrer">LLM Tokenizer</a>
+              </li>
+              <li>
+                <strong>Competitive Programming (2025&ndash;Present):</strong> Active problem solving on
+                <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer">Codeforces (@Alok888)</a> and
+                <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer">LeetCode (@alok-888)</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- 6. Contact -->
+    <section id="contact">
       <div class="container">
-        <div class="section-header reveal-up">
-          <span class="section-eyebrow">Let's Talk</span>
-          <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
-          <p class="section-sub">Open to hackathon teams, internships, collaborative projects, and good tech conversations!</p>
-        </div>
+        <span class="section-eyebrow">Section 06</span>
+        <h2 class="section-title">Contact</h2>
+        <p class="section-lead">Interested in software engineering, AI/ML, open-source collaboration, and internship opportunities.</p>
         <div class="contact-grid">
-          <div class="contact-info-panel reveal-left">
-            <h3>Say Hello &#128075;</h3>
-            <p>Whether you're looking for a hackathon teammate, want to discuss algorithms, or have an internship opportunity &mdash; reach out. I respond fast.</p>
-            <div class="contact-channels">
-              <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="contact-channel glass-card">
-                <div class="cc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-                <div class="cc-meta"><span class="cc-label">GitHub</span><span class="cc-value">@Alok-888</span></div>
-                <svg class="cc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="contact-channel glass-card">
-                <div class="cc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="10" width="4.5" height="11" rx="1.5" fill="#FFC107"/><rect x="9.75" y="3.5" width="4.5" height="17.5" rx="1.5" fill="#2196F3"/><rect x="17" y="7" width="4.5" height="14" rx="1.5" fill="#F44336"/></svg></div>
-                <div class="cc-meta"><span class="cc-label">Codeforces</span><span class="cc-value">@Alok888</span></div>
-                <svg class="cc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="contact-channel glass-card">
-                <div class="cc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFA116"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c.058-.087.122-.168.192-.244L14.444 2.5a1.38 1.38 0 0 0-.961-2.5zM15 15.5H8a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3z"/></svg></div>
-                <div class="cc-meta"><span class="cc-label">LeetCode</span><span class="cc-value">@alok-888</span></div>
-                <svg class="cc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              <div class="contact-channel glass-card no-link">
-                <div class="cc-icon">&#128205;</div>
-                <div class="cc-meta"><span class="cc-label">Location</span><span class="cc-value">Pune, Maharashtra, India</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="contact-form-panel reveal-right">
-            <form class="contact-form glass-card" id="contactForm" onsubmit="handleSubmit(event)">
-              <h3>Send a Message</h3>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="contact-name" class="form-label">Your Name</label>
-                  <input type="text" id="contact-name" name="name" class="form-input" placeholder="Alex Sharma" required autocomplete="name">
-                </div>
-                <div class="form-group">
-                  <label for="contact-email" class="form-label">Email Address</label>
-                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@example.com" required autocomplete="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="contact-subject" class="form-label">Subject</label>
-                <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Hackathon Collab / Internship" required>
-              </div>
-              <div class="form-group">
-                <label for="contact-message" class="form-label">Message</label>
-                <textarea id="contact-message" name="message" class="form-textarea" placeholder="Hi Alok, I wanted to connect about..." required></textarea>
-              </div>
-              <button type="submit" class="btn-submit" id="submitBtn">
-                <span class="submit-text">Send Message</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </button>
-              <div class="form-success" id="formSuccess"><span>&#9989; Message received! I'll respond soon.</span></div>
-            </form>
-          </div>
+          <a href="mailto:e26b07f0573@adypu.edu.in" class="contact-card">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">e26b07f0573@adypu.edu.in</span>
+          </a>
+          <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">github.com/Alok-888</span>
+          </a>
+          <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-label">Codeforces</span>
+            <span class="contact-value">codeforces.com/profile/Alok888</span>
+          </a>
+          <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-label">LeetCode</span>
+            <span class="contact-value">leetcode.com/u/alok-888</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-glow"></div>
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="#hero" class="brand-logo"><span class="logo-bracket">&lt;</span><span class="logo-text">AG</span><span class="logo-bracket">/&gt;</span></a>
-        <p>Crafting code with curiosity.<br>Building intelligent solutions.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-        <a href="#achievements">Achievements</a><a href="#contact">Contact</a>
-      </div>
-      <div class="footer-socials">
-        <a href="https://github.com/Alok-888" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-        <a href="https://codeforces.com/profile/Alok888" target="_blank" rel="noopener noreferrer" aria-label="Codeforces"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="10" width="4.5" height="11" rx="1.5" fill="#FFC107"/><rect x="9.75" y="3.5" width="4.5" height="17.5" rx="1.5" fill="#2196F3"/><rect x="17" y="7" width="4.5" height="14" rx="1.5" fill="#F44336"/></svg></a>
-        <a href="https://leetcode.com/u/alok-888/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFA116"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c.058-.087.122-.168.192-.244L14.444 2.5a1.38 1.38 0 0 0-.961-2.5zM15 15.5H8a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3z"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Alok Gupta &bull; NST ADYPU &bull; Crafted with &#128153; and pure code</span>
-      <a href="#hero" class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+  <footer>
+    <div class="container">
+      &copy; 2026 Alok Gupta &bull; B.Tech CSE (AI &amp; ML), NST ADYPU
     </div>
   </footer>
 
   <script>
-  // Canvas Particles
-  const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let W,H,particles=[];
-  function resizeCanvas(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-  class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.5+0.3;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.alpha=Math.random()*.5+.1;this.color=Math.random()>.5?'0,212,255':'139,92,246';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${this.alpha})`;ctx.fill();}}
-  function initParticles(){particles=[];const count=Math.min(Math.floor(W*H/8000),120);for(let i=0;i<count;i++)particles.push(new Particle());}
-  function drawConnections(){const maxDist=120;for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x;const dy=particles[i].y-particles[j].y;const dist=Math.sqrt(dx*dx+dy*dy);if(dist<maxDist){const a=(1-dist/maxDist)*.12;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,212,255,${a})`;ctx.lineWidth=.5;ctx.stroke();}}}}
-  function animateParticles(){ctx.clearRect(0,0,W,H);drawConnections();particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateParticles);}
-  resizeCanvas();initParticles();animateParticles();window.addEventListener('resize',()=>{resizeCanvas();initParticles();});
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-  // Custom Cursor
-  const cursorGlow=document.getElementById('cursorGlow');const cursorDot=document.getElementById('cursorDot');let mouseX=0,mouseY=0,glowX=0,glowY=0;
-  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursorDot.style.transform=`translate(${mouseX-4}px,${mouseY-4}px)`;});
-  function animateCursor(){glowX+=(mouseX-glowX)*.08;glowY+=(mouseY-glowY)*.08;cursorGlow.style.transform=`translate(${glowX-200}px,${glowY-200}px)`;requestAnimationFrame(animateCursor);}
-  animateCursor();
-  document.querySelectorAll('a,button,.tilt-card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursorDot.classList.add('cursor-hover');cursorGlow.classList.add('cursor-hover');});el.addEventListener('mouseleave',()=>{cursorDot.classList.remove('cursor-hover');cursorGlow.classList.remove('cursor-hover');});});
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
 
-  // Scroll Progress
-  window.addEventListener('scroll',()=>{const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;document.getElementById('scrollProgress').style.width=p+'%';document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>60);});
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
-  // Mobile Nav
-  const hamburger=document.getElementById('hamburger');const navMenu=document.getElementById('navMenu');
-  hamburger.addEventListener('click',()=>{const o=navMenu.classList.toggle('open');hamburger.classList.toggle('active',o);hamburger.setAttribute('aria-expanded',o.toString());});
-  navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navMenu.classList.remove('open');hamburger.classList.remove('active');hamburger.setAttribute('aria-expanded','false');}));
-
-  // Active Nav
-  const sections=document.querySelectorAll('section[id]');const navLinks=document.querySelectorAll('.nav-link');
-  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.remove('active'));const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});},{threshold:.4}).observe;
-  sections.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.remove('active'));const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});},{threshold:.4}).observe(s));
-
-  // Scroll Reveal
-  const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale,.reveal-fade').forEach(el=>ro.observe(el));
-
-  // Skill Bars
-  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-bar').forEach(b=>b.classList.add('animate'));}});},{threshold:.2}).observe(document.querySelector('.skills-universe')||document.body);
-  document.querySelectorAll('.skill-block').forEach(b=>{new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-bar').forEach(bar=>bar.classList.add('animate'));}});},{threshold:.2}).observe(b);});
-
-  // Counters
-  function animCount(el,target){let c=0;const step=target/(1800/16);const u=()=>{c=Math.min(c+step,target);el.textContent=Math.floor(c);if(c<target)requestAnimationFrame(u);else el.textContent=target;};u();}
-  document.querySelectorAll('.hero-stats-row,.ach-stats').forEach(s=>{new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.counter,.stat-num').forEach(el=>animCount(el,parseInt(el.dataset.target)));}});},{threshold:.3}).observe(s);});
-
-  // Typewriter
-  const phrases=['B.Tech CSE (AI & ML) Student','Competitive Programmer','Problem Solver & Bug Slayer','Full-Stack Web Developer','AI / ML Enthusiast','Hackathon Participant','Open Source Contributor'];
-  let pIdx=0,cIdx=0,isDel=false;const twEl=document.getElementById('typewriterText');
-  function tw(){const cur=phrases[pIdx];if(isDel){cIdx--;twEl.textContent=cur.slice(0,cIdx);if(cIdx===0){isDel=false;pIdx=(pIdx+1)%phrases.length;}setTimeout(tw,60);}else{cIdx++;twEl.textContent=cur.slice(0,cIdx);if(cIdx===cur.length){isDel=true;setTimeout(tw,2000);}else setTimeout(tw,90);}}
-  tw();
-
-  // 3D Tilt
-  document.querySelectorAll('.tilt-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=r.width/2,cy=r.height/2;card.style.transform=`perspective(1000px) rotateX(${-(y-cy)/cy*8}deg) rotateY(${(x-cx)/cx*8}deg) scale3d(1.02,1.02,1.02)`;});card.addEventListener('mouseleave',()=>{card.style.transform='';});});
-  const pc=document.getElementById('profileCard');if(pc){pc.addEventListener('mousemove',e=>{const r=pc.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=r.width/2,cy=r.height/2;pc.style.transform=`perspective(1000px) rotateX(${-(y-cy)/cy*12}deg) rotateY(${(x-cx)/cx*12}deg)`;});pc.addEventListener('mouseleave',()=>{pc.style.transform='';});}
-
-  // Contact Form
-  function handleSubmit(e){e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.querySelector('.submit-text').textContent='Sending...';setTimeout(()=>{document.getElementById('formSuccess').style.display='flex';btn.querySelector('.submit-text').textContent='Sent!';e.target.reset();setTimeout(()=>{document.getElementById('formSuccess').style.display='none';btn.disabled=false;btn.querySelector('.submit-text').textContent='Send Message';},4000);},1000);}
-
-  // Smooth Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+    const sections = document.querySelectorAll('main section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navItems.forEach((item) => item.classList.remove('active'));
+            const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    sections.forEach((sec) => observer.observe(sec));
   </script>
 </body>
 </html>
