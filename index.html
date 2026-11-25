@@ -6,7 +6,7 @@
   <title>Alok Gupta — Computer Science Student &amp; Software Developer</title>
   <meta name="description" content="Portfolio of Alok Gupta — First-year B.Tech Computer Science (AI &amp; ML) student at Newton School of Technology, ADYPU. Projects in AI tooling, browser-side language models, 3D visualisation, and S-AI-Projects open-source contributions." />
   <meta name="author" content="Alok Gupta" />
-  <meta name="theme-color" content="#08171E" />
+  <meta name="theme-color" content="#080610" />
   <link rel="canonical" href="https://alok-gupta-portfolio.vercel.app/" />
 
   <!-- Open Graph / Social -->
@@ -18,8 +18,8 @@
   <meta name="twitter:title" content="Alok Gupta — Portfolio" />
   <meta name="twitter:description" content="Building Software. Exploring Intelligence. AI tooling, browser ML playgrounds, 3D visualisations, and open-source engineering." />
 
-  <!-- Inline Deep Ocean Blue Monogram Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2308171E'/%3E%3Crect x='2' y='2' width='60' height='60' fill='none' stroke='%2371B7D5' stroke-opacity='0.35' stroke-width='2'/%3E%3Ctext x='11' y='43' font-family='system-ui,sans-serif' font-weight='700' font-size='28' letter-spacing='-1' fill='%23A1CCDC'%3EAG%3C/text%3E%3Ccircle cx='51' cy='40' r='4' fill='%2371B7D5'/%3E%3C/svg%3E" />
+  <!-- Inline Neon Violet Obsidian Monogram Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23080610'/%3E%3Crect x='2' y='2' width='60' height='60' fill='none' stroke='%23B56BFF' stroke-opacity='0.35' stroke-width='2'/%3E%3Ctext x='11' y='43' font-family='system-ui,sans-serif' font-weight='700' font-size='28' letter-spacing='-1' fill='%23E4D2FF'%3EAG%3C/text%3E%3Ccircle cx='51' cy='40' r='4' fill='%23B56BFF'/%3E%3C/svg%3E" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -60,36 +60,38 @@
 
   <style>
     /* ==========================================================================
-       01. Design System — Deep Ocean Blue
+       01. Design System — Neon Violet Obsidian RTX
        ========================================================================== */
     :root {
-      /* Core 5-Colour Deep Ocean Blue Palette */
-      --ocean-black: #08171E;
-      --ocean-deep: #042B44;
-      --ocean-primary: #096B90;
-      --ocean-azure: #71B7D5;
-      --ocean-ice: #A1CCDC;
+      /* Core Neon Violet Obsidian RTX Palette */
+      --obsidian-black: #080610;
+      --void-purple: #170D29;
+      --obsidian-card: #120B20;
+      --dark-violet: #38205B;
+      --neon-violet: #762BFF;
+      --electric-lavender: #B56BFF;
+      --crystal-lavender: #E4D2FF;
 
-      --bg-primary: var(--ocean-black);
-      --bg-secondary: var(--ocean-deep);
-      --bg-elevated: rgba(4, 43, 68, 0.72);
-      --bg-hover: rgba(9, 107, 144, 0.36);
+      --bg-primary: var(--obsidian-black);
+      --bg-secondary: var(--void-purple);
+      --bg-elevated: var(--obsidian-card);
+      --bg-hover: rgba(56, 32, 91, 0.62);
 
-      --accent-primary: var(--ocean-primary);
-      --accent-secondary: var(--ocean-azure);
-      --accent-muted: rgba(113, 183, 213, 0.44);
+      --accent-primary: var(--neon-violet);
+      --accent-secondary: var(--electric-lavender);
+      --accent-muted: rgba(181, 107, 255, 0.45);
 
-      --text-primary: var(--ocean-ice);
-      --text-secondary: rgba(161, 204, 220, 0.8);
-      --text-muted: rgba(113, 183, 213, 0.72);
+      --text-primary: var(--crystal-lavender);
+      --text-secondary: rgba(228, 210, 255, 0.78);
+      --text-muted: rgba(228, 210, 255, 0.58);
 
-      --border: rgba(113, 183, 213, 0.16);
-      --border-strong: rgba(113, 183, 213, 0.32);
-      --border-glow: rgba(113, 183, 213, 0.56);
+      --border: rgba(181, 107, 255, 0.16);
+      --border-strong: rgba(181, 107, 255, 0.32);
+      --border-glow: rgba(181, 107, 255, 0.6);
 
-      --grad-atmosphere: linear-gradient(180deg, #08171E 0%, #042B44 100%);
-      --grad-interactive: linear-gradient(135deg, #042B44 0%, #096B90 100%);
-      --grad-accent: linear-gradient(90deg, #096B90 0%, #71B7D5 100%);
+      --grad-atmosphere: linear-gradient(180deg, #080610 0%, #170D29 100%);
+      --grad-interactive: linear-gradient(135deg, #38205B 0%, #762BFF 100%);
+      --grad-accent: linear-gradient(90deg, #762BFF 0%, #B56BFF 100%);
 
       --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       --font-body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -101,7 +103,10 @@
       --header-h: 72px;
 
       --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --shadow-elevated: 0 22px 48px -20px rgba(8, 23, 30, 0.92), 0 0 0 1px rgba(113, 183, 213, 0.12);
+      --shadow-elevated:
+        0 24px 54px -18px rgba(8, 6, 16, 0.96),
+        0 0 0 1px rgba(56, 32, 91, 0.68),
+        inset 0 1px 0 rgba(228, 210, 255, 0.14);
     }
 
     *,
@@ -136,25 +141,25 @@
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(640px circle at 18% 12%, rgba(113, 183, 213, 0.055), transparent 62%),
-        radial-gradient(520px circle at 84% 78%, rgba(9, 107, 144, 0.04), transparent 65%);
+        radial-gradient(640px circle at 18% 12%, rgba(181, 107, 255, 0.055), transparent 62%),
+        radial-gradient(520px circle at 84% 78%, rgba(118, 43, 255, 0.04), transparent 65%);
       transition: opacity 0.6s ease, filter 0.8s ease;
     }
 
     body[data-section="projects"] .ambient-atmosphere {
       background:
-        radial-gradient(700px circle at 78% 24%, rgba(113, 183, 213, 0.06), transparent 62%),
-        radial-gradient(580px circle at 18% 72%, rgba(9, 107, 144, 0.06), transparent 64%);
+        radial-gradient(700px circle at 78% 24%, rgba(181, 107, 255, 0.06), transparent 62%),
+        radial-gradient(580px circle at 18% 72%, rgba(118, 43, 255, 0.06), transparent 64%);
     }
 
     body[data-section="expertise"] .ambient-atmosphere {
       background:
-        radial-gradient(660px circle at 52% 45%, rgba(113, 183, 213, 0.055), transparent 62%);
+        radial-gradient(660px circle at 52% 45%, rgba(181, 107, 255, 0.055), transparent 62%);
     }
 
     body[data-section="contact"] .ambient-atmosphere {
       background:
-        radial-gradient(680px circle at 32% 82%, rgba(113, 183, 213, 0.065), transparent 62%);
+        radial-gradient(680px circle at 32% 82%, rgba(181, 107, 255, 0.065), transparent 62%);
     }
 
     body.reduced-fx .ambient-atmosphere,
@@ -236,12 +241,12 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, #096B90, #71B7D5, #A1CCDC);
+      background: linear-gradient(90deg, #762BFF, #B56BFF, #E4D2FF);
       transform-origin: left center;
       transform: scaleX(0);
       z-index: 500;
       pointer-events: none;
-      box-shadow: 0 0 10px rgba(113, 183, 213, 0.45);
+      box-shadow: 0 0 10px rgba(181, 107, 255, 0.45);
     }
 
     /* Page Transition Pulse */
@@ -290,7 +295,7 @@
       margin: -3px 0 0 -3px;
       border-radius: 50%;
       background: var(--accent-secondary);
-      box-shadow: 0 0 8px rgba(113, 183, 213, 0.65);
+      box-shadow: 0 0 8px rgba(181, 107, 255, 0.65);
       will-change: transform;
     }
 
@@ -302,7 +307,7 @@
       height: 34px;
       margin: -17px 0 0 -17px;
       border-radius: 50%;
-      border: 1px solid rgba(113, 183, 213, 0.42);
+      border: 1px solid rgba(181, 107, 255, 0.42);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -333,7 +338,7 @@
       height: 46px;
       margin: -23px 0 0 -23px;
       border-color: var(--accent-secondary);
-      background: rgba(113, 183, 213, 0.08);
+      background: rgba(181, 107, 255, 0.08);
     }
 
     .custom-cursor[data-mode="node"] .cursor-ring {
@@ -341,7 +346,7 @@
       height: 44px;
       margin: -22px 0 0 -22px;
       border-color: var(--text-primary);
-      background: rgba(161, 204, 220, 0.1);
+      background: rgba(228, 210, 255, 0.1);
     }
 
     .custom-cursor[data-mode="project"] .cursor-ring {
@@ -385,7 +390,7 @@
     }
 
     .section--alt {
-      background: linear-gradient(180deg, #042B44 0%, rgba(4, 43, 68, 0.94) 100%);
+      background: linear-gradient(180deg, #170D29 0%, rgba(23, 13, 41, 0.96) 100%);
     }
 
     .section--alt .about-dossier-col,
@@ -393,7 +398,11 @@
     .section--alt .expand-panel-content,
     .section--alt .project-note,
     .section--alt .tech-token {
-      background: rgba(8, 23, 30, 0.62);
+      background: #120B20;
+    }
+
+    .section--alt .project-frame {
+      background: linear-gradient(135deg, rgba(181, 107, 255, 0.045) 0%, rgba(18, 11, 32, 0.98) 46%), #120B20;
     }
 
     .section-header {
@@ -477,7 +486,7 @@
       gap: 12px;
       padding: 10px 6px;
       border: 1px solid var(--border);
-      background: rgba(8, 23, 30, 0.72);
+      background: rgba(8, 6, 16, 0.72);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
@@ -504,7 +513,7 @@
     .rail-dot.is-active::before {
       background: var(--accent-secondary);
       transform: scale(1.45);
-      box-shadow: 0 0 8px rgba(113, 183, 213, 0.65);
+      box-shadow: 0 0 8px rgba(181, 107, 255, 0.65);
     }
 
     .rail-tooltip {
@@ -616,21 +625,22 @@
     .btn:hover {
       border-color: var(--accent-secondary);
       background: var(--bg-hover);
-      box-shadow: 0 10px 26px -12px rgba(113, 183, 213, 0.32);
+      box-shadow: 0 10px 26px -12px rgba(181, 107, 255, 0.32);
     }
 
     .btn-primary {
-      background: var(--grad-interactive);
+      background: var(--accent-primary);
       border-color: var(--accent-primary);
       color: var(--text-primary);
       font-weight: 600;
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.28), 0 10px 26px -10px rgba(118, 43, 255, 0.52);
     }
 
     .btn-primary:hover {
       background: var(--accent-secondary);
       border-color: var(--text-primary);
       color: var(--bg-primary);
-      box-shadow: 0 14px 32px -10px rgba(113, 183, 213, 0.44);
+      box-shadow: 0 14px 36px -8px rgba(181, 107, 255, 0.56), inset 0 1px 0 rgba(228, 210, 255, 0.45);
     }
 
     .btn .btn-arrow {
@@ -658,17 +668,17 @@
       top: 0;
       z-index: 400;
       height: var(--header-h);
-      background: rgba(8, 23, 30, 0.42);
+      background: rgba(8, 6, 16, 0.42);
       border-bottom: 1px solid var(--border);
       transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
     }
 
     .site-header.is-scrolled {
-      background: rgba(8, 23, 30, 0.88);
+      background: rgba(8, 6, 16, 0.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom-color: var(--border-strong);
-      box-shadow: 0 12px 32px -20px rgba(8, 23, 30, 0.9);
+      box-shadow: 0 12px 32px -20px rgba(8, 6, 16, 0.9);
     }
 
     .nav-bar {
@@ -698,7 +708,7 @@
     }
 
     .monogram:hover {
-      text-shadow: 0 0 16px rgba(113, 183, 213, 0.4);
+      text-shadow: 0 0 16px rgba(181, 107, 255, 0.4);
     }
 
     .monogram .dot {
@@ -716,7 +726,7 @@
       white-space: nowrap;
       padding: 5px 11px;
       border: 1px solid var(--border);
-      background: rgba(4, 43, 68, 0.82);
+      background: rgba(23, 13, 41, 0.82);
     }
 
     .availability-dot {
@@ -724,7 +734,7 @@
       height: 6px;
       border-radius: 50%;
       background: var(--accent-secondary);
-      box-shadow: 0 0 8px rgba(113, 183, 213, 0.75);
+      box-shadow: 0 0 8px rgba(181, 107, 255, 0.75);
       flex-shrink: 0;
       animation: pulse-availability 2.8s ease-in-out infinite;
     }
@@ -844,7 +854,7 @@
       right: 0;
       bottom: 0;
       z-index: 390;
-      background: rgba(8, 23, 30, 0.98);
+      background: rgba(8, 6, 16, 0.98);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
@@ -926,7 +936,7 @@
       padding-top: clamp(24px, 4vw, 44px);
       padding-bottom: clamp(64px, 8vw, 112px);
       scroll-margin-top: var(--header-h);
-      background: radial-gradient(900px circle at 24% 18%, rgba(113, 183, 213, 0.045), transparent 65%);
+      background: radial-gradient(900px circle at 24% 18%, rgba(181, 107, 255, 0.045), transparent 65%);
     }
 
     .hero-tech-grid {
@@ -934,8 +944,8 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(to right, rgba(113, 183, 213, 0.032) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(113, 183, 213, 0.032) 1px, transparent 1px);
+        linear-gradient(to right, rgba(181, 107, 255, 0.032) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(181, 107, 255, 0.032) 1px, transparent 1px);
       background-size: 52px 52px;
       mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, #000 35%, transparent 100%);
       -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, #000 35%, transparent 100%);
@@ -947,7 +957,7 @@
       pointer-events: none;
       background: radial-gradient(
         520px circle at var(--hx, 30%) var(--hy, 35%),
-        rgba(113, 183, 213, 0.085),
+        rgba(181, 107, 255, 0.085),
         transparent 62%
       );
       opacity: 0;
@@ -1048,7 +1058,7 @@
     .hero-char:hover {
       color: var(--accent-secondary);
       transform: translateY(-4px);
-      text-shadow: 0 0 20px rgba(113, 183, 213, 0.35);
+      text-shadow: 0 0 20px rgba(181, 107, 255, 0.35);
     }
 
     .hero-name-line .accent-dot {
@@ -1121,7 +1131,7 @@
       margin: 24px 0 0;
       padding: 14px 16px;
       border: 1px solid var(--border);
-      background: rgba(4, 43, 68, 0.76);
+      background: rgba(23, 13, 41, 0.76);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -1182,7 +1192,7 @@
     .topic-chip.is-active,
     .topic-chip:hover {
       border-color: var(--accent-secondary);
-      background: rgba(113, 183, 213, 0.08);
+      background: rgba(181, 107, 255, 0.08);
       color: var(--text-primary);
     }
 
@@ -1217,15 +1227,16 @@
       display: flex;
       flex-direction: column;
       border: 1px solid var(--border-strong);
-      background: rgba(4, 43, 68, 0.72);
+      background: linear-gradient(142deg, rgba(56, 32, 91, 0.36) 0%, rgba(18, 11, 32, 0.94) 48%), #120B20;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow-elevated);
-      transition: border-color 0.35s ease;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
     }
 
     .hero-aside:hover {
       border-color: var(--border-glow);
+      box-shadow: 0 28px 60px -18px rgba(8, 6, 16, 0.96), 0 0 32px -12px rgba(118, 43, 255, 0.34), inset 0 1px 0 rgba(228, 210, 255, 0.24);
     }
 
     .hero-plate-caption {
@@ -1251,9 +1262,9 @@
       overflow: hidden;
       border-bottom: 1px solid var(--border);
       background:
-        radial-gradient(circle at 50% 50%, rgba(113, 183, 213, 0.06), transparent 68%),
-        linear-gradient(to right, rgba(113, 183, 213, 0.045) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(113, 183, 213, 0.045) 1px, transparent 1px);
+        radial-gradient(circle at 50% 50%, rgba(181, 107, 255, 0.06), transparent 68%),
+        linear-gradient(to right, rgba(181, 107, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(181, 107, 255, 0.045) 1px, transparent 1px);
       background-size: auto, 32px 32px, 32px 32px;
     }
 
@@ -1365,7 +1376,7 @@
       grid-column: 8 / 13;
       min-width: 0;
       border-top: 1px solid var(--border-strong);
-      background: rgba(4, 43, 68, 0.35);
+      background: rgba(23, 13, 41, 0.35);
       padding: 0 20px;
       border-left: 1px solid var(--border);
       border-right: 1px solid var(--border);
@@ -1440,7 +1451,7 @@
 
     .filter-btn.is-active {
       border-color: var(--accent-secondary);
-      background: rgba(113, 183, 213, 0.12);
+      background: rgba(181, 107, 255, 0.12);
       color: var(--text-primary);
     }
 
@@ -1461,8 +1472,10 @@
       position: relative;
       border: 1px solid var(--border-strong);
       background:
-        radial-gradient(circle at 50% 50%, rgba(113, 183, 213, 0.055), transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(118, 43, 255, 0.11), transparent 70%),
+        linear-gradient(135deg, rgba(181, 107, 255, 0.045) 0%, transparent 45%),
         var(--bg-elevated);
+      box-shadow: var(--shadow-elevated);
       overflow: hidden;
       min-height: 410px;
     }
@@ -1474,7 +1487,7 @@
     }
 
     .constellation-edge {
-      stroke: rgba(113, 183, 213, 0.14);
+      stroke: rgba(181, 107, 255, 0.14);
       stroke-width: 1.1;
       transition: stroke 0.28s ease, stroke-width 0.28s ease, opacity 0.28s ease;
     }
@@ -1500,7 +1513,7 @@
 
     .skill-node-ring {
       fill: var(--bg-primary);
-      stroke: rgba(113, 183, 213, 0.38);
+      stroke: rgba(181, 107, 255, 0.38);
       stroke-width: 1.2;
       transition: stroke 0.25s ease, fill 0.25s ease, r 0.25s var(--ease-expo);
     }
@@ -1535,7 +1548,7 @@
     .skill-node.is-active .skill-node-ring,
     .skill-node.is-connected .skill-node-ring {
       stroke: var(--accent-secondary);
-      fill: rgba(113, 183, 213, 0.12);
+      fill: rgba(181, 107, 255, 0.12);
     }
 
     .skill-node.is-active .skill-node-ring {
@@ -1743,7 +1756,7 @@
 
     .project-showcase:hover .project-frame {
       border-color: var(--border-glow);
-      box-shadow: 0 28px 60px -24px rgba(8, 23, 30, 0.9), 0 0 36px -14px rgba(113, 183, 213, 0.24);
+      box-shadow: 0 28px 64px -20px rgba(8, 6, 16, 0.96), 0 0 38px -12px rgba(118, 43, 255, 0.36), inset 0 1px 0 rgba(228, 210, 255, 0.26);
     }
 
     .project-frame-bar {
@@ -1754,7 +1767,7 @@
       gap: 8px;
       padding: 11px 16px;
       border-bottom: 1px solid var(--border);
-      background: rgba(8, 23, 30, 0.65);
+      background: rgba(8, 6, 16, 0.65);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.08em;
@@ -1781,7 +1794,7 @@
     .mini-tab:hover,
     .mini-tab.is-active {
       border-color: var(--accent-secondary);
-      background: rgba(113, 183, 213, 0.14);
+      background: rgba(181, 107, 255, 0.14);
       color: var(--text-primary);
     }
 
@@ -1790,7 +1803,7 @@
       aspect-ratio: 14 / 10;
       overflow: hidden;
       background:
-        radial-gradient(circle at 50% 50%, rgba(113, 183, 213, 0.06), transparent 72%),
+        radial-gradient(circle at 50% 50%, rgba(181, 107, 255, 0.06), transparent 72%),
         var(--bg-primary);
     }
 
@@ -2051,7 +2064,7 @@
       margin: 16px 0 0;
       padding: 12px 16px;
       border-left: 2px solid var(--accent-primary);
-      background: rgba(4, 43, 68, 0.75);
+      background: rgba(23, 13, 41, 0.75);
       font-size: 0.88rem;
       line-height: 1.6;
       color: var(--text-secondary);
@@ -2074,7 +2087,7 @@
     .tech-token {
       padding: 4px 10px;
       border: 1px solid var(--border);
-      background: rgba(4, 43, 68, 0.65);
+      background: rgba(23, 13, 41, 0.65);
       font-family: var(--font-mono);
       font-size: 0.72rem;
       letter-spacing: 0.04em;
@@ -2206,7 +2219,7 @@
       margin-top: 8px;
       padding: 10px 12px;
       border-left: 2px solid var(--accent-secondary);
-      background: rgba(4, 43, 68, 0.52);
+      background: rgba(23, 13, 41, 0.52);
       font-size: 0.85rem;
       color: var(--text-secondary);
     }
@@ -2282,7 +2295,7 @@
       top: 0;
       width: 1px;
       height: 100%;
-      background: linear-gradient(180deg, var(--accent-secondary), rgba(113, 183, 213, 0.15));
+      background: linear-gradient(180deg, var(--accent-secondary), rgba(181, 107, 255, 0.15));
       transform-origin: top center;
       transform: scaleY(0);
       transition: transform 1s var(--ease-expo);
@@ -2315,7 +2328,7 @@
 
     .timeline-item.is-current::before {
       background: var(--accent-secondary);
-      box-shadow: 0 0 10px rgba(113, 183, 213, 0.8);
+      box-shadow: 0 0 10px rgba(181, 107, 255, 0.8);
     }
 
     .timeline-period {
@@ -2445,7 +2458,7 @@
 
     .copy-feedback.is-copied {
       border-color: var(--accent-secondary);
-      background: rgba(113, 183, 213, 0.14);
+      background: rgba(181, 107, 255, 0.14);
       color: var(--text-primary);
     }
 
@@ -2562,7 +2575,7 @@
       position: fixed;
       inset: 0;
       z-index: 900;
-      background: rgba(8, 23, 30, 0.78);
+      background: rgba(8, 6, 16, 0.78);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       display: flex;
@@ -2584,7 +2597,7 @@
       max-width: 600px;
       border: 1px solid var(--border-strong);
       background: var(--bg-secondary);
-      box-shadow: 0 32px 72px -18px rgba(8, 23, 30, 0.95), 0 0 40px -16px rgba(113, 183, 213, 0.25);
+      box-shadow: 0 32px 72px -18px rgba(8, 6, 16, 0.95), 0 0 40px -16px rgba(181, 107, 255, 0.25);
       transform: translateY(-10px) scale(0.98);
       transition: transform 0.25s var(--ease-expo);
       overflow: hidden;
@@ -2684,10 +2697,10 @@
       z-index: 850;
       width: min(520px, calc(100vw - 32px));
       border: 1px solid var(--border-strong);
-      background: rgba(8, 23, 30, 0.96);
+      background: rgba(8, 6, 16, 0.96);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 28px 64px -16px rgba(8, 23, 30, 0.95), 0 0 36px -14px rgba(113, 183, 213, 0.25);
+      box-shadow: 0 28px 64px -16px rgba(8, 6, 16, 0.95), 0 0 36px -14px rgba(181, 107, 255, 0.25);
       display: none;
       flex-direction: column;
     }
@@ -3211,7 +3224,7 @@
           <aside class="hero-aside hero-stagger hero-stagger-3" data-parallax="12" aria-label="Portfolio technical summary">
             <div class="hero-plate-caption">
               <span>FIG 00 / SYSTEM TOPOLOGY</span>
-              <span class="tag-accent">DEEP OCEAN &middot; AZURE</span>
+              <span class="tag-accent">OBSIDIAN &middot; VIOLET RTX</span>
             </div>
             <div class="hero-plate" id="heroPlate">
               <svg
@@ -3221,39 +3234,39 @@
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
               >
-                <line x1="240" y1="24" x2="240" y2="396" stroke="rgba(113,183,213,0.14)" stroke-width="1" />
-                <line x1="24" y1="210" x2="456" y2="210" stroke="rgba(113,183,213,0.14)" stroke-width="1" />
-                <rect x="44" y="44" width="392" height="332" stroke="rgba(113,183,213,0.16)" stroke-width="1" stroke-dasharray="3 5" />
+                <line x1="240" y1="24" x2="240" y2="396" stroke="rgba(181,107,255,0.14)" stroke-width="1" />
+                <line x1="24" y1="210" x2="456" y2="210" stroke="rgba(181,107,255,0.14)" stroke-width="1" />
+                <rect x="44" y="44" width="392" height="332" stroke="rgba(181,107,255,0.16)" stroke-width="1" stroke-dasharray="3 5" />
 
-                <line class="schematic-scan" x1="44" y1="100" x2="436" y2="100" stroke="#71B7D5" stroke-width="1" stroke-opacity="0.55" />
+                <line class="schematic-scan" x1="44" y1="100" x2="436" y2="100" stroke="#B56BFF" stroke-width="1" stroke-opacity="0.55" />
 
                 <g class="schematic-orbit">
-                  <circle cx="240" cy="210" r="146" stroke="rgba(113,183,213,0.18)" stroke-width="1" />
-                  <circle cx="240" cy="64" r="4" fill="#A1CCDC" />
-                  <circle cx="386" cy="210" r="3" fill="#A1CCDC" />
-                  <line x1="240" y1="64" x2="343" y2="313" stroke="rgba(113,183,213,0.18)" stroke-width="1" />
+                  <circle cx="240" cy="210" r="146" stroke="rgba(181,107,255,0.18)" stroke-width="1" />
+                  <circle cx="240" cy="64" r="4" fill="#E4D2FF" />
+                  <circle cx="386" cy="210" r="3" fill="#E4D2FF" />
+                  <line x1="240" y1="64" x2="343" y2="313" stroke="rgba(181,107,255,0.18)" stroke-width="1" />
                 </g>
 
                 <g class="schematic-orbit-reverse">
-                  <circle cx="240" cy="210" r="102" stroke="rgba(161,204,220,0.24)" stroke-width="1" stroke-dasharray="6 6" />
-                  <rect x="168" y="138" width="144" height="144" stroke="rgba(113,183,213,0.18)" stroke-width="1" />
-                  <circle cx="312" cy="138" r="4" fill="#71B7D5" />
+                  <circle cx="240" cy="210" r="102" stroke="rgba(228,210,255,0.24)" stroke-width="1" stroke-dasharray="6 6" />
+                  <rect x="168" y="138" width="144" height="144" stroke="rgba(181,107,255,0.18)" stroke-width="1" />
+                  <circle cx="312" cy="138" r="4" fill="#B56BFF" />
                 </g>
 
-                <circle cx="240" cy="210" r="44" stroke="rgba(161,204,220,0.28)" stroke-width="1" />
-                <circle cx="240" cy="210" r="5" fill="#71B7D5" />
-                <line x1="226" y1="210" x2="254" y2="210" stroke="#A1CCDC" stroke-width="1" />
-                <line x1="240" y1="196" x2="240" y2="224" stroke="#A1CCDC" stroke-width="1" />
+                <circle cx="240" cy="210" r="44" stroke="rgba(228,210,255,0.28)" stroke-width="1" />
+                <circle cx="240" cy="210" r="5" fill="#B56BFF" />
+                <line x1="226" y1="210" x2="254" y2="210" stroke="#E4D2FF" stroke-width="1" />
+                <line x1="240" y1="196" x2="240" y2="224" stroke="#E4D2FF" stroke-width="1" />
 
                 <g id="heroReticle">
-                  <line x1="240" y1="210" x2="312" y2="138" stroke="#71B7D5" stroke-width="1.2" stroke-opacity="0.8" />
-                  <circle cx="312" cy="138" r="10" stroke="#71B7D5" stroke-width="1" stroke-opacity="0.7" />
+                  <line x1="240" y1="210" x2="312" y2="138" stroke="#B56BFF" stroke-width="1.2" stroke-opacity="0.8" />
+                  <circle cx="312" cy="138" r="10" stroke="#B56BFF" stroke-width="1" stroke-opacity="0.7" />
                 </g>
 
-                <text x="52" y="64" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">00.00 // PUNE_IN</text>
-                <text x="330" y="64" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">N 18.52 / E 73.85</text>
-                <text x="52" y="364" fill="rgba(113,183,213,0.72)" font-family="JetBrains Mono, monospace" font-size="10">SYS: SWE + AI/ML</text>
-                <text x="342" y="364" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="10">PR #51&#8211;#60</text>
+                <text x="52" y="64" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">00.00 // PUNE_IN</text>
+                <text x="330" y="64" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">N 18.52 / E 73.85</text>
+                <text x="52" y="364" fill="rgba(181,107,255,0.72)" font-family="JetBrains Mono, monospace" font-size="10">SYS: SWE + AI/ML</text>
+                <text x="342" y="364" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="10">PR #51&#8211;#60</text>
               </svg>
             </div>
 
@@ -3421,41 +3434,41 @@
                 <div class="project-visual-stage">
                   <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated repository architecture diagram for Bug Slayer showing files, execution flow, and Gemma analysis">
                     <!-- Repository Tree Panel -->
-                    <rect x="28" y="34" width="142" height="198" fill="#042B44" stroke="rgba(113,183,213,0.2)" />
-                    <text x="40" y="54" fill="#71B7D5" font-family="JetBrains Mono, monospace" font-size="9">REPO FILES</text>
-                    <text x="40" y="78" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="10">README.md</text>
-                    <text x="40" y="100" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">requirements.txt</text>
-                    <text x="40" y="122" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">src/agent.py</text>
-                    <text x="40" y="144" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">src/sandbox.py</text>
-                    <text x="40" y="166" fill="rgba(113,183,213,0.72)" font-family="JetBrains Mono, monospace" font-size="10">Dockerfile</text>
-                    <rect x="40" y="190" width="118" height="26" fill="#042B44" stroke="rgba(113,183,213,0.28)" />
-                    <text x="50" y="207" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="9" id="bsStageInput">PARSE SETUP</text>
+                    <rect x="28" y="34" width="142" height="198" fill="#170D29" stroke="rgba(181,107,255,0.2)" />
+                    <text x="40" y="54" fill="#B56BFF" font-family="JetBrains Mono, monospace" font-size="9">REPO FILES</text>
+                    <text x="40" y="78" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="10">README.md</text>
+                    <text x="40" y="100" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">requirements.txt</text>
+                    <text x="40" y="122" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">src/agent.py</text>
+                    <text x="40" y="144" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">src/sandbox.py</text>
+                    <text x="40" y="166" fill="rgba(181,107,255,0.72)" font-family="JetBrains Mono, monospace" font-size="10">Dockerfile</text>
+                    <rect x="40" y="190" width="118" height="26" fill="#120B20" stroke="rgba(181,107,255,0.32)" />
+                    <text x="50" y="207" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="9" id="bsStageInput">PARSE SETUP</text>
 
                     <!-- Animated Connector -->
-                    <path id="bsFlow1" class="flow-pulse" d="M170 120 H218" stroke="#71B7D5" stroke-width="1.5" />
-                    <path id="bsFlow2" class="flow-pulse" d="M372 120 H412 V168" stroke="#71B7D5" stroke-width="1.5" />
-                    <path id="bsFlow3" class="flow-pulse" d="M295 190 V254" stroke="#A1CCDC" stroke-width="1.5" />
+                    <path id="bsFlow1" class="flow-pulse" d="M170 120 H218" stroke="#B56BFF" stroke-width="1.5" />
+                    <path id="bsFlow2" class="flow-pulse" d="M372 120 H412 V168" stroke="#B56BFF" stroke-width="1.5" />
+                    <path id="bsFlow3" class="flow-pulse" d="M295 190 V254" stroke="#E4D2FF" stroke-width="1.5" />
 
                     <!-- Center Node: Docker Execution / Repo Scanner -->
-                    <rect x="218" y="56" width="154" height="134" fill="#042B44" stroke="#71B7D5" stroke-width="1.2" />
-                    <text x="232" y="78" fill="#71B7D5" font-family="JetBrains Mono, monospace" font-size="9" id="bsCenterTag">DOCKER SANDBOX</text>
-                    <text x="232" y="102" fill="#A1CCDC" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" id="bsCenterTitle">Healer Execution</text>
-                    <text x="232" y="128" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine1">&gt; Run setup command</text>
-                    <text x="232" y="146" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine2">&gt; Capture stderr/exit</text>
-                    <text x="232" y="164" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine3">&gt; Test proposed fix</text>
+                    <rect x="218" y="56" width="154" height="134" fill="#120B20" stroke="#B56BFF" stroke-width="1.2" />
+                    <text x="232" y="78" fill="#B56BFF" font-family="JetBrains Mono, monospace" font-size="9" id="bsCenterTag">DOCKER SANDBOX</text>
+                    <text x="232" y="102" fill="#E4D2FF" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" id="bsCenterTitle">Healer Execution</text>
+                    <text x="232" y="128" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine1">&gt; Run setup command</text>
+                    <text x="232" y="146" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine2">&gt; Capture stderr/exit</text>
+                    <text x="232" y="164" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="9.5" id="bsLine3">&gt; Test proposed fix</text>
 
                     <!-- Right Output Node -->
-                    <rect x="394" y="168" width="138" height="86" fill="#042B44" stroke="rgba(113,183,213,0.28)" />
-                    <text x="406" y="190" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="9">OUTPUT</text>
-                    <text x="406" y="212" fill="#A1CCDC" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" id="bsOutTitle">Fix Verified</text>
-                    <text x="406" y="232" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="9" id="bsOutSub">Exit Code 0</text>
+                    <rect x="394" y="168" width="138" height="86" fill="#120B20" stroke="rgba(181,107,255,0.32)" />
+                    <text x="406" y="190" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="9">OUTPUT</text>
+                    <text x="406" y="212" fill="#E4D2FF" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" id="bsOutTitle">Fix Verified</text>
+                    <text x="406" y="232" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="9" id="bsOutSub">Exit Code 0</text>
 
                     <!-- Bottom Model Node -->
-                    <rect x="148" y="254" width="294" height="96" fill="#042B44" stroke="rgba(161,204,220,0.35)" />
-                    <circle cx="170" cy="280" r="4" fill="#71B7D5" />
-                    <text x="182" y="284" fill="#A1CCDC" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600">Gemma &amp; Gemini API Engine</text>
-                    <text x="166" y="308" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10" id="bsModelNote">Analyses failing logs &amp; proposes repair steps</text>
-                    <text x="166" y="328" fill="rgba(113,183,213,0.72)" font-family="JetBrains Mono, monospace" font-size="9.5">Python &middot; Docker &middot; Git &middot; Rich CLI</text>
+                    <rect x="148" y="254" width="294" height="96" fill="#120B20" stroke="rgba(181,107,255,0.42)" />
+                    <circle cx="170" cy="280" r="4" fill="#B56BFF" />
+                    <text x="182" y="284" fill="#E4D2FF" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600">Gemma &amp; Gemini API Engine</text>
+                    <text x="166" y="308" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10" id="bsModelNote">Analyses failing logs &amp; proposes repair steps</text>
+                    <text x="166" y="328" fill="rgba(181,107,255,0.72)" font-family="JetBrains Mono, monospace" font-size="9.5">Python &middot; Docker &middot; Git &middot; Rich CLI</text>
                   </svg>
                 </div>
               </div>
@@ -3740,52 +3753,52 @@
                   <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract automotive wireframe and geometric lighting study for Vanta">
                     <defs>
                       <linearGradient id="vantaBeam" x1="480" y1="226" x2="555" y2="235" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#71B7D5" stop-opacity="0.7" />
-                        <stop offset="1" stop-color="#71B7D5" stop-opacity="0" />
+                        <stop stop-color="#B56BFF" stop-opacity="0.7" />
+                        <stop offset="1" stop-color="#B56BFF" stop-opacity="0" />
                       </linearGradient>
                     </defs>
 
                     <!-- Aerodynamic Airflow Lines -->
                     <g id="vantaAeroLayer">
-                      <path class="flow-pulse" d="M36 168 C160 112, 340 104, 524 166" stroke="rgba(113,183,213,0.38)" stroke-width="1" />
-                      <path class="flow-pulse" d="M36 196 C155 138, 345 128, 524 188" stroke="rgba(161,204,220,0.22)" stroke-width="1" />
+                      <path class="flow-pulse" d="M36 168 C160 112, 340 104, 524 166" stroke="rgba(181,107,255,0.38)" stroke-width="1" />
+                      <path class="flow-pulse" d="M36 196 C155 138, 345 128, 524 188" stroke="rgba(228,210,255,0.22)" stroke-width="1" />
                     </g>
 
                     <!-- Chassis Proportion Grid -->
                     <g id="vantaChassisLayer" opacity="0.45">
-                      <line x1="158" y1="54" x2="158" y2="338" stroke="rgba(113,183,213,0.25)" stroke-dasharray="3 4" />
-                      <line x1="402" y1="54" x2="402" y2="338" stroke="rgba(113,183,213,0.25)" stroke-dasharray="3 4" />
-                      <line x1="68" y1="264" x2="496" y2="264" stroke="rgba(113,183,213,0.25)" stroke-dasharray="3 4" />
+                      <line x1="158" y1="54" x2="158" y2="338" stroke="rgba(181,107,255,0.25)" stroke-dasharray="3 4" />
+                      <line x1="402" y1="54" x2="402" y2="338" stroke="rgba(181,107,255,0.25)" stroke-dasharray="3 4" />
+                      <line x1="68" y1="264" x2="496" y2="264" stroke="rgba(181,107,255,0.25)" stroke-dasharray="3 4" />
                     </g>
 
                     <!-- Horizon Line -->
-                    <line x1="36" y1="296" x2="524" y2="296" stroke="#71B7D5" stroke-opacity="0.45" stroke-width="1" />
+                    <line x1="36" y1="296" x2="524" y2="296" stroke="#B56BFF" stroke-opacity="0.45" stroke-width="1" />
 
                     <!-- Automotive Silhouette -->
                     <path
                       d="M72 256 L114 218 L204 170 C252 150, 332 150, 392 176 L462 208 L496 242 L492 268 H442 M198 268 H362 M118 268 H72 Z"
-                      stroke="#A1CCDC"
+                      stroke="#E4D2FF"
                       stroke-width="1.5"
                       fill="none"
                     />
-                    <path d="M196 176 C256 158, 328 160, 376 182" stroke="#A1CCDC" stroke-opacity="0.65" stroke-width="1" />
+                    <path d="M196 176 C256 158, 328 160, 376 182" stroke="#E4D2FF" stroke-opacity="0.65" stroke-width="1" />
 
                     <!-- Geometric Headlight Beam -->
                     <polygon points="484,234 552,218 552,262 484,244" fill="url(#vantaBeam)" />
-                    <line x1="478" y1="238" x2="494" y2="238" stroke="#71B7D5" stroke-width="2" />
+                    <line x1="478" y1="238" x2="494" y2="238" stroke="#B56BFF" stroke-width="2" />
 
                     <!-- Wheels -->
-                    <circle cx="158" cy="268" r="38" fill="#08171E" stroke="#A1CCDC" stroke-width="1.3" />
-                    <circle cx="158" cy="268" r="21" stroke="rgba(113,183,213,0.45)" stroke-width="1" />
-                    <circle cx="158" cy="268" r="4" fill="#71B7D5" />
+                    <circle cx="158" cy="268" r="38" fill="#080610" stroke="#E4D2FF" stroke-width="1.3" />
+                    <circle cx="158" cy="268" r="21" stroke="rgba(181,107,255,0.45)" stroke-width="1" />
+                    <circle cx="158" cy="268" r="4" fill="#B56BFF" />
 
-                    <circle cx="402" cy="268" r="38" fill="#08171E" stroke="#A1CCDC" stroke-width="1.3" />
-                    <circle cx="402" cy="268" r="21" stroke="rgba(113,183,213,0.45)" stroke-width="1" />
-                    <circle cx="402" cy="268" r="4" fill="#71B7D5" />
+                    <circle cx="402" cy="268" r="38" fill="#080610" stroke="#E4D2FF" stroke-width="1.3" />
+                    <circle cx="402" cy="268" r="21" stroke="rgba(181,107,255,0.45)" stroke-width="1" />
+                    <circle cx="402" cy="268" r="4" fill="#B56BFF" />
 
-                    <text x="36" y="44" fill="rgba(161,204,220,0.82)" font-family="JetBrains Mono, monospace" font-size="10">VANTA // AUTOMOTIVE UI STUDY</text>
-                    <text x="36" y="366" fill="rgba(113,183,213,0.72)" font-family="JetBrains Mono, monospace" font-size="10">RESPONSIVE LAYOUT &middot; CUSTOM STYLING</text>
-                    <text x="412" y="366" fill="#A1CCDC" font-family="JetBrains Mono, monospace" font-size="10">VANTA LIVE</text>
+                    <text x="36" y="44" fill="rgba(228,210,255,0.82)" font-family="JetBrains Mono, monospace" font-size="10">VANTA // AUTOMOTIVE UI STUDY</text>
+                    <text x="36" y="366" fill="rgba(181,107,255,0.72)" font-family="JetBrains Mono, monospace" font-size="10">RESPONSIVE LAYOUT &middot; CUSTOM STYLING</text>
+                    <text x="412" y="366" fill="#E4D2FF" font-family="JetBrains Mono, monospace" font-size="10">VANTA LIVE</text>
                   </svg>
                 </div>
               </div>
@@ -4303,9 +4316,9 @@
       /* Subtle DevTools Signature Easter Egg */
       if (typeof console !== 'undefined' && console.info) {
         console.info(
-          '%c AG. %c Alok Gupta — Deep Ocean Blue Portfolio (Press Cmd/Ctrl+K or ~)',
-          'background:#71B7D5;color:#08171E;font-weight:700;padding:2px 6px;',
-          'color:rgba(161,204,220,0.82);padding:2px 4px;'
+          '%c AG. %c Alok Gupta — Obsidian RTX Violet Portfolio (Press Cmd/Ctrl+K or ~)',
+          'background:#B56BFF;color:#080610;font-weight:700;padding:2px 6px;',
+          'color:rgba(228,210,255,0.82);padding:2px 4px;'
         );
       }
 
@@ -4529,7 +4542,7 @@
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(113, 183, 213, 0.38)';
+            ctx.fillStyle = 'rgba(181, 107, 255, 0.38)';
             ctx.fill();
 
             for (let j = i + 1; j < particles.length; j++) {
@@ -4539,7 +4552,7 @@
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(q.x, q.y);
-                ctx.strokeStyle = `rgba(113, 183, 213, ${(1 - d / linkDist) * 0.14})`;
+                ctx.strokeStyle = `rgba(181, 107, 255, ${(1 - d / linkDist) * 0.14})`;
                 ctx.lineWidth = 0.7;
                 ctx.stroke();
               }
@@ -4551,7 +4564,7 @@
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(pointer.x, pointer.y);
-                ctx.strokeStyle = `rgba(161, 204, 220, ${(1 - pd / 165) * 0.28})`;
+                ctx.strokeStyle = `rgba(228, 210, 255, ${(1 - pd / 165) * 0.28})`;
                 ctx.lineWidth = 0.85;
                 ctx.stroke();
               }
@@ -5311,10 +5324,10 @@
             { p: project({ x: 0, y: 1.4, z: 0 }), name: '+Y' },
             { p: project({ x: 0, y: 0, z: 1.5 }), name: '+Z' }
           ];
-          ctx.strokeStyle = 'rgba(113, 183, 213, 0.16)';
+          ctx.strokeStyle = 'rgba(181, 107, 255, 0.16)';
           ctx.lineWidth = 1;
           ctx.font = '10px JetBrains Mono, monospace';
-          ctx.fillStyle = 'rgba(113,183,213,0.72)';
+          ctx.fillStyle = 'rgba(181,107,255,0.72)';
           axes.forEach((ax) => {
             ctx.beginPath();
             ctx.moveTo(origin.sx, origin.sy);
@@ -5328,7 +5341,7 @@
             ctx.beginPath();
             ctx.moveTo(projected[a].sx, projected[a].sy);
             ctx.lineTo(projected[b].sx, projected[b].sy);
-            ctx.strokeStyle = 'rgba(113, 183, 213, 0.3)';
+            ctx.strokeStyle = 'rgba(181, 107, 255, 0.3)';
             ctx.stroke();
           });
 
@@ -5336,9 +5349,9 @@
             const pt = points[idx];
             ctx.beginPath();
             ctx.arc(pos.sx, pos.sy, pt.accent ? 5 : 3.8, 0, Math.PI * 2);
-            ctx.fillStyle = pt.accent ? '#71B7D5' : '#A1CCDC';
+            ctx.fillStyle = pt.accent ? '#B56BFF' : '#E4D2FF';
             ctx.fill();
-            ctx.fillStyle = pt.accent ? '#A1CCDC' : 'rgba(161,204,220,0.82)';
+            ctx.fillStyle = pt.accent ? '#E4D2FF' : 'rgba(228,210,255,0.82)';
             ctx.font = '11px JetBrains Mono, monospace';
             ctx.fillText(pt.label, pos.sx + 9, pos.sy + 4);
           });
@@ -5394,7 +5407,7 @@
               const group = new THREE.Group();
               scene.add(group);
 
-              const lineMat = new THREE.LineBasicMaterial({ color: 0x71b7d5, transparent: true, opacity: 0.42 });
+              const lineMat = new THREE.LineBasicMaterial({ color: 0xb56bff, transparent: true, opacity: 0.42 });
               edges.forEach(([a, b]) => {
                 const geom = new THREE.BufferGeometry().setFromPoints([
                   new THREE.Vector3(points[a].x, points[a].y, points[a].z),
@@ -5405,7 +5418,7 @@
 
               const sphereGeo = new THREE.SphereGeometry(0.065, 16, 16);
               points.forEach((pt) => {
-                const mat = new THREE.MeshBasicMaterial({ color: pt.accent ? 0x71b7d5 : 0xa1ccdc });
+                const mat = new THREE.MeshBasicMaterial({ color: pt.accent ? 0xb56bff : 0xe4d2ff });
                 const mesh = new THREE.Mesh(sphereGeo, mat);
                 mesh.position.set(pt.x, pt.y, pt.z);
                 group.add(mesh);
