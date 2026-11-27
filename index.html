@@ -213,6 +213,8 @@
     body.reduced-fx .liquid-glass,
     body.reduced-fx .liquid-glass--strong,
     body.reduced-fx .site-header-dock,
+    body.reduced-fx .skills-command-deck,
+    body.reduced-fx .skill-inspector,
     body.reduced-fx .fx-panel,
     body.reduced-fx .cmd-dialog,
     body.reduced-fx .project-modal-dialog,
@@ -1837,33 +1839,136 @@
     }
 
     /* ==========================================================================
-       08. Skills Constellation — Crystalline Neural Network (02 / EXPERTISE)
+       08. Skills & Technologies Archive — Obsidian RTX (02 / SKILLS & TECHNOLOGIES)
        ========================================================================== */
-    .constellation-controls {
+    .expertise-status-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      margin-top: 14px;
+    }
+
+    .tech-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(18, 11, 32, 0.72);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.14);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--accent-secondary);
+    }
+
+    /* Liquid-Glass Command Deck: Category Filters + Search */
+    .skills-command-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      background-color: rgba(18, 11, 32, 0.72);
+      background-image: linear-gradient(155deg, rgba(228, 210, 255, 0.05) 0%, rgba(56, 32, 91, 0.22) 45%, rgba(8, 6, 16, 0.65) 100%);
+      backdrop-filter: blur(calc(16px * var(--fx-glass))) saturate(135%);
+      -webkit-backdrop-filter: blur(calc(16px * var(--fx-glass))) saturate(135%);
+      box-shadow: var(--glass-shadow);
+    }
+
+    .skills-deck-top {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 14px 20px;
-      margin-bottom: 24px;
+      gap: 12px 18px;
+    }
+
+    .tech-search-wrap {
+      position: relative;
+      flex: 1 1 260px;
+      max-width: 380px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      min-height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: rgba(8, 6, 16, 0.68);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tech-search-wrap:focus-within {
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 18px -6px rgba(181, 107, 255, 0.55);
+    }
+
+    .tech-search-icon {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+
+    .tech-search-input {
+      width: 100%;
+      min-width: 0;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      outline: none;
+    }
+
+    .tech-search-input:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .tech-search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .tech-search-clear {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .tech-search-clear:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-secondary);
+    }
+
+    .tech-search-clear[hidden] {
+      display: none;
     }
 
     .filter-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
 
     .filter-btn {
-      min-height: 36px;
-      padding: 7px 14px;
+      min-height: 35px;
+      padding: 6px 12px;
+      border-radius: 6px;
       border: 1px solid var(--border);
-      background: var(--bg-elevated);
+      background: rgba(8, 6, 16, 0.58);
       box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.08);
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-size: 0.71rem;
+      letter-spacing: 0.03em;
       color: var(--text-secondary);
       transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -1875,9 +1980,9 @@
 
     .filter-btn.is-active {
       border-color: var(--accent-secondary);
-      background: rgba(118, 43, 255, 0.24);
+      background: rgba(118, 43, 255, 0.26);
       color: var(--text-primary);
-      box-shadow: 0 0 16px -4px rgba(118, 43, 255, 0.48);
+      box-shadow: 0 0 16px -4px rgba(118, 43, 255, 0.48), inset 0 1px 0 rgba(228, 210, 255, 0.24);
     }
 
     .expertise-hint {
@@ -1886,9 +1991,10 @@
       color: var(--text-muted);
     }
 
+    /* Spatial 3D Observatory + Floating Liquid-Glass Inspector */
     .constellation-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+      grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.88fr);
       gap: 24px;
       align-items: stretch;
     }
@@ -1898,29 +2004,57 @@
       border-radius: var(--radius-md);
       border: 1px solid var(--border-strong);
       background:
-        radial-gradient(circle at 50% 50%, rgba(118, 43, 255, 0.14), transparent 70%),
+        radial-gradient(circle at 50% 48%, rgba(118, 43, 255, 0.14), transparent 72%),
         linear-gradient(135deg, rgba(181, 107, 255, 0.055) 0%, transparent 45%),
-        var(--bg-elevated);
+        var(--bg-primary);
       box-shadow: var(--shadow-obsidian);
       overflow: hidden;
-      min-height: 410px;
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stage-telemetry-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 14px;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 11, 32, 0.72);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .stage-telemetry-bar strong {
+      color: var(--accent-secondary);
+      font-weight: 500;
     }
 
     .constellation-svg {
       width: 100%;
-      height: 100%;
-      min-height: 410px;
+      flex: 1 1 auto;
+      min-height: 390px;
+    }
+
+    .constellation-motif {
+      transition: opacity 0.35s ease;
+      pointer-events: none;
     }
 
     .constellation-edge {
-      stroke: rgba(181, 107, 255, 0.16);
+      stroke: rgba(181, 107, 255, 0.18);
       stroke-width: 1.1;
       transition: stroke 0.28s ease, stroke-width 0.28s ease, opacity 0.28s ease;
     }
 
     .constellation-edge.is-highlighted {
       stroke: var(--accent-secondary);
-      stroke-width: 1.8;
+      stroke-width: 1.85;
       opacity: 1;
     }
 
@@ -1949,20 +2083,33 @@
     }
 
     .skill-node.is-dimmed-filter {
-      opacity: 0.22;
+      opacity: 0.2;
     }
 
     .skill-node-facet {
       fill: var(--bg-primary);
-      stroke: rgba(181, 107, 255, 0.36);
+      stroke: rgba(181, 107, 255, 0.42);
       stroke-width: 1.25;
       transition: stroke 0.25s ease, fill 0.25s ease, transform 0.28s var(--ease-expo);
     }
 
+    .skill-node.is-featured .skill-node-facet {
+      fill: #120B20;
+      stroke: rgba(181, 107, 255, 0.65);
+      stroke-width: 1.5;
+    }
+
+    .skill-node-bevel {
+      stroke: rgba(228, 210, 255, 0.24);
+      stroke-width: 0.85;
+      fill: none;
+      pointer-events: none;
+    }
+
     .skill-node-inner {
-      fill: rgba(56, 32, 91, 0.45);
-      stroke: rgba(228, 210, 255, 0.2);
-      stroke-width: 0.8;
+      fill: rgba(56, 32, 91, 0.5);
+      stroke: rgba(228, 210, 255, 0.22);
+      stroke-width: 0.85;
       transition: fill 0.25s ease, stroke 0.25s ease;
     }
 
@@ -1973,7 +2120,7 @@
 
     .skill-node-label {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       fill: var(--text-primary);
       text-anchor: middle;
@@ -1981,13 +2128,16 @@
       transition: fill 0.25s ease;
     }
 
+    .skill-node.is-featured .skill-node-label {
+      font-size: 13.5px;
+    }
+
     .skill-node-domain {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
       fill: var(--text-muted);
       text-anchor: middle;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
       pointer-events: none;
     }
 
@@ -1996,7 +2146,7 @@
     .skill-node.is-active .skill-node-facet,
     .skill-node.is-connected .skill-node-facet {
       stroke: var(--accent-secondary);
-      fill: rgba(56, 32, 91, 0.72);
+      fill: rgba(56, 32, 91, 0.78);
     }
 
     .skill-node.is-active .skill-node-facet {
@@ -2009,80 +2159,112 @@
       fill: var(--accent-secondary);
     }
 
-    .skill-node.is-active .skill-node-label,
-    .skill-node:hover .skill-node-label {
-      fill: var(--text-primary);
-    }
-
     .skill-node:focus-visible {
       outline: none;
     }
 
-    /* Skill Inspector Panel (Liquid Glass contrast over Obsidian Constellation) */
+    /* Skill Inspector Window (Floating Liquid Glass) */
     .skill-inspector {
       border-radius: var(--radius-md);
       border: 1px solid var(--glass-border-hover);
-      background-color: rgba(18, 11, 32, 0.78);
-      background-image: linear-gradient(155deg, rgba(56, 32, 91, 0.34) 0%, rgba(18, 11, 32, 0.86) 56%);
-      backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(135%);
-      -webkit-backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(135%);
-      padding: 26px;
+      background-color: rgba(18, 11, 32, 0.8);
+      background-image: linear-gradient(155deg, rgba(56, 32, 91, 0.36) 0%, rgba(18, 11, 32, 0.88) 56%);
+      backdrop-filter: blur(calc(20px * var(--fx-glass))) saturate(135%);
+      -webkit-backdrop-filter: blur(calc(20px * var(--fx-glass))) saturate(135%);
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       box-shadow: var(--glass-shadow);
+    }
+
+    .inspector-meta-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
     }
 
     .inspector-kicker {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
       color: var(--accent-secondary);
     }
 
     .inspector-title {
-      margin: 8px 0 6px;
+      margin: 10px 0 8px;
       font-family: var(--font-display);
-      font-size: 1.75rem;
+      font-size: clamp(1.5rem, 2.2vw, 1.85rem);
       font-weight: 600;
       letter-spacing: -0.025em;
       color: var(--text-primary);
     }
 
+    .inspector-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
     .inspector-group-tag {
       display: inline-block;
       padding: 3px 9px;
+      border-radius: 5px;
       border: 1px solid var(--border-strong);
-      background: rgba(118, 43, 255, 0.14);
+      background: rgba(118, 43, 255, 0.16);
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
       color: var(--text-primary);
     }
 
-    .inspector-desc {
-      margin: 16px 0 0;
+    .inspector-role-tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.65);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       color: var(--text-secondary);
-      font-size: 0.96rem;
-      line-height: 1.68;
     }
 
-    .inspector-related {
-      padding-top: 16px;
+    .inspector-desc {
+      margin: 14px 0 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .inspector-section {
+      padding-top: 14px;
       border-top: 1px solid var(--border);
     }
 
     .inspector-sublabel {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       font-family: var(--font-mono);
       font-size: 0.69rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: var(--text-muted);
+    }
+
+    .inspector-work-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .inspector-work-empty {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     .related-chips {
@@ -2094,6 +2276,7 @@
     .related-chip {
       min-height: 30px;
       padding: 4px 10px;
+      border-radius: 5px;
       border: 1px solid var(--border);
       background: var(--bg-secondary);
       font-family: var(--font-mono);
@@ -2108,58 +2291,265 @@
     }
 
     .inspector-links {
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
+      gap: 8px 16px;
       font-family: var(--font-mono);
       font-size: 0.78rem;
     }
 
-    /* Mobile Fallback Skill List */
-    .skills-mobile-grid {
+    /* Mobile Compact 3D Crystal Artifact Bar (<= 820px) */
+    .mobile-artifact-strip {
       display: none;
-      margin-top: 18px;
-      border-top: 1px solid var(--border-strong);
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: radial-gradient(circle at 85% 50%, rgba(118, 43, 255, 0.2), transparent 65%), var(--bg-elevated);
+      box-shadow: var(--shadow-obsidian);
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
 
-    .skill-mobile-row {
-      padding: 16px 0;
+    .mobile-artifact-meta {
+      min-width: 0;
+    }
+
+    .mobile-artifact-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .mobile-artifact-sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-secondary);
+      margin-top: 2px;
+    }
+
+    .mobile-artifact-svg {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+
+    /* Complete Structured 7-Category Inventory Archive Grid */
+    .tech-archive-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px 18px;
+      margin-top: 28px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
 
-    .skill-mobile-row[hidden] {
-      display: none;
-    }
-
-    .skill-mobile-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-
-    .skill-mobile-name {
+    .tech-archive-title {
+      margin: 0;
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-primary);
     }
 
-    .skill-mobile-domain {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-secondary);
+    .tech-archive-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .skill-mobile-desc {
-      margin: 0 0 8px;
-      font-size: 0.92rem;
+    .tech-cat-card {
+      grid-column: span 6;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: linear-gradient(155deg, rgba(23, 13, 41, 0.52) 0%, #120B20 65%, #080610 100%);
+      box-shadow: var(--shadow-obsidian);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .tech-cat-card[hidden] {
+      display: none;
+    }
+
+    .tech-cat-card.is-prominent {
+      grid-column: span 12;
+      border-color: var(--border-strong);
+      background:
+        radial-gradient(circle at 88% 22%, rgba(118, 43, 255, 0.16), transparent 55%),
+        linear-gradient(155deg, rgba(56, 32, 91, 0.28) 0%, #120B20 58%, #080610 100%);
+    }
+
+    .tech-cat-card.is-focused {
+      border-color: var(--border-glow);
+      box-shadow:
+        0 24px 52px -18px rgba(8, 6, 16, 0.96),
+        0 0 28px -12px rgba(118, 43, 255, 0.36),
+        inset 0 1px 0 rgba(228, 210, 255, 0.2);
+    }
+
+    .tech-cat-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tech-cat-num {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      letter-spacing: 0.06em;
+      color: var(--accent-secondary);
+      margin-bottom: 4px;
+    }
+
+    .tech-cat-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.16rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+    }
+
+    .tech-cat-motif {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.72);
+      display: grid;
+      place-items: center;
+    }
+
+    .tech-cat-note {
+      margin: 0;
+      font-size: 0.87rem;
+      line-height: 1.55;
       color: var(--text-secondary);
+    }
+
+    .tech-subgroup-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin: 2px 0 -6px;
+    }
+
+    .tech-chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.76);
+      font-family: var(--font-body);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: left;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, transform 0.2s var(--ease-expo);
+    }
+
+    .tech-chip:hover {
+      border-color: var(--accent-secondary);
+      background: rgba(56, 32, 91, 0.56);
+      transform: translateY(-1px);
+    }
+
+    .tech-chip.is-featured {
+      border-color: var(--border-strong);
+      background: linear-gradient(145deg, rgba(56, 32, 91, 0.45) 0%, rgba(18, 11, 32, 0.92) 100%);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.16);
+    }
+
+    .tech-chip-crystal {
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg);
+      background: var(--accent-muted);
+      flex-shrink: 0;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tech-chip.is-featured .tech-chip-crystal {
+      background: var(--accent-secondary);
+      box-shadow: 0 0 8px rgba(181, 107, 255, 0.75);
+    }
+
+    /* Conceptual / non-logo treatment for CS Foundations & Web Foundations */
+    .tech-chip.is-concept {
+      border-style: dashed;
+      background: rgba(8, 6, 16, 0.52);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .tech-chip.is-web-ref {
+      border-color: rgba(181, 107, 255, 0.24);
+      background: rgba(23, 13, 41, 0.42);
+    }
+
+    .tech-chip-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-secondary);
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid rgba(181, 107, 255, 0.26);
+      background: rgba(18, 11, 32, 0.8);
+    }
+
+    .tech-chip.is-active {
+      border-color: var(--accent-secondary);
+      border-style: solid;
+      background: rgba(118, 43, 255, 0.34);
+      box-shadow: 0 0 18px -4px rgba(118, 43, 255, 0.62), inset 0 1px 0 rgba(228, 210, 255, 0.28);
+    }
+
+    .tech-chip.is-search-match {
+      border-color: var(--text-primary);
+    }
+
+    .tech-chip.is-dimmed {
+      opacity: 0.3;
+    }
+
+    .tech-empty-state {
+      grid-column: 1 / -1;
+      padding: 28px 20px;
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border-strong);
+      background: rgba(18, 11, 32, 0.65);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .tech-empty-state[hidden] {
+      display: none;
     }
 
     /* ==========================================================================
@@ -3565,14 +3955,24 @@
       }
     }
 
+    @media (max-width: 960px) {
+      .tech-cat-card {
+        grid-column: span 12;
+      }
+    }
+
     @media (max-width: 820px) {
-      .constellation-layout,
+      .constellation-stage,
       #skillHint {
         display: none;
       }
 
-      .skills-mobile-grid {
-        display: block;
+      .constellation-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .mobile-artifact-strip {
+        display: flex;
       }
     }
 
@@ -4123,66 +4523,126 @@
       </div>
     </section>
 
-    <!-- 02 / Skills Constellation — Crystalline Neural Network -->
+    <!-- 02 / Skills & Technologies Archive — Obsidian RTX -->
     <section id="expertise" class="section">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-label-col">
-            <span class="eyebrow"><span class="eyebrow-num">02</span> / EXPERTISE</span>
+            <span class="eyebrow"><span class="eyebrow-num">02</span> / SKILLS &amp; TECHNOLOGIES</span>
+            <div class="expertise-status-row">
+              <span class="tech-status-pill">
+                <span class="availability-dot" aria-hidden="true"></span>
+                <span>TECH STACK // EXPLORING &amp; BUILDING</span>
+              </span>
+            </div>
           </div>
           <div class="section-heading-col">
-            <h2 class="section-title" data-cursor="text">Tools I work with.</h2>
+            <h2 class="section-title" data-cursor="text">The technologies behind my work.</h2>
             <p class="section-subtitle" data-cursor="text">
-              A crystalline neural network mapping technologies to real repositories and open-source pull requests. Hover, click, or use arrow keys on nodes to trace connected tools.
+              A growing toolkit across software engineering, artificial intelligence, interactive experiences, and systems development.
             </p>
           </div>
         </div>
 
-        <div class="constellation-controls reveal">
-          <div class="filter-group" role="group" aria-label="Filter technologies by domain">
-            <button type="button" class="filter-btn is-active" data-skill-filter="all" aria-pressed="true">All (09)</button>
-            <button type="button" class="filter-btn" data-skill-filter="programming" aria-pressed="false">Programming</button>
-            <button type="button" class="filter-btn" data-skill-filter="frontend" aria-pressed="false">Frontend</button>
-            <button type="button" class="filter-btn" data-skill-filter="backend" aria-pressed="false">Backend</button>
-            <button type="button" class="filter-btn" data-skill-filter="ai" aria-pressed="false">AI / ML</button>
-            <button type="button" class="filter-btn" data-skill-filter="tools" aria-pressed="false">Developer Tools</button>
+        <!-- Floating Liquid-Glass Category & Search Controls -->
+        <div class="skills-command-deck reveal">
+          <div class="skills-deck-top">
+            <div class="filter-group" role="tablist" aria-label="Filter technologies by category">
+              <button type="button" role="tab" class="filter-btn is-active" data-skill-filter="all" aria-selected="true">All Categories (07)</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="languages" aria-selected="false">01 Languages</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="frontend" aria-selected="false">02 Frontend</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="ai" aria-selected="false">03 AI, ML &amp; LLMs</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="backend" aria-selected="false">04 Python &amp; Backend</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="tools" aria-selected="false">05 DevTools &amp; QA</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="embedded" aria-selected="false">06 Embedded</button>
+              <button type="button" role="tab" class="filter-btn" data-skill-filter="foundations" aria-selected="false">07 CS Foundations</button>
+            </div>
+
+            <div class="tech-search-wrap">
+              <span class="tech-search-icon" aria-hidden="true">/</span>
+              <input
+                type="search"
+                class="tech-search-input"
+                id="techSearchInput"
+                placeholder="Search stack (Python, React)"
+                aria-label="Search technologies across all categories"
+                autocomplete="off"
+              />
+              <button type="button" class="tech-search-clear" id="techSearchClear" aria-label="Clear technology search" hidden>Esc</button>
+            </div>
           </div>
-          <span class="expertise-hint" id="skillHint">Click or hover a node to illuminate connections</span>
+
+          <div class="skills-deck-top">
+            <span class="expertise-hint" id="skillHint">Select any 3D crystal artifact or technology item below to inspect details and project links</span>
+            <span class="expertise-hint" id="techMatchCount">7 categories · Full inventory visible</span>
+          </div>
         </div>
 
+        <!-- Mobile Compact 3D Crystal Artifact Bar (<= 820px) -->
+        <div class="mobile-artifact-strip" id="mobileArtifactStrip">
+          <div class="mobile-artifact-meta">
+            <div class="inspector-kicker" id="mobileArtifactKicker">Category 01 · Obsidian Crystal</div>
+            <div class="mobile-artifact-title" id="mobileArtifactTitle">Python</div>
+            <div class="mobile-artifact-sub" id="mobileArtifactSub">Select any technology below to inspect</div>
+          </div>
+          <svg class="mobile-artifact-svg" id="mobileArtifactSvg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <polygon points="32,6 54,20 54,44 32,58 10,44 10,20" fill="#080610" stroke="#B56BFF" stroke-width="1.4" />
+            <polygon points="32,6 54,20 32,32 10,20" fill="rgba(56,32,91,0.75)" />
+            <polygon points="32,32 54,20 54,44 32,58" fill="rgba(23,13,41,0.85)" />
+            <polygon points="32,16 42,32 32,48 22,32" fill="#762BFF" fill-opacity="0.72" stroke="#E4D2FF" stroke-width="0.9" />
+            <circle cx="32" cy="32" r="3" fill="#E4D2FF" />
+          </svg>
+        </div>
+
+        <!-- Spatial Obsidian Observatory + Floating Liquid-Glass Inspector -->
         <div class="constellation-layout reveal">
-          <!-- Interactive SVG Crystalline Neural Network (Desktop & Tablet) -->
           <div class="constellation-stage obsidian-reflective" id="constellationStage">
-            <svg class="constellation-svg" id="constellationSvg" viewBox="0 0 720 440" role="region" aria-label="Interactive technology constellation">
+            <div class="stage-telemetry-bar">
+              <span>ARCHIVE VIEW // <strong id="stageCategoryTag">All 7 Domains</strong></span>
+              <span id="stageMotifLabel">Crystalline Artifacts · Click or Arrow Keys</span>
+            </div>
+            <svg class="constellation-svg" id="constellationSvg" viewBox="0 0 740 420" role="region" aria-label="Interactive 3D crystalline technology archive">
               <g id="constellationAmbient"></g>
+              <g id="constellationMotif" class="constellation-motif"></g>
               <g id="constellationEdges"></g>
               <g id="constellationPulses"></g>
               <g id="constellationNodes"></g>
             </svg>
           </div>
 
-          <!-- Skill Inspector Panel -->
           <aside class="skill-inspector obsidian-reflective" id="skillInspector" aria-live="polite">
             <div>
-              <span class="inspector-kicker">SELECTED CRYSTAL NODE</span>
+              <div class="inspector-meta-top">
+                <span class="inspector-kicker" id="inspectorKicker">Category 01 · Featured Artifact</span>
+              </div>
               <h3 class="inspector-title" id="inspectorTitle">Python</h3>
-              <span class="inspector-group-tag" id="inspectorGroup">Programming</span>
+              <div class="inspector-badges">
+                <span class="inspector-group-tag" id="inspectorGroup">Programming Languages</span>
+                <span class="inspector-role-tag" id="inspectorRole">Programming Language</span>
+              </div>
               <p class="inspector-desc" id="inspectorDesc">
-                AI integration, backend workflows, and automated security-scenario rubric tooling across Bug Slayer and PR #56.
+                Used across backend development, AI integration, automation, and repository-analysis workflows.
               </p>
             </div>
 
-            <div class="inspector-related">
-              <span class="inspector-sublabel">Connected Technologies</span>
-              <div class="related-chips" id="inspectorRelated"></div>
+            <div class="inspector-section">
+              <span class="inspector-sublabel">Associated Work &amp; Evidence</span>
+              <div class="inspector-work-list" id="inspectorLinks"></div>
             </div>
 
-            <div class="inspector-links" id="inspectorLinks"></div>
+            <div class="inspector-section">
+              <span class="inspector-sublabel">Related in Toolkit</span>
+              <div class="related-chips" id="inspectorRelated"></div>
+            </div>
           </aside>
         </div>
 
-        <!-- Clean Mobile Layout Alternative (<= 820px) -->
-        <div class="skills-mobile-grid" id="skillsMobileGrid"></div>
+        <!-- Complete Visible Structured 7-Category Inventory -->
+        <div class="tech-archive-head reveal">
+          <h3 class="tech-archive-title">Complete Technology Inventory</h3>
+          <span class="expertise-hint" id="techArchiveCount">Showing 7 / 7 categories</span>
+        </div>
+        <div class="tech-archive-grid reveal" id="techArchiveGrid"></div>
       </div>
     </section>
 
@@ -5863,229 +6323,866 @@
       }
 
       /* ----------------------------------------------------------------------
-         10. Skills Constellation — Crystalline Neural Network (Shared Scheduler)
+         10. Skills & Technologies Archive — Obsidian RTX (7 Categories + Search + 3D Artifacts)
          ---------------------------------------------------------------------- */
-      const skillsData = [
+      const skillCategories = [
         {
-          id: 'python',
-          name: 'Python',
-          group: 'programming',
-          groupLabel: 'Programming',
-          x: 170,
-          y: 120,
-          related: ['docker', 'git', 'playwright'],
-          desc: 'AI integration, backend workflows, and automated security-scenario rubric tooling across Bug Slayer and PR #56.',
-          links: [
-            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer' },
-            { label: 'PR #56', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56' }
-          ]
+          id: 'languages',
+          num: 'Category 01',
+          name: 'Programming Languages',
+          shortLabel: 'Programming Languages',
+          motifLabel: 'Syntax & Systems Foundation · Core Languages',
+          note: 'Core languages used for AI tooling, algorithms, systems foundations, and interactive web applications. HTML5 and CSS3 are listed separately below as web technologies rather than programming languages.',
+          artifactNote: 'Core Languages + Web Foundations',
+          motifSvg: `
+            <polygon points="370,48 640,210 370,372 100,210" stroke="rgba(181,107,255,0.14)" stroke-dasharray="4 6" fill="none"/>
+            <line x1="80" y1="210" x2="660" y2="210" stroke="rgba(181,107,255,0.1)" />
+            <line x1="370" y1="36" x2="370" y2="384" stroke="rgba(181,107,255,0.1)" />
+            <text x="58" y="404" fill="rgba(181,107,255,0.45)" font-family="JetBrains Mono,monospace" font-size="9">COMPILED &amp; INTERPRETED CORE</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.6" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`,
+          itemIds: ['python', 'cpp', 'javascript', 'c-lang', 'sql'],
+          webRefIds: ['html5', 'css3']
         },
         {
-          id: 'javascript',
-          name: 'JavaScript',
-          group: 'programming',
-          groupLabel: 'Programming',
-          x: 340,
-          y: 195,
-          related: ['html5', 'css3', 'transformers', 'threejs', 'playwright'],
-          desc: 'Browser inference, game lifecycle cleanup, asset fallback handling, state persistence, and 3D pipelines across PR #53, #54, #60 and web apps.',
-          links: [
-            { label: 'PR #53', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/53' },
-            { label: 'PR #54', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54' },
-            { label: 'PR #60', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60' }
-          ]
+          id: 'frontend',
+          num: 'Category 02',
+          name: 'Frontend & Interactive Development',
+          shortLabel: 'Frontend & Interactive',
+          motifLabel: '3D Interface & Layout Viewport',
+          note: 'Interactive web UI engineering spanning React component architecture, 3D WebGL scenes in Three.js, semantic markup, vector/canvas rendering, and responsive CSS layouts.',
+          motifSvg: `
+            <rect x="64" y="48" width="612" height="324" rx="10" stroke="rgba(181,107,255,0.16)" fill="rgba(18,11,32,0.22)" />
+            <line x1="64" y1="82" x2="676" y2="82" stroke="rgba(181,107,255,0.14)" />
+            <rect x="86" y="102" width="160" height="248" stroke="rgba(181,107,255,0.09)" stroke-dasharray="3 4" fill="none" />
+            <text x="84" y="70" fill="rgba(228,210,255,0.45)" font-family="JetBrains Mono,monospace" font-size="9">VIEWPORT LAYER · DOM / SVG / CANVAS / WEBGL</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="7" cy="6.5" r="0.8" fill="#E4D2FF"/></svg>`,
+          itemIds: ['react', 'threejs', 'html5', 'css3', 'javascript', 'dom-manipulation', 'svg', 'canvas', 'browser-apis', 'responsive-design', 'css-grid', 'flexbox']
         },
         {
-          id: 'html5',
-          name: 'HTML5',
-          group: 'frontend',
-          groupLabel: 'Frontend',
-          x: 520,
-          y: 112,
-          related: ['css3', 'javascript', 'playwright'],
-          desc: 'Semantic landmarks, skip-to-content keyboard accessibility, and safe DOM rendering via textContent in PR #51 and PR #58.',
-          links: [
-            { label: 'PR #51', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51' },
-            { label: 'PR #58', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58' }
-          ]
+          id: 'ai',
+          num: 'Category 03',
+          name: 'AI, Machine Learning & LLMs',
+          shortLabel: 'AI, ML & LLMs',
+          prominent: true,
+          motifLabel: 'Crystalline Model Core · Tokens, Embeddings & Inference',
+          note: 'Focused on generative AI API integrations, browser-side transformer inference, language-model probability analysis, embedding geometry, and deep learning foundations.',
+          motifSvg: `
+            <circle cx="370" cy="210" r="158" stroke="rgba(118,43,255,0.2)" stroke-dasharray="5 5" fill="none" />
+            <circle cx="370" cy="210" r="96" stroke="rgba(181,107,255,0.18)" fill="rgba(56,32,91,0.09)" />
+            <line x1="120" y1="115" x2="620" y2="305" stroke="rgba(181,107,255,0.1)" />
+            <line x1="120" y1="305" x2="620" y2="115" stroke="rgba(181,107,255,0.1)" />
+            <text x="58" y="388" fill="rgba(181,107,255,0.52)" font-family="JetBrains Mono,monospace" font-size="9">NEURAL CORE // TOKENIZATION -> LOGITS -> PERPLEXITY</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E4D2FF" stroke-width="1.6" aria-hidden="true"><polygon points="12 2 20 7 20 17 12 22 4 17 4 7"/><circle cx="12" cy="12" r="3" fill="#762BFF" stroke="#B56BFF"/></svg>`,
+          itemIds: ['gemini-api', 'gemma', 'huggingface', 'transformers', 'distilgpt2', 'tensorflow', 'pytorch', 'tokenization', 'embeddings', 'vector-representations', 'browser-inference', 'token-probabilities', 'perplexity']
         },
         {
-          id: 'css3',
-          name: 'CSS3',
-          group: 'frontend',
-          groupLabel: 'Frontend',
-          x: 575,
-          y: 235,
-          related: ['html5', 'javascript', 'playwright'],
-          desc: 'Responsive layouts, reduced-motion media support, keyboard focus styling, and automotive UI presentation across PR #52, #59, and Vanta.',
-          links: [
-            { label: 'PR #52', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52' },
-            { label: 'PR #59', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59' },
-            { label: 'Vanta Repo', url: 'https://github.com/Alok-888/Vanta' }
-          ]
+          id: 'backend',
+          num: 'Category 04',
+          name: 'Python Ecosystem, Data & Backend',
+          shortLabel: 'Python & Backend',
+          motifLabel: 'Service Architecture & Numerical Layers',
+          note: 'Python backend tooling, API design, REST integrations, and foundational array/data manipulation libraries.',
+          motifSvg: `
+            <rect x="92" y="44" width="160" height="328" rx="6" stroke="rgba(181,107,255,0.14)" fill="rgba(18,11,32,0.22)" />
+            <rect x="290" y="44" width="160" height="328" rx="6" stroke="rgba(181,107,255,0.18)" fill="rgba(18,11,32,0.26)" />
+            <rect x="488" y="44" width="160" height="328" rx="6" stroke="rgba(181,107,255,0.14)" fill="rgba(18,11,32,0.22)" />
+            <line x1="252" y1="210" x2="290" y2="210" stroke="rgba(228,210,255,0.25)" />
+            <line x1="450" y1="210" x2="488" y2="210" stroke="rgba(228,210,255,0.25)" />
+            <text x="92" y="404" fill="rgba(181,107,255,0.45)" font-family="JetBrains Mono,monospace" font-size="9">BACKEND PIPELINE // REST LAYER -> DATA PROCESSING</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r="1" fill="#E4D2FF"/><circle cx="8" cy="17" r="1" fill="#E4D2FF"/></svg>`,
+          itemIds: ['flask', 'fastapi', 'numpy', 'pandas', 'python-backend', 'rest-api', 'numerical-computing', 'data-manipulation']
         },
         {
-          id: 'docker',
-          name: 'Docker',
-          group: 'backend',
-          groupLabel: 'Backend',
-          x: 115,
-          y: 255,
-          related: ['python', 'git'],
-          desc: 'Controlled, isolated container execution environment for testing repository setup steps safely in Bug Slayer.',
-          links: [
-            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer' }
-          ]
+          id: 'tools',
+          num: 'Category 05',
+          name: 'Developer Tools, Infrastructure & Automation',
+          shortLabel: 'DevTools & Automation',
+          motifLabel: 'Container Sandbox · Browser QA · Version Control',
+          note: 'End-to-end engineering workflow tools spanning Git collaboration, sandboxed Docker execution, Playwright browser regression & accessibility automation, and CLI workflows.',
+          motifSvg: `
+            <rect x="76" y="54" width="588" height="312" stroke="rgba(181,107,255,0.14)" stroke-dasharray="6 4" fill="none" />
+            <line x1="76" y1="210" x2="664" y2="210" stroke="rgba(181,107,255,0.12)" />
+            <circle cx="148" cy="135" r="46" stroke="rgba(181,107,255,0.12)" fill="none" />
+            <circle cx="592" cy="275" r="46" stroke="rgba(181,107,255,0.12)" fill="none" />
+            <text x="76" y="404" fill="rgba(181,107,255,0.45)" font-family="JetBrains Mono,monospace" font-size="9">INFRA // SANDBOX + PLAYWRIGHT ISOLATED CONTEXTS</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.6" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
+          itemIds: ['git', 'github', 'docker', 'rich-cli', 'playwright', 'browser-automation', 'automated-testing', 'accessibility-testing', 'debugging', 'cli-workflows']
         },
         {
-          id: 'transformers',
-          name: 'Transformers.js',
-          group: 'ai',
-          groupLabel: 'AI / ML',
-          x: 245,
-          y: 330,
-          related: ['javascript', 'threejs'],
-          desc: 'Client-side DistilGPT-2 inference, token probability extraction, and negative log-likelihood perplexity calculation in Perplexity Explorer.',
-          links: [
-            { label: 'Perplexity Explorer Repo', url: 'https://github.com/Alok-888/perplexity-explorer' },
-            { label: 'Live Demo', url: 'https://perplexity-explorer-orpin.vercel.app/' }
-          ]
+          id: 'embedded',
+          num: 'Category 06',
+          name: 'Embedded Systems & Hardware',
+          shortLabel: 'Embedded & Hardware',
+          motifLabel: 'PCB Bus Motif · Microcontroller & GPIO',
+          note: 'Hardware prototyping experience working with microcontrollers, low-level C/C++, pin interfacing, and digital I/O signaling.',
+          motifSvg: `
+            <path d="M56 120 H220 L255 155 H485 L520 120 H684" stroke="rgba(181,107,255,0.2)" stroke-width="1.2" fill="none"/>
+            <path d="M56 300 H220 L255 265 H485 L520 300 H684" stroke="rgba(181,107,255,0.2)" stroke-width="1.2" fill="none"/>
+            <rect x="260" y="130" width="220" height="160" rx="6" stroke="rgba(228,210,255,0.22)" stroke-dasharray="3 3" fill="rgba(18,11,32,0.3)" />
+            <text x="56" y="388" fill="rgba(181,107,255,0.5)" font-family="JetBrains Mono,monospace" font-size="9">PCB // ESP32 + ARDUINO DIGITAL SIGNAL BUS</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.5" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="3" x2="9" y2="7"/><line x1="15" y1="3" x2="15" y2="7"/><line x1="9" y1="17" x2="9" y2="21"/><line x1="15" y1="17" x2="15" y2="21"/><line x1="3" y1="9" x2="7" y2="9"/><line x1="3" y1="15" x2="7" y2="15"/><line x1="17" y1="9" x2="21" y2="9"/><line x1="17" y1="15" x2="21" y2="15"/></svg>`,
+          itemIds: ['arduino', 'esp32', 'arduino-ide', 'gpio', 'digital-io', 'embedded-c']
         },
         {
-          id: 'threejs',
-          name: 'Three.js',
-          group: 'ai',
-          groupLabel: 'AI / ML',
-          x: 455,
-          y: 345,
-          related: ['javascript', 'transformers', 'css3'],
-          desc: 'Interactive 3D vector-space environment and semantic cluster coordinate visualisation in LLM Tokenizer & Vector Lab.',
-          links: [
-            { label: 'LLM Tokenizer Repo', url: 'https://github.com/Alok-888/LLM-TOKENIZER' },
-            { label: 'Live Demo', url: 'https://llm-tokenizer-three.vercel.app/' }
-          ]
-        },
-        {
-          id: 'playwright',
-          name: 'Playwright',
-          group: 'tools',
-          groupLabel: 'Developer Tools',
-          x: 345,
-          y: 78,
-          related: ['html5', 'css3', 'javascript', 'git', 'python'],
-          desc: 'Automated browser regression testing, responsive viewport checks, isolated context tests, and injection verification across PR #51–#60.',
-          links: [
-            { label: 'S-AI PRs #51–#60', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888' }
-          ]
-        },
-        {
-          id: 'git',
-          name: 'Git & GitHub',
-          group: 'tools',
-          groupLabel: 'Developer Tools',
-          x: 185,
-          y: 222,
-          related: ['python', 'docker', 'playwright'],
-          desc: 'Version control, repository inspection, and collaborative open-source pull request workflows across S-AI-Projects and personal builds.',
-          links: [
-            { label: 'S-AI PRs #51–#60', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888' }
-          ]
+          id: 'foundations',
+          num: 'Category 07',
+          name: 'Computer Science Foundations',
+          shortLabel: 'CS Foundations',
+          isConceptual: true,
+          motifLabel: 'Conceptual Knowledge Graph · Algorithms & Systems',
+          note: 'Theoretical and algorithmic principles guiding complexity analysis, clean software abstraction, and core systems comprehension.',
+          motifSvg: `
+            <polygon points="370,58 580,210 370,362 160,210" stroke="rgba(228,210,255,0.16)" stroke-dasharray="4 4" fill="none" />
+            <circle cx="370" cy="210" r="118" stroke="rgba(181,107,255,0.14)" fill="none" />
+            <text x="58" y="388" fill="rgba(228,210,255,0.48)" font-family="JetBrains Mono,monospace" font-size="9">CONCEPT GRAPH // ALGORITHMIC &amp; SYSTEMS THEORY</text>
+          `,
+          miniIcon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B56BFF" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><circle cx="6" cy="17" r="2.2"/><circle cx="18" cy="17" r="2.2"/><line x1="10.8" y1="7" x2="7" y2="15"/><line x1="13.2" y1="7" x2="17" y2="15"/></svg>`,
+          itemIds: ['dsa', 'oop', 'problem-solving', 'competitive-programming', 'os-fundamentals', 'networks-fundamentals']
         }
       ];
 
+      const categoryMap = Object.fromEntries(skillCategories.map((c) => [c.id, c]));
+
+      const skillsData = [
+        // 01 Programming Languages
+        {
+          id: 'python', name: 'Python', cat: 'languages', roleLabel: 'Programming Language', featured: true,
+          desc: 'Used across backend development, AI integration, automation, and repository-analysis workflows.',
+          related: ['fastapi', 'flask', 'gemini-api', 'docker', 'playwright'],
+          links: [
+            { label: 'Bug Slayer (GitHub Repo)', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'Inspect Bug Slayer', url: '#project-bug-slayer', external: false },
+            { label: 'S-AI PR #56 (Security Rubric)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/56', external: true }
+          ],
+          overviewPos: { x: 118, y: 76 },
+          catPos: { x: 135, y: 92 }
+        },
+        {
+          id: 'cpp', name: 'C++', cat: 'languages', roleLabel: 'Programming Language', featured: true,
+          desc: 'Primary language used for algorithmic problem solving, data structures, competitive programming, and embedded software fundamentals.',
+          related: ['dsa', 'competitive-programming', 'embedded-c', 'c-lang'],
+          links: [
+            { label: 'Competitive Programming Milestone', url: '#education', external: false },
+            { label: 'Codeforces (@Alok888)', url: 'https://codeforces.com/profile/Alok888', external: true },
+            { label: 'LeetCode (@alok-888)', url: 'https://leetcode.com/u/alok-888/', external: true }
+          ],
+          overviewPos: { x: 292, y: 72 },
+          catPos: { x: 310, y: 92 }
+        },
+        {
+          id: 'javascript', name: 'JavaScript', cat: 'languages', secondaryCat: 'frontend', roleLabel: 'Programming Language', featured: true,
+          desc: 'Powers interactive client-side logic across language-model playgrounds, 3D embedding visualisations, DOM state persistence, and responsive interfaces.',
+          related: ['react', 'threejs', 'transformers', 'dom-manipulation', 'playwright'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false },
+            { label: 'LLM Tokenizer & Vector Lab', url: '#project-tokenizer', external: false },
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false },
+            { label: 'S-AI PR #53 · #54 · #60', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888', external: true }
+          ],
+          overviewPos: { x: 308, y: 186 },
+          catPos: { x: 130, y: 228 }
+        },
+        {
+          id: 'c-lang', name: 'C', cat: 'languages', roleLabel: 'Programming Language', featured: false,
+          desc: 'Procedural programming language used for understanding memory fundamentals, pointers, and low-level systems concepts.',
+          related: ['cpp', 'embedded-c', 'os-fundamentals'],
+          links: [],
+          workNote: 'Academic & systems fundamentals exploration — not tied to a listed showcase repository.',
+          catPos: { x: 330, y: 245 }
+        },
+        {
+          id: 'sql', name: 'SQL', cat: 'languages', roleLabel: 'Query Language', featured: false,
+          desc: 'Structured query language for relational data retrieval, filtering, joins, and schema design fundamentals.',
+          related: ['python', 'pandas', 'data-manipulation'],
+          links: [],
+          workNote: 'Coursework & backend database exploration — no standalone project repository claimed.',
+          catPos: { x: 535, y: 255 }
+        },
+
+        // 02 Frontend & Interactive Development (HTML5/CSS3 also surfaced cleanly in Cat 01 as Web Technologies)
+        {
+          id: 'react', name: 'React', cat: 'frontend', roleLabel: 'Frontend Framework', featured: true,
+          desc: 'Component-driven frontend library for building declarative, stateful user interfaces.',
+          related: ['javascript', 'html5', 'css3', 'responsive-design'],
+          links: [],
+          workNote: 'Part of technical frontend toolkit — not tied to the listed vanilla HTML/CSS/JS portfolio showcases.',
+          overviewPos: { x: 452, y: 194 },
+          catPos: { x: 135, y: 122 }
+        },
+        {
+          id: 'threejs', name: 'Three.js', cat: 'frontend', roleLabel: '3D Graphics Library', featured: true,
+          desc: 'Used to create interactive 3D visualisation experiences, camera projection controls, and WebGL scenes.',
+          related: ['canvas', 'vector-representations', 'embeddings', 'javascript'],
+          links: [
+            { label: 'LLM Tokenizer & Vector Lab', url: '#project-tokenizer', external: false },
+            { label: 'LLM Tokenizer Live Demo', url: 'https://llm-tokenizer-three.vercel.app/', external: true },
+            { label: 'GitHub Repo', url: 'https://github.com/Alok-888/LLM-TOKENIZER', external: true }
+          ],
+          overviewPos: { x: 455, y: 304 },
+          catPos: { x: 315, y: 122 }
+        },
+        {
+          id: 'html5', name: 'HTML5', cat: 'frontend', secondaryCat: 'languages', roleLabel: 'Web Technology / Foundation', featured: false, isWebFoundation: true,
+          desc: 'Semantic document markup, accessible landmarks, ARIA roles, and keyboard skip-link architecture (web foundation, not a programming language).',
+          related: ['css3', 'accessibility-testing', 'dom-manipulation', 'javascript'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false },
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false },
+            { label: 'S-AI PR #51 (Skip-to-Content A11y)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51', external: true }
+          ],
+          catPos: { x: 490, y: 122 }
+        },
+        {
+          id: 'css3', name: 'CSS3', cat: 'frontend', secondaryCat: 'languages', roleLabel: 'Web Technology / Foundation', featured: false, isWebFoundation: true,
+          desc: 'Styling system covering custom properties, fluid responsive breakpoints, animations, reduced-motion support, and surface depth (web foundation, not a programming language).',
+          related: ['css-grid', 'flexbox', 'responsive-design', 'html5'],
+          links: [
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false },
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false },
+            { label: 'S-AI PR #52 · PR #59', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59', external: true }
+          ],
+          catPos: { x: 615, y: 122 }
+        },
+        {
+          id: 'dom-manipulation', name: 'DOM Manipulation', cat: 'frontend', roleLabel: 'Web Capability', featured: false,
+          desc: 'Safe UI state synchronization, event delegation, and XSS-safe node updates using textContent rather than unescaped HTML.',
+          related: ['javascript', 'html5', 'debugging'],
+          links: [
+            { label: 'S-AI PR #58 (DOM Safety)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/58', external: true },
+            { label: 'Perplexity Explorer UI', url: '#project-perplexity', external: false }
+          ],
+          catPos: { x: 295, y: 228 }
+        },
+        {
+          id: 'svg', name: 'SVG', cat: 'frontend', roleLabel: 'Vector Graphics', featured: false,
+          desc: 'Interactive vector schematics, data-flow diagrams, crystalline geometry, and scalable visual interfaces.',
+          related: ['canvas', 'css3', 'responsive-design'],
+          links: [
+            { label: 'Vanta & Visual Chambers', url: '#project-vanta', external: false }
+          ],
+          catPos: { x: 465, y: 228 }
+        },
+        {
+          id: 'canvas', name: 'Canvas', cat: 'frontend', roleLabel: '2D / 3D Rendering Surface', featured: false,
+          desc: 'Hardware-accelerated procedural particle/geometry rendering, 3D projections, and responsive canvas sizing.',
+          related: ['threejs', 'svg', 'browser-apis'],
+          links: [
+            { label: 'LLM Tokenizer 3D Stage', url: '#project-tokenizer', external: false },
+            { label: 'S-AI PR #59 (Canvas Tests)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59', external: true }
+          ],
+          catPos: { x: 605, y: 228 }
+        },
+        {
+          id: 'browser-apis', name: 'Browser APIs', cat: 'frontend', roleLabel: 'Web Platform APIs', featured: false,
+          desc: 'Web platform interfaces including localStorage persistence, IntersectionObserver, Intl formatting, and Clipboard access.',
+          related: ['javascript', 'dom-manipulation', 'browser-inference'],
+          links: [
+            { label: 'S-AI PR #60 (localStorage Checks)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/60', external: true }
+          ],
+          catPos: { x: 145, y: 328 }
+        },
+        {
+          id: 'responsive-design', name: 'Responsive Design', cat: 'frontend', roleLabel: 'Layout Discipline', featured: false,
+          desc: 'Fluid layout adaptation, overflow prevention, and touch ergonomics across narrow mobile screens, tablets, and wide desktops.',
+          related: ['css-grid', 'flexbox', 'css3'],
+          links: [
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false },
+            { label: 'S-AI PR #52 (Viewport QA)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/52', external: true }
+          ],
+          catPos: { x: 305, y: 328 }
+        },
+        {
+          id: 'css-grid', name: 'CSS Grid', cat: 'frontend', roleLabel: 'CSS Layout System', featured: false,
+          desc: 'Two-dimensional structural grids powering asymmetric project showcases and responsive multi-column interfaces.',
+          related: ['flexbox', 'responsive-design', 'css3'],
+          links: [
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false }
+          ],
+          catPos: { x: 465, y: 328 }
+        },
+        {
+          id: 'flexbox', name: 'Flexbox', cat: 'frontend', roleLabel: 'CSS Layout System', featured: false,
+          desc: 'One-dimensional flexible alignment for toolbars, action controls, token rows, and adaptive wrapping groups.',
+          related: ['css-grid', 'responsive-design', 'css3'],
+          links: [
+            { label: 'Vanta Web Experience', url: '#project-vanta', external: false }
+          ],
+          catPos: { x: 605, y: 328 }
+        },
+
+        // 03 AI, Machine Learning & LLMs
+        {
+          id: 'gemini-api', name: 'Gemini API', cat: 'ai', roleLabel: 'LLM Integration API', featured: true,
+          desc: 'Integrated into backend analysis workflows to interpret failing setup logs and propose repository fixes.',
+          related: ['gemma', 'python', 'rest-api'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'Inspect Bug Slayer', url: '#project-bug-slayer', external: false }
+          ],
+          overviewPos: { x: 468, y: 78 },
+          catPos: { x: 165, y: 112 }
+        },
+        {
+          id: 'gemma', name: 'Gemma', cat: 'ai', roleLabel: 'Open Weight Model', featured: true,
+          desc: 'Used inside Bug Slayer’s Healer workflow for repository failure reasoning and automated repair hypothesis generation.',
+          related: ['gemini-api', 'python', 'docker'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'Inspect Bug Slayer', url: '#project-bug-slayer', external: false }
+          ],
+          catPos: { x: 300, y: 112 }
+        },
+        {
+          id: 'huggingface', name: 'Hugging Face', cat: 'ai', roleLabel: 'ML Model Ecosystem', featured: false,
+          desc: 'Ecosystem for discovering open-weight transformer checkpoints, tokenizers, and WebML pipelines.',
+          related: ['transformers', 'distilgpt2', 'pytorch'],
+          links: [],
+          workNote: 'Ecosystem exploration for transformer checkpoints and WebML tooling — not tied to a single repo claim.',
+          catPos: { x: 440, y: 112 }
+        },
+        {
+          id: 'transformers', name: 'Transformers.js', cat: 'ai', roleLabel: 'Browser ML Runtime', featured: true,
+          desc: 'Client-side transformer execution in the browser enabling token probability inspection and perplexity calculation without external inference APIs.',
+          related: ['distilgpt2', 'browser-inference', 'token-probabilities', 'perplexity'],
+          links: [
+            { label: 'Perplexity Explorer Live', url: 'https://perplexity-explorer-orpin.vercel.app/', external: true },
+            { label: 'Perplexity Explorer Repo', url: 'https://github.com/Alok-888/perplexity-explorer', external: true },
+            { label: 'Inspect Project 02', url: '#project-perplexity', external: false }
+          ],
+          overviewPos: { x: 608, y: 184 },
+          catPos: { x: 580, y: 112 }
+        },
+        {
+          id: 'distilgpt2', name: 'DistilGPT-2', cat: 'ai', roleLabel: 'Language Model', featured: false,
+          desc: 'Compact autoregressive GPT-2 model run client-side in Perplexity Explorer to surface next-token probabilities.',
+          related: ['transformers', 'browser-inference', 'token-probabilities', 'perplexity'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false },
+            { label: 'Live Playground', url: 'https://perplexity-explorer-orpin.vercel.app/', external: true }
+          ],
+          catPos: { x: 135, y: 215 }
+        },
+        {
+          id: 'tensorflow', name: 'TensorFlow', cat: 'ai', roleLabel: 'ML Framework', featured: false,
+          desc: 'Machine learning library studied for neural network layers, training loops, and model evaluation concepts.',
+          related: ['pytorch', 'numpy', 'numerical-computing'],
+          links: [],
+          workNote: 'Coursework & ML study toolkit — not claimed inside current web projects.',
+          catPos: { x: 265, y: 215 }
+        },
+        {
+          id: 'pytorch', name: 'PyTorch', cat: 'ai', roleLabel: 'Deep Learning Framework', featured: true,
+          desc: 'Tensor computation and deep learning framework explored for model architecture design and autograd workflows.',
+          related: ['tensorflow', 'huggingface', 'numpy'],
+          links: [],
+          workNote: 'Coursework & AI/ML study toolkit — not claimed inside current web projects.',
+          catPos: { x: 395, y: 215 }
+        },
+        {
+          id: 'tokenization', name: 'Tokenization', cat: 'ai', roleLabel: 'LLM Pipeline Concept', featured: false,
+          desc: 'Splitting raw strings into subword/vocabulary tokens and integer IDs prior to embedding lookup.',
+          related: ['embeddings', 'vector-representations', 'token-probabilities'],
+          links: [
+            { label: 'LLM Tokenizer & Vector Lab', url: '#project-tokenizer', external: false },
+            { label: 'Live Demo', url: 'https://llm-tokenizer-three.vercel.app/', external: true }
+          ],
+          catPos: { x: 525, y: 215 }
+        },
+        {
+          id: 'embeddings', name: 'Embeddings', cat: 'ai', roleLabel: 'LLM Representation Concept', featured: false,
+          desc: 'Mapping discrete token IDs into continuous vector coordinates and positional encodings.',
+          related: ['tokenization', 'vector-representations', 'threejs'],
+          links: [
+            { label: 'LLM Tokenizer & Vector Lab', url: '#project-tokenizer', external: false }
+          ],
+          catPos: { x: 635, y: 215 }
+        },
+        {
+          id: 'vector-representations', name: 'Vector Representations', cat: 'ai', roleLabel: 'Geometric ML Concept', featured: false,
+          desc: 'Interactive exploration of semantic coordinate spaces, relative distances, and 3D vector projections.',
+          related: ['embeddings', 'tokenization', 'threejs'],
+          links: [
+            { label: 'LLM Tokenizer 3D Lab', url: '#project-tokenizer', external: false },
+            { label: 'GitHub Repo', url: 'https://github.com/Alok-888/LLM-TOKENIZER', external: true }
+          ],
+          catPos: { x: 165, y: 318 }
+        },
+        {
+          id: 'browser-inference', name: 'Browser-side Model Inference', cat: 'ai', roleLabel: 'WebML Workflow', featured: false,
+          desc: 'Executing transformer forward passes directly in the visitor’s browser without requiring backend GPU servers.',
+          related: ['transformers', 'distilgpt2', 'browser-apis'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false }
+          ],
+          catPos: { x: 330, y: 318 }
+        },
+        {
+          id: 'token-probabilities', name: 'Token Probabilities', cat: 'ai', roleLabel: 'Model Output Metric', featured: false,
+          desc: 'Inspecting softmax candidate token distributions across next-token predictions.',
+          related: ['perplexity', 'distilgpt2', 'transformers'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false }
+          ],
+          catPos: { x: 485, y: 318 }
+        },
+        {
+          id: 'perplexity', name: 'Perplexity', cat: 'ai', roleLabel: 'Evaluation Metric', featured: false,
+          desc: 'Computing language-model uncertainty across token sequences using negative log-likelihood.',
+          related: ['token-probabilities', 'distilgpt2', 'transformers'],
+          links: [
+            { label: 'Perplexity Explorer', url: '#project-perplexity', external: false },
+            { label: 'Live Playground', url: 'https://perplexity-explorer-orpin.vercel.app/', external: true }
+          ],
+          catPos: { x: 615, y: 318 }
+        },
+
+        // 04 Python Ecosystem, Data & Backend
+        {
+          id: 'flask', name: 'Flask', cat: 'backend', roleLabel: 'Python Web Framework', featured: false,
+          desc: 'Lightweight Python WSGI framework explored for HTTP routing and compact backend services.',
+          related: ['fastapi', 'python-backend', 'rest-api'],
+          links: [],
+          workNote: 'Part of Python backend toolkit exploration — not tied to a listed showcase project.',
+          catPos: { x: 150, y: 78 }
+        },
+        {
+          id: 'fastapi', name: 'FastAPI', cat: 'backend', roleLabel: 'Python API Framework', featured: true,
+          desc: 'Modern typed Python backend framework explored for REST endpoints and structured JSON payloads.',
+          related: ['flask', 'python-backend', 'rest-api', 'python'],
+          links: [],
+          workNote: 'Part of Python backend toolkit exploration — not tied to a listed showcase project.',
+          overviewPos: { x: 122, y: 304 },
+          catPos: { x: 370, y: 78 }
+        },
+        {
+          id: 'numpy', name: 'NumPy', cat: 'backend', roleLabel: 'Numerical Library', featured: false,
+          desc: 'Multi-dimensional array operations and vectorized numerical computation in Python.',
+          related: ['pandas', 'numerical-computing', 'pytorch'],
+          links: [],
+          workNote: 'Data & numerical computing toolkit exploration — no separate listed showcase claimed.',
+          catPos: { x: 590, y: 78 }
+        },
+        {
+          id: 'pandas', name: 'Pandas', cat: 'backend', roleLabel: 'Data Analysis Library', featured: false,
+          desc: 'DataFrame transformations, cleaning, and tabular exploration workflows in Python.',
+          related: ['numpy', 'data-manipulation', 'sql'],
+          links: [],
+          workNote: 'Data manipulation toolkit exploration — no separate listed showcase claimed.',
+          catPos: { x: 120, y: 190 }
+        },
+        {
+          id: 'python-backend', name: 'Python Backend Development', cat: 'backend', roleLabel: 'Backend Practice', featured: false,
+          desc: 'Connecting command parsing, sandbox execution, and AI analysis pipelines in Bug Slayer.',
+          related: ['python', 'rest-api', 'docker'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'Inspect Bug Slayer', url: '#project-bug-slayer', external: false }
+          ],
+          catPos: { x: 355, y: 190 }
+        },
+        {
+          id: 'rest-api', name: 'REST API Integration', cat: 'backend', roleLabel: 'Backend Pattern', featured: false,
+          desc: 'Integrating external AI APIs such as Gemini into Python workflows and handling structured responses.',
+          related: ['gemini-api', 'python-backend', 'fastapi'],
+          links: [
+            { label: 'Bug Slayer AI Workflow', url: '#project-bug-slayer', external: false }
+          ],
+          catPos: { x: 612, y: 190 }
+        },
+        {
+          id: 'numerical-computing', name: 'Numerical Computing', cat: 'backend', roleLabel: 'Computational Domain', featured: false,
+          desc: 'Matrix/vector calculations and probabilistic log-likelihood foundations supporting ML experiments.',
+          related: ['numpy', 'perplexity', 'vector-representations'],
+          links: [],
+          workNote: 'Foundational computing practice across Python & ML coursework.',
+          catPos: { x: 225, y: 302 }
+        },
+        {
+          id: 'data-manipulation', name: 'Data Manipulation', cat: 'backend', roleLabel: 'Data Workflow', featured: false,
+          desc: 'Structuring, filtering, and validating datasets or repository telemetry payloads safely.',
+          related: ['pandas', 'sql', 'python'],
+          links: [],
+          workNote: 'Applied during Python data study & structured rubric checking workflows.',
+          catPos: { x: 515, y: 302 }
+        },
+
+        // 05 Developer Tools, Infrastructure & Automation
+        {
+          id: 'git', name: 'Git', cat: 'tools', roleLabel: 'Version Control', featured: false,
+          desc: 'Branching, commit hygiene, diff auditing, and repository structure inspection.',
+          related: ['github', 'docker', 'cli-workflows'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'S-AI PRs #51–#60', url: '#open-source', external: false }
+          ],
+          catPos: { x: 145, y: 82 }
+        },
+        {
+          id: 'github', name: 'GitHub', cat: 'tools', roleLabel: 'Collaboration Platform', featured: false,
+          desc: 'Collaborative pull-request workflows, issue resolution, and repository maintenance across open-source contributions.',
+          related: ['git', 'playwright', 'automated-testing'],
+          links: [
+            { label: 'GitHub Profile (@Alok-888)', url: 'https://github.com/Alok-888', external: true },
+            { label: 'Open Source Ledger', url: '#open-source', external: false }
+          ],
+          catPos: { x: 285, y: 82 }
+        },
+        {
+          id: 'docker', name: 'Docker', cat: 'tools', roleLabel: 'Container Runtime', featured: true,
+          desc: 'Used as an isolated execution sandbox in Bug Slayer to test setup commands and proposed repairs safely.',
+          related: ['python', 'cli-workflows', 'gemma'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true },
+            { label: 'Inspect Bug Slayer', url: '#project-bug-slayer', external: false }
+          ],
+          overviewPos: { x: 285, y: 298 },
+          catPos: { x: 430, y: 82 }
+        },
+        {
+          id: 'rich-cli', name: 'Rich CLI', cat: 'tools', roleLabel: 'Python Terminal UI', featured: false,
+          desc: 'Terminal formatting and structured CLI output presentation inside Bug Slayer.',
+          related: ['python', 'cli-workflows', 'docker'],
+          links: [
+            { label: 'Bug Slayer Repo', url: 'https://github.com/Alok-888/Bug-slayer', external: true }
+          ],
+          catPos: { x: 575, y: 82 }
+        },
+        {
+          id: 'playwright', name: 'Playwright', cat: 'tools', roleLabel: 'Browser Automation & QA', featured: true,
+          desc: 'Used across open-source pull requests (#51–#60) for isolated browser testing, responsive layout checks, and accessibility regression suites.',
+          related: ['browser-automation', 'automated-testing', 'accessibility-testing', 'debugging'],
+          links: [
+            { label: 'Open Source Ledger (#51–#60)', url: '#open-source', external: false },
+            { label: 'Verify S-AI PRs on GitHub', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pulls?q=is%3Apr+author%3AAlok-888', external: true }
+          ],
+          overviewPos: { x: 614, y: 298 },
+          catPos: { x: 175, y: 196 }
+        },
+        {
+          id: 'browser-automation', name: 'Browser Automation', cat: 'tools', roleLabel: 'QA Capability', featured: false,
+          desc: 'Scripted headless navigation, multi-session isolation, and interactive DOM assertions in Chromium.',
+          related: ['playwright', 'automated-testing', 'accessibility-testing'],
+          links: [
+            { label: 'S-AI PR #55 (Isolated Contexts)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/55', external: true },
+            { label: 'Open Source Ledger', url: '#open-source', external: false }
+          ],
+          catPos: { x: 360, y: 196 }
+        },
+        {
+          id: 'automated-testing', name: 'Automated Testing', cat: 'tools', roleLabel: 'Software Quality Practice', featured: false,
+          desc: 'Deterministic verification of form state, localStorage persistence, broken image fallbacks, and injection immunity.',
+          related: ['playwright', 'accessibility-testing', 'debugging'],
+          links: [
+            { label: 'S-AI PR #53 · #56 · #60', url: '#open-source', external: false }
+          ],
+          catPos: { x: 555, y: 196 }
+        },
+        {
+          id: 'accessibility-testing', name: 'Accessibility Testing', cat: 'tools', roleLabel: 'A11y QA Practice', featured: false,
+          desc: 'Verifying keyboard tab progression, skip-to-content navigation, visible focus rings, and reduced-motion preferences.',
+          related: ['html5', 'playwright', 'responsive-design'],
+          links: [
+            { label: 'S-AI PR #51 (Keyboard Nav)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/51', external: true },
+            { label: 'S-AI PR #59 (Reduced Motion)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/59', external: true }
+          ],
+          catPos: { x: 180, y: 302 }
+        },
+        {
+          id: 'debugging', name: 'Debugging', cat: 'tools', roleLabel: 'Engineering Discipline', featured: false,
+          desc: 'Diagnosing null-array storage crashes, listener leaks, timer accumulation, and failing command traces.',
+          related: ['playwright', 'automated-testing', 'docker'],
+          links: [
+            { label: 'S-AI PR #54 (Lifecycle Cleanup)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/54', external: true },
+            { label: 'S-AI PR #57 (Null Parsing Fix)', url: 'https://github.com/S-AI-Projects/Web-Dev-For-Beginners/pull/57', external: true }
+          ],
+          catPos: { x: 370, y: 302 }
+        },
+        {
+          id: 'cli-workflows', name: 'Command-line Workflows', cat: 'tools', roleLabel: 'Developer Tooling', featured: false,
+          desc: 'Shell scripting, repository setup automation, containerized command runs, and Git CLI workflows.',
+          related: ['git', 'docker', 'rich-cli'],
+          links: [
+            { label: 'Bug Slayer CLI Engine', url: '#project-bug-slayer', external: false }
+          ],
+          catPos: { x: 560, y: 302 }
+        },
+
+        // 06 Embedded Systems & Hardware
+        {
+          id: 'arduino', name: 'Arduino', cat: 'embedded', roleLabel: 'Microcontroller Platform', featured: false,
+          desc: 'Rapid hardware prototyping with sensor inputs, actuators, and microcontroller timing loops.',
+          related: ['esp32', 'arduino-ide', 'gpio', 'embedded-c'],
+          links: [],
+          workNote: 'Hardware & microcontroller prototyping exposure — not tied to a web project showcase.',
+          catPos: { x: 205, y: 120 }
+        },
+        {
+          id: 'esp32', name: 'ESP32', cat: 'embedded', roleLabel: 'Wireless MCU Platform', featured: true,
+          desc: 'Dual-core microcontroller platform explored for hardware interfacing, GPIO signaling, and embedded prototyping.',
+          related: ['arduino', 'gpio', 'digital-io', 'embedded-c'],
+          links: [],
+          workNote: 'Hardware & microcontroller exploration — no external software showcase claimed.',
+          overviewPos: { x: 635, y: 72 },
+          catPos: { x: 370, y: 195 }
+        },
+        {
+          id: 'arduino-ide', name: 'Arduino IDE', cat: 'embedded', roleLabel: 'Embedded Toolchain', featured: false,
+          desc: 'Compiling, flashing, and debugging serial output sketches on Arduino and ESP32 development boards.',
+          related: ['arduino', 'esp32', 'embedded-c'],
+          links: [],
+          workNote: 'Embedded development workflow tool.',
+          catPos: { x: 535, y: 120 }
+        },
+        {
+          id: 'gpio', name: 'GPIO', cat: 'embedded', roleLabel: 'Hardware Interface', featured: false,
+          desc: 'General-Purpose Input/Output pin configuration for reading digital states and driving external hardware.',
+          related: ['digital-io', 'esp32', 'arduino'],
+          links: [],
+          workNote: 'Hardware pin-level prototyping experience.',
+          catPos: { x: 205, y: 292 }
+        },
+        {
+          id: 'digital-io', name: 'Digital Input / Output', cat: 'embedded', roleLabel: 'Signal Fundamentals', featured: false,
+          desc: 'Configuring HIGH/LOW voltage states, pull-up/down logic, and discrete sensor/LED circuit control.',
+          related: ['gpio', 'arduino', 'esp32'],
+          links: [],
+          workNote: 'Digital electronics & embedded prototyping foundation.',
+          catPos: { x: 370, y: 325 }
+        },
+        {
+          id: 'embedded-c', name: 'Embedded C/C++', cat: 'embedded', roleLabel: 'Firmware Programming', featured: false,
+          desc: 'Writing deterministic setup/loop firmware sketches using C/C++ primitives on constrained microcontrollers.',
+          related: ['cpp', 'c-lang', 'arduino', 'esp32'],
+          links: [],
+          workNote: 'Microcontroller firmware exploration.',
+          catPos: { x: 535, y: 292 }
+        },
+
+        // 07 Computer Science Foundations (Concepts)
+        {
+          id: 'dsa', name: 'Data Structures & Algorithms', cat: 'foundations', roleLabel: 'CS Concept / Foundation', featured: true, isConcept: true,
+          desc: 'Core problem-solving foundation covering arrays, graphs, trees, dynamic programming, recursion, and asymptotic complexity.',
+          related: ['problem-solving', 'competitive-programming', 'cpp'],
+          links: [
+            { label: 'Background & Milestones', url: '#education', external: false },
+            { label: 'Codeforces (@Alok888)', url: 'https://codeforces.com/profile/Alok888', external: true },
+            { label: 'LeetCode (@alok-888)', url: 'https://leetcode.com/u/alok-888/', external: true }
+          ],
+          overviewPos: { x: 128, y: 198 },
+          catPos: { x: 225, y: 118 }
+        },
+        {
+          id: 'oop', name: 'Object-Oriented Programming', cat: 'foundations', roleLabel: 'Software Paradigm', featured: false, isConcept: true,
+          desc: 'Designing maintainable software abstractions using encapsulation, inheritance, polymorphism, and clear interfaces.',
+          related: ['python', 'cpp', 'dsa'],
+          links: [],
+          workNote: 'Applied across C++ and Python coursework.',
+          catPos: { x: 515, y: 118 }
+        },
+        {
+          id: 'problem-solving', name: 'Problem Solving', cat: 'foundations', roleLabel: 'Core CS Discipline', featured: false, isConcept: true,
+          desc: 'Decomposing unfamiliar bugs, algorithmic constraints, and multi-step engineering challenges into testable cases.',
+          related: ['dsa', 'competitive-programming', 'debugging'],
+          links: [
+            { label: 'Competitive Programming', url: '#education', external: false }
+          ],
+          catPos: { x: 165, y: 235 }
+        },
+        {
+          id: 'competitive-programming', name: 'Competitive Programming', cat: 'foundations', roleLabel: 'Algorithmic Practice', featured: false, isConcept: true,
+          desc: 'Regular algorithmic problem solving and timed complexity practice across Codeforces and LeetCode.',
+          related: ['dsa', 'cpp', 'problem-solving'],
+          links: [
+            { label: 'Codeforces (@Alok888)', url: 'https://codeforces.com/profile/Alok888', external: true },
+            { label: 'LeetCode (@alok-888)', url: 'https://leetcode.com/u/alok-888/', external: true }
+          ],
+          catPos: { x: 370, y: 235 }
+        },
+        {
+          id: 'os-fundamentals', name: 'Operating Systems Fundamentals', cat: 'foundations', roleLabel: 'Systems Concept', featured: false, isConcept: true,
+          desc: 'Foundational knowledge of processes, threads, scheduling, memory management, and POSIX command environments.',
+          related: ['networks-fundamentals', 'c-lang', 'docker'],
+          links: [],
+          workNote: 'Core B.Tech Computer Science curriculum foundation.',
+          catPos: { x: 575, y: 235 }
+        },
+        {
+          id: 'networks-fundamentals', name: 'Computer Networks Fundamentals', cat: 'foundations', roleLabel: 'Systems Concept', featured: false, isConcept: true,
+          desc: 'Conceptual understanding of TCP/IP, HTTP request/response lifecycles, DNS, and client-server communication.',
+          related: ['os-fundamentals', 'rest-api', 'browser-apis'],
+          links: [],
+          workNote: 'Core B.Tech Computer Science & web systems foundation.',
+          catPos: { x: 370, y: 335 }
+        }
+      ];
+
+      const skillById = Object.fromEntries(skillsData.map((s) => [s.id, s]));
       const constellationAmbientEl = document.getElementById('constellationAmbient');
+      const constellationMotifEl = document.getElementById('constellationMotif');
       const constellationEdgesEl = document.getElementById('constellationEdges');
       const constellationPulsesEl = document.getElementById('constellationPulses');
       const constellationNodesEl = document.getElementById('constellationNodes');
+      const stageCategoryTag = document.getElementById('stageCategoryTag');
+      const stageMotifLabel = document.getElementById('stageMotifLabel');
+
+      const inspectorKicker = document.getElementById('inspectorKicker');
       const inspectorTitle = document.getElementById('inspectorTitle');
       const inspectorGroup = document.getElementById('inspectorGroup');
+      const inspectorRole = document.getElementById('inspectorRole');
       const inspectorDesc = document.getElementById('inspectorDesc');
       const inspectorRelated = document.getElementById('inspectorRelated');
       const inspectorLinks = document.getElementById('inspectorLinks');
-      const skillsMobileGrid = document.getElementById('skillsMobileGrid');
+
+      const mobileArtifactKicker = document.getElementById('mobileArtifactKicker');
+      const mobileArtifactTitle = document.getElementById('mobileArtifactTitle');
+      const mobileArtifactSub = document.getElementById('mobileArtifactSub');
+
+      const techSearchInput = document.getElementById('techSearchInput');
+      const techSearchClear = document.getElementById('techSearchClear');
+      const techMatchCount = document.getElementById('techMatchCount');
+      const techArchiveGrid = document.getElementById('techArchiveGrid');
+      const techArchiveCount = document.getElementById('techArchiveCount');
       const skillFilterButtons = Array.from(document.querySelectorAll('[data-skill-filter]'));
 
       let activeSkillId = 'python';
       let hoveredSkillId = null;
       let currentSkillFilter = 'all';
+      let currentSearchQuery = '';
 
-      const skillById = Object.fromEntries(skillsData.map((s) => [s.id, s]));
-      const edgePairs = [];
-      const seenPairs = new Set();
-
-      skillsData.forEach((s) => {
-        s.related.forEach((rId) => {
-          const key = [s.id, rId].sort().join('::');
-          if (!seenPairs.has(key) && skillById[rId]) {
-            seenPairs.add(key);
-            edgePairs.push([s.id, rId]);
-          }
-        });
-      });
+      const svgNS = 'http://www.w3.org/2000/svg';
+      let nodeElements = {};
+      let edgeElements = [];
+      let edgePulses = [];
+      let currentStageSkills = [];
+      const archiveChipRefs = [];
+      const archiveCardMap = {};
 
       function renderInspector(skill) {
         if (!skill) return;
+        const cat = categoryMap[skill.cat];
+        if (inspectorKicker) {
+          inspectorKicker.textContent = `${cat ? cat.num : 'Toolkit'}${skill.featured ? ' · Featured Crystal Artifact' : skill.isConcept ? ' · CS Concept' : ''}`;
+        }
         if (inspectorTitle) inspectorTitle.textContent = skill.name;
-        if (inspectorGroup) inspectorGroup.textContent = skill.groupLabel;
+        if (inspectorGroup) inspectorGroup.textContent = cat ? cat.name : '';
+        if (inspectorRole) inspectorRole.textContent = skill.roleLabel;
         if (inspectorDesc) inspectorDesc.textContent = skill.desc;
+
+        if (mobileArtifactKicker) mobileArtifactKicker.textContent = `${cat ? cat.num : 'Toolkit'} · ${skill.roleLabel}`;
+        if (mobileArtifactTitle) mobileArtifactTitle.textContent = skill.name;
+        if (mobileArtifactSub) mobileArtifactSub.textContent = skill.featured ? 'Featured Obsidian Crystal · Active' : `${cat ? cat.shortLabel : 'Inventory'} · Selected`;
+
+        if (inspectorLinks) {
+          inspectorLinks.innerHTML = '';
+          if (skill.links && skill.links.length) {
+            skill.links.forEach((item) => {
+              const link = document.createElement('a');
+              link.href = item.url;
+              if (item.external) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+              }
+              link.className = 'ed-link';
+              link.setAttribute('data-cursor', 'link');
+              link.innerHTML = `<span>${item.label}</span><span class="arrow" aria-hidden="true">${item.external ? '&#8599;' : '&#8594;'}</span>`;
+              inspectorLinks.appendChild(link);
+            });
+          } else {
+            const p = document.createElement('p');
+            p.className = 'inspector-work-empty';
+            p.textContent = skill.workNote || 'Included in the engineering toolkit — no specific project showcase claimed.';
+            inspectorLinks.appendChild(p);
+          }
+        }
 
         if (inspectorRelated) {
           inspectorRelated.innerHTML = '';
-          skill.related.forEach((relId) => {
+          (skill.related || []).forEach((relId) => {
             const rel = skillById[relId];
             if (!rel) return;
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'related-chip';
             btn.textContent = rel.name;
-            btn.addEventListener('click', () => {
-              activeSkillId = rel.id;
-              playCrystalTone(580);
-              updateConstellationState(rel.id);
-              renderInspector(rel);
-            });
+            btn.addEventListener('click', () => selectTechnology(rel.id, true));
             inspectorRelated.appendChild(btn);
-          });
-        }
-
-        if (inspectorLinks) {
-          inspectorLinks.innerHTML = '';
-          skill.links.forEach((item) => {
-            const link = document.createElement('a');
-            link.href = item.url;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            link.className = 'ed-link';
-            link.setAttribute('data-cursor', 'link');
-            link.innerHTML = `<span>${item.label}</span><span class="arrow" aria-hidden="true">&#8599;</span>`;
-            inspectorLinks.appendChild(link);
           });
         }
       }
 
-      const svgNS = 'http://www.w3.org/2000/svg';
-      const nodeElements = {};
-      const edgeElements = [];
-      const edgePulses = [];
+      function getStageItemsAndPositions() {
+        if (currentSkillFilter === 'all') {
+          const core = skillsData.filter((s) => s.overviewPos);
+          return core.map((s) => ({ skill: s, x: s.overviewPos.x, y: s.overviewPos.y }));
+        }
+        const cat = categoryMap[currentSkillFilter];
+        if (!cat) return [];
+        const ids = [...cat.itemIds, ...(cat.webRefIds || [])];
+        return ids
+          .map((id) => skillById[id])
+          .filter((s) => s && s.catPos)
+          .map((s) => ({ skill: s, x: s.catPos.x, y: s.catPos.y }));
+      }
 
-      function buildConstellation() {
+      function buildStageArtifacts() {
         if (!constellationEdgesEl || !constellationNodesEl) return;
 
-        // Subtle ambient crystalline micro-dots in background
-        if (constellationAmbientEl) {
-          for (let i = 0; i < 18; i++) {
+        if (constellationAmbientEl && !constellationAmbientEl.childElementCount) {
+          for (let i = 0; i < 20; i++) {
             const dot = document.createElementNS(svgNS, 'circle');
-            dot.setAttribute('cx', String((i * 97 + 42) % 690 + 15));
-            dot.setAttribute('cy', String((i * 131 + 30) % 400 + 20));
-            dot.setAttribute('r', i % 3 === 0 ? '1.5' : '0.9');
-            dot.setAttribute('fill', i % 2 === 0 ? 'rgba(181,107,255,0.28)' : 'rgba(228,210,255,0.2)');
+            dot.setAttribute('cx', String((i * 97 + 44) % 700 + 20));
+            dot.setAttribute('cy', String((i * 131 + 26) % 380 + 20));
+            dot.setAttribute('r', i % 3 === 0 ? '1.4' : '0.85');
+            dot.setAttribute('fill', i % 2 === 0 ? 'rgba(181,107,255,0.26)' : 'rgba(228,210,255,0.18)');
             constellationAmbientEl.appendChild(dot);
           }
         }
 
-        edgePairs.forEach(([aId, bId], idx) => {
-          const a = skillById[aId];
-          const b = skillById[bId];
+        const cat = categoryMap[currentSkillFilter];
+        if (stageCategoryTag) stageCategoryTag.textContent = cat ? `${cat.num} — ${cat.name}` : 'All 7 Categories (Featured Archive)';
+        if (stageMotifLabel) stageMotifLabel.textContent = cat ? cat.motifLabel : 'Spatial Crystal Artifacts · Click or Arrow Keys';
+
+        if (constellationMotifEl) {
+          constellationMotifEl.innerHTML = cat ? cat.motifSvg : `
+            <circle cx="370" cy="210" r="165" stroke="rgba(181,107,255,0.12)" stroke-dasharray="4 6" fill="none" />
+            <polygon points="370,56 530,210 370,364 210,210" stroke="rgba(118,43,255,0.14)" fill="rgba(56,32,91,0.05)" />
+            <text x="58" y="404" fill="rgba(181,107,255,0.44)" font-family="JetBrains Mono,monospace" font-size="9">SPATIAL OVERVIEW // FEATURED ARTIFACTS ACROSS 7 DOMAINS</text>
+          `;
+        }
+
+        constellationEdgesEl.innerHTML = '';
+        if (constellationPulsesEl) constellationPulsesEl.innerHTML = '';
+        constellationNodesEl.innerHTML = '';
+        nodeElements = {};
+        edgeElements = [];
+        edgePulses = [];
+
+        const stageEntries = getStageItemsAndPositions();
+        currentStageSkills = stageEntries.map((e) => e.skill);
+        const posMap = Object.fromEntries(stageEntries.map((e) => [e.skill.id, { x: e.x, y: e.y }]));
+
+        const seen = new Set();
+        const visibleEdges = [];
+        stageEntries.forEach(({ skill }) => {
+          (skill.related || []).forEach((rId) => {
+            if (!posMap[rId]) return;
+            const key = [skill.id, rId].sort().join('::');
+            if (!seen.has(key)) {
+              seen.add(key);
+              visibleEdges.push([skill.id, rId]);
+            }
+          });
+        });
+
+        visibleEdges.forEach(([aId, bId], idx) => {
+          const a = posMap[aId];
+          const b = posMap[bId];
           const line = document.createElementNS(svgNS, 'line');
           line.setAttribute('x1', a.x);
           line.setAttribute('y1', a.y);
@@ -6099,98 +7196,127 @@
 
           if (constellationPulsesEl) {
             const pulse = document.createElementNS(svgNS, 'circle');
-            pulse.setAttribute('r', '2.4');
+            pulse.setAttribute('r', '2.2');
             pulse.setAttribute('class', 'edge-pulse-dot');
             pulse.dataset.a = aId;
             pulse.dataset.b = bId;
-            pulse.dataset.offset = (idx * 0.23).toFixed(2);
+            pulse.dataset.offset = (idx * 0.21).toFixed(2);
             constellationPulsesEl.appendChild(pulse);
             edgePulses.push(pulse);
           }
         });
 
-        skillsData.forEach((skill, idx) => {
+        stageEntries.forEach(({ skill, x, y }, idx) => {
           const g = document.createElementNS(svgNS, 'g');
-          g.setAttribute('class', 'skill-node');
+          const cls = ['skill-node'];
+          if (skill.featured) cls.push('is-featured');
+          g.setAttribute('class', cls.join(' '));
           g.setAttribute('tabindex', '0');
           g.setAttribute('role', 'button');
-          g.setAttribute('aria-label', `${skill.name} (${skill.groupLabel})`);
+          g.setAttribute('aria-label', `${skill.name} — ${skill.roleLabel}`);
           g.setAttribute('data-cursor', 'node');
           g.dataset.skillId = skill.id;
-          g.dataset.group = skill.group;
-          g.dataset.baseX = skill.x;
-          g.dataset.baseY = skill.y;
-          g.dataset.curX = skill.x;
-          g.dataset.curY = skill.y;
-          g.dataset.phase = (idx * 0.85).toFixed(2);
-          g.setAttribute('transform', `translate(${skill.x}, ${skill.y})`);
+          g.dataset.cat = skill.cat;
+          g.dataset.baseX = x;
+          g.dataset.baseY = y;
+          g.dataset.curX = x;
+          g.dataset.curY = y;
+          g.dataset.phase = (idx * 0.72).toFixed(2);
+          g.setAttribute('transform', `translate(${x}, ${y})`);
 
-          // Crystalline faceted diamond node geometry
-          const facet = document.createElementNS(svgNS, 'polygon');
-          facet.setAttribute('points', '0,-28 24,-10 24,10 0,28 -24,10 -24,-10');
-          facet.setAttribute('class', 'skill-node-facet');
+          if (skill.isConcept) {
+            const hex = document.createElementNS(svgNS, 'polygon');
+            hex.setAttribute('points', '0,-20 20,0 0,20 -20,0');
+            hex.setAttribute('class', 'skill-node-facet');
+            hex.setAttribute('stroke-dasharray', '3 3');
 
-          const inner = document.createElementNS(svgNS, 'polygon');
-          inner.setAttribute('points', '0,-16 14,0 0,16 -14,0');
-          inner.setAttribute('class', 'skill-node-inner');
+            const inner = document.createElementNS(svgNS, 'rect');
+            inner.setAttribute('x', '-7');
+            inner.setAttribute('y', '-7');
+            inner.setAttribute('width', '14');
+            inner.setAttribute('height', '14');
+            inner.setAttribute('class', 'skill-node-inner');
 
-          const core = document.createElementNS(svgNS, 'circle');
-          core.setAttribute('r', '4');
-          core.setAttribute('class', 'skill-node-core');
+            const core = document.createElementNS(svgNS, 'circle');
+            core.setAttribute('r', '3');
+            core.setAttribute('class', 'skill-node-core');
 
+            g.appendChild(hex);
+            g.appendChild(inner);
+            g.appendChild(core);
+          } else {
+            // 3D Crystalline Faceted Prism (featured larger than supporting)
+            const rW = skill.featured ? 23 : 16;
+            const rH = skill.featured ? 26 : 19;
+            const facet = document.createElementNS(svgNS, 'polygon');
+            facet.setAttribute('points', `0,-${rH} ${rW},-${Math.round(rH * 0.36)} ${rW},${Math.round(rH * 0.36)} 0,${rH} -${rW},${Math.round(rH * 0.36)} -${rW},-${Math.round(rH * 0.36)}`);
+            facet.setAttribute('class', 'skill-node-facet');
+
+            const bevel = document.createElementNS(svgNS, 'polyline');
+            bevel.setAttribute('points', `-${rW},-${Math.round(rH * 0.36)} 0,0 ${rW},-${Math.round(rH * 0.36)} M0,0 0,${rH}`);
+            bevel.setAttribute('class', 'skill-node-bevel');
+
+            const iS = skill.featured ? 12 : 8;
+            const inner = document.createElementNS(svgNS, 'polygon');
+            inner.setAttribute('points', `0,-${iS} ${iS},0 0,${iS} -${iS},0`);
+            inner.setAttribute('class', 'skill-node-inner');
+
+            const core = document.createElementNS(svgNS, 'circle');
+            core.setAttribute('r', skill.featured ? '4' : '3');
+            core.setAttribute('class', 'skill-node-core');
+
+            g.appendChild(facet);
+            g.appendChild(bevel);
+            g.appendChild(inner);
+            g.appendChild(core);
+          }
+
+          const labelY = skill.featured ? 41 : 34;
           const label = document.createElementNS(svgNS, 'text');
-          label.setAttribute('y', '45');
+          label.setAttribute('y', String(labelY));
           label.setAttribute('class', 'skill-node-label');
           label.textContent = skill.name;
-
-          const domain = document.createElementNS(svgNS, 'text');
-          domain.setAttribute('y', '58');
-          domain.setAttribute('class', 'skill-node-domain');
-          domain.textContent = skill.groupLabel;
-
-          g.appendChild(facet);
-          g.appendChild(inner);
-          g.appendChild(core);
           g.appendChild(label);
-          g.appendChild(domain);
+
+          if (currentSkillFilter === 'all' || skill.isWebFoundation) {
+            const dom = document.createElementNS(svgNS, 'text');
+            dom.setAttribute('y', String(labelY + 13));
+            dom.setAttribute('class', 'skill-node-domain');
+            dom.textContent = skill.isWebFoundation ? 'Web Technology' : (categoryMap[skill.cat]?.shortLabel || skill.roleLabel);
+            g.appendChild(dom);
+          }
 
           g.addEventListener('pointerenter', () => {
             hoveredSkillId = skill.id;
-            updateConstellationState(skill.id);
+            updateArtifactHighlights(skill.id);
             renderInspector(skill);
           });
           g.addEventListener('pointerleave', () => {
             hoveredSkillId = null;
-            updateConstellationState(activeSkillId);
+            updateArtifactHighlights(activeSkillId);
             renderInspector(skillById[activeSkillId]);
           });
           g.addEventListener('click', () => {
-            activeSkillId = skill.id;
-            playCrystalTone(600);
-            updateConstellationState(skill.id);
-            renderInspector(skill);
+            selectTechnology(skill.id, false);
           });
           g.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault();
-              activeSkillId = skill.id;
-              playCrystalTone(600);
-              updateConstellationState(skill.id);
-              renderInspector(skill);
+              selectTechnology(skill.id, false);
             } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
               event.preventDefault();
-              const next = skillsData[(idx + 1) % skillsData.length];
-              activeSkillId = next.id;
-              updateConstellationState(next.id);
-              renderInspector(next);
-              nodeElements[next.id].focus();
+              const next = currentStageSkills[(idx + 1) % currentStageSkills.length];
+              if (next) {
+                selectTechnology(next.id, false);
+                if (nodeElements[next.id]) nodeElements[next.id].focus();
+              }
             } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
               event.preventDefault();
-              const prev = skillsData[(idx - 1 + skillsData.length) % skillsData.length];
-              activeSkillId = prev.id;
-              updateConstellationState(prev.id);
-              renderInspector(prev);
-              nodeElements[prev.id].focus();
+              const prev = currentStageSkills[(idx - 1 + currentStageSkills.length) % currentStageSkills.length];
+              if (prev) {
+                selectTechnology(prev.id, false);
+                if (nodeElements[prev.id]) nodeElements[prev.id].focus();
+              }
             }
           });
 
@@ -6198,51 +7324,32 @@
           nodeElements[skill.id] = g;
         });
 
-        /* Mobile Fallback List */
-        if (skillsMobileGrid) {
-          skillsData.forEach((skill) => {
-            const card = document.createElement('article');
-            card.className = 'skill-mobile-row';
-            card.dataset.group = skill.group;
-            const linksHtml = skill.links
-              .map((l) => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="ed-link">${l.label} <span class="arrow" aria-hidden="true">&#8599;</span></a>`)
-              .join(' &middot; ');
-            card.innerHTML = `
-              <div class="skill-mobile-head">
-                <span class="skill-mobile-name">${skill.name}</span>
-                <span class="skill-mobile-domain">${skill.groupLabel}</span>
-              </div>
-              <p class="skill-mobile-desc">${skill.desc}</p>
-              <div style="font-family:var(--font-mono);font-size:0.75rem;">${linksHtml}</div>
-            `;
-            skillsMobileGrid.appendChild(card);
-          });
-        }
+        updateArtifactHighlights(activeSkillId);
       }
 
-      function updateConstellationState(focusId) {
+      function updateArtifactHighlights(focusId) {
         const focusSkill = skillById[focusId];
         const relatedSet = new Set(focusSkill ? focusSkill.related : []);
+        const q = currentSearchQuery.trim().toLowerCase();
 
         Object.entries(nodeElements).forEach(([id, el]) => {
-          const skill = skillById[id];
-          const matchesFilter = currentSkillFilter === 'all' || skill.group === currentSkillFilter;
-          const isFocus = id === focusId;
+          const s = skillById[id];
+          const isFocus = id === focusId || id === activeSkillId;
           const isConn = relatedSet.has(id);
+          const qMatch = !q || s.name.toLowerCase().includes(q) || s.roleLabel.toLowerCase().includes(q);
 
-          el.classList.toggle('is-active', id === activeSkillId || isFocus);
+          el.classList.toggle('is-active', isFocus);
           el.classList.toggle('is-connected', isConn);
-          el.classList.toggle('is-dimmed-filter', !matchesFilter);
-          el.classList.toggle('is-dimmed', matchesFilter && currentSkillFilter === 'all' && !isFocus && !isConn);
+          el.classList.toggle('is-dimmed-filter', !!q && !qMatch);
+          el.classList.toggle('is-dimmed', (!q || qMatch) && !isFocus && !isConn);
         });
 
         edgeElements.forEach((line) => {
           const a = line.dataset.a;
           const b = line.dataset.b;
-          const connectedToFocus = a === focusId || b === focusId;
-          const groupMatch = currentSkillFilter === 'all' || skillById[a].group === currentSkillFilter || skillById[b].group === currentSkillFilter;
-          line.classList.toggle('is-highlighted', connectedToFocus);
-          line.classList.toggle('is-dimmed', !groupMatch || (!connectedToFocus && currentSkillFilter === 'all'));
+          const conn = a === focusId || b === focusId;
+          line.classList.toggle('is-highlighted', conn);
+          line.classList.toggle('is-dimmed', !conn);
         });
 
         edgePulses.forEach((pulse) => {
@@ -6250,36 +7357,270 @@
           const b = pulse.dataset.b;
           pulse.classList.toggle('is-active', a === focusId || b === focusId);
         });
+
+        archiveChipRefs.forEach(({ btn, skill }) => {
+          btn.classList.toggle('is-active', skill.id === activeSkillId);
+        });
+
+        Object.entries(archiveCardMap).forEach(([catId, cardEl]) => {
+          cardEl.classList.toggle('is-focused', currentSkillFilter === catId || (focusSkill && focusSkill.cat === catId));
+        });
       }
 
-      buildConstellation();
+      function selectTechnology(skillId, switchCategory = true) {
+        const skill = skillById[skillId];
+        if (!skill) return;
+        activeSkillId = skill.id;
+        playCrystalTone(600);
+
+        if (switchCategory && currentSkillFilter !== 'all' && currentSkillFilter !== skill.cat && currentSkillFilter !== skill.secondaryCat) {
+          setCategoryFilter(skill.cat, false);
+        } else if (switchCategory && currentSkillFilter === 'all' && !nodeElements[skill.id]) {
+          // If clicked from archive while in 'all' overview and item is a secondary crystal, keep overview or highlight cleanly in inspector & card
+        }
+
+        renderInspector(skill);
+        updateArtifactHighlights(skill.id);
+      }
+
+      function buildInventoryArchive() {
+        if (!techArchiveGrid) return;
+        techArchiveGrid.innerHTML = '';
+
+        skillCategories.forEach((cat) => {
+          const card = document.createElement('section');
+          card.className = `tech-cat-card${cat.prominent ? ' is-prominent' : ''}`;
+          card.dataset.catId = cat.id;
+
+          const head = document.createElement('div');
+          head.className = 'tech-cat-header';
+          head.innerHTML = `
+            <div>
+              <span class="tech-cat-num">${cat.num}</span>
+              <h4 class="tech-cat-name">${cat.name}</h4>
+            </div>
+            <div class="tech-cat-motif" aria-hidden="true">${cat.miniIcon}</div>
+          `;
+
+          const note = document.createElement('p');
+          note.className = 'tech-cat-note';
+          note.textContent = cat.note;
+
+          const grid = document.createElement('div');
+          grid.className = 'tech-chip-grid';
+
+          const appendChip = (id, asWebRef = false) => {
+            const skill = skillById[id];
+            if (!skill) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            const cls = ['tech-chip'];
+            if (skill.featured && !asWebRef) cls.push('is-featured');
+            if (skill.isConcept) cls.push('is-concept');
+            if (asWebRef) cls.push('is-web-ref');
+            btn.className = cls.join(' ');
+            btn.dataset.techId = skill.id;
+            btn.dataset.techName = skill.name.toLowerCase();
+
+            const gem = document.createElement('span');
+            gem.className = 'tech-chip-crystal';
+            gem.setAttribute('aria-hidden', 'true');
+            const label = document.createElement('span');
+            label.textContent = skill.name;
+            btn.appendChild(gem);
+            btn.appendChild(label);
+
+            if (asWebRef) {
+              const badge = document.createElement('span');
+              badge.className = 'tech-chip-tag';
+              badge.textContent = 'Web Tech';
+              btn.appendChild(badge);
+            } else if (skill.isConcept) {
+              const badge = document.createElement('span');
+              badge.className = 'tech-chip-tag';
+              badge.textContent = 'Concept';
+              btn.appendChild(badge);
+            }
+
+            btn.addEventListener('click', () => {
+              const targetCat = asWebRef ? 'frontend' : cat.id;
+              const hasSearch = !!currentSearchQuery.trim();
+              if ((hasSearch && currentSkillFilter !== targetCat) || (currentSkillFilter !== 'all' && currentSkillFilter !== targetCat) || (currentSkillFilter === 'all' && !nodeElements[skill.id])) {
+                setCategoryFilter(targetCat, false);
+              }
+              selectTechnology(skill.id, false);
+            });
+
+            archiveChipRefs.push({ btn, skill, catId: cat.id, asWebRef, labelEl: label });
+            return btn;
+          };
+
+          cat.itemIds.forEach((id) => {
+            const chip = appendChip(id, false);
+            if (chip) grid.appendChild(chip);
+          });
+
+          card.appendChild(head);
+          card.appendChild(note);
+          card.appendChild(grid);
+
+          if (cat.webRefIds && cat.webRefIds.length) {
+            const subLabel = document.createElement('div');
+            subLabel.className = 'tech-subgroup-label';
+            subLabel.textContent = 'Web technologies & foundations (markup / styling — not programming languages):';
+            const webGrid = document.createElement('div');
+            webGrid.className = 'tech-chip-grid';
+            cat.webRefIds.forEach((id) => {
+              const chip = appendChip(id, true);
+              if (chip) webGrid.appendChild(chip);
+            });
+            card.appendChild(subLabel);
+            card.appendChild(webGrid);
+          }
+
+          techArchiveGrid.appendChild(card);
+          archiveCardMap[cat.id] = card;
+        });
+
+        const emptyEl = document.createElement('div');
+        emptyEl.className = 'tech-empty-state';
+        emptyEl.id = 'techEmptyState';
+        emptyEl.hidden = true;
+        emptyEl.innerHTML = 'No technologies matched your search. <button type="button" class="filter-btn" id="techEmptyResetBtn" style="margin-left:8px;">Show All</button>';
+        techArchiveGrid.appendChild(emptyEl);
+
+        const emptyResetBtn = document.getElementById('techEmptyResetBtn');
+        if (emptyResetBtn) {
+          emptyResetBtn.addEventListener('click', () => {
+            if (techSearchInput) techSearchInput.value = '';
+            currentSearchQuery = '';
+            setCategoryFilter('all', true);
+            applyArchiveFilterAndSearch();
+          });
+        }
+      }
+
+      function applyArchiveFilterAndSearch(autoFocusMatch = false) {
+        const q = currentSearchQuery.trim().toLowerCase();
+        if (techSearchClear) techSearchClear.hidden = !q;
+
+        let visibleCatCount = 0;
+        let matchedChipCount = 0;
+        let firstMatchedSkillId = null;
+
+        skillCategories.forEach((cat) => {
+          const card = archiveCardMap[cat.id];
+          if (!card) return;
+          const matchesCat = q ? true : (currentSkillFilter === 'all' || currentSkillFilter === cat.id);
+          let catMatches = 0;
+
+          archiveChipRefs
+            .filter((ref) => ref.catId === cat.id)
+            .forEach(({ btn, skill }) => {
+              const hit = !q || skill.name.toLowerCase().includes(q) || skill.roleLabel.toLowerCase().includes(q) || cat.name.toLowerCase().includes(q);
+              btn.classList.toggle('is-search-match', !!q && hit);
+              btn.classList.toggle('is-dimmed', !!q && !hit);
+              if (hit && matchesCat) {
+                catMatches += 1;
+                matchedChipCount += 1;
+                if (!firstMatchedSkillId && q) firstMatchedSkillId = skill.id;
+              }
+            });
+
+          const showCard = matchesCat && (!q || catMatches > 0);
+          card.hidden = !showCard;
+          if (showCard) visibleCatCount += 1;
+        });
+
+        const emptyEl = document.getElementById('techEmptyState');
+        if (emptyEl) emptyEl.hidden = visibleCatCount > 0;
+
+        if (techMatchCount) {
+          techMatchCount.textContent = q
+            ? `${matchedChipCount} match${matchedChipCount === 1 ? '' : 'es'} across ${visibleCatCount} categor${visibleCatCount === 1 ? 'y' : 'ies'}`
+            : currentSkillFilter === 'all'
+              ? '7 categories · Full inventory visible'
+              : `${categoryMap[currentSkillFilter]?.num || ''} active · Searchable archive`;
+        }
+        if (techArchiveCount) {
+          techArchiveCount.textContent = `Showing ${visibleCatCount} / 7 categories`;
+        }
+
+        if (autoFocusMatch && q && firstMatchedSkillId) {
+          activeSkillId = firstMatchedSkillId;
+          renderInspector(skillById[firstMatchedSkillId]);
+        }
+        updateArtifactHighlights(activeSkillId);
+      }
+
+      function setCategoryFilter(filterId, focusFirst = true) {
+        currentSkillFilter = filterId || 'all';
+        skillFilterButtons.forEach((btn) => {
+          const active = btn.dataset.skillFilter === currentSkillFilter;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+
+        if (focusFirst && currentSkillFilter !== 'all') {
+          const cat = categoryMap[currentSkillFilter];
+          if (cat && cat.itemIds.length) {
+            activeSkillId = cat.itemIds[0];
+          }
+        } else if (focusFirst && currentSkillFilter === 'all') {
+          if (!skillById[activeSkillId]?.overviewPos) activeSkillId = 'python';
+        }
+
+        buildStageArtifacts();
+        renderInspector(skillById[activeSkillId]);
+        applyArchiveFilterAndSearch();
+      }
+
+      buildInventoryArchive();
+      buildStageArtifacts();
       renderInspector(skillById[activeSkillId]);
-      updateConstellationState(activeSkillId);
+      applyArchiveFilterAndSearch();
 
       skillFilterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-          currentSkillFilter = button.dataset.skillFilter || 'all';
           playCrystalTone(500);
-          skillFilterButtons.forEach((btn) => {
-            const active = btn === button;
-            btn.classList.toggle('is-active', active);
-            btn.setAttribute('aria-pressed', String(active));
-          });
-
-          const firstMatch = skillsData.find((s) => currentSkillFilter === 'all' || s.group === currentSkillFilter);
-          if (firstMatch) {
-            activeSkillId = firstMatch.id;
-            renderInspector(firstMatch);
+          if (currentSearchQuery) {
+            currentSearchQuery = '';
+            if (techSearchInput) techSearchInput.value = '';
           }
-          updateConstellationState(activeSkillId);
-
-          if (skillsMobileGrid) {
-            skillsMobileGrid.querySelectorAll('.skill-mobile-row').forEach((row) => {
-              row.hidden = !(currentSkillFilter === 'all' || row.dataset.group === currentSkillFilter);
-            });
-          }
+          setCategoryFilter(button.dataset.skillFilter || 'all', true);
         });
       });
+
+      if (techSearchInput) {
+        techSearchInput.addEventListener('input', () => {
+          currentSearchQuery = techSearchInput.value;
+          applyArchiveFilterAndSearch(true);
+        });
+        techSearchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && techSearchInput.value) {
+            e.stopPropagation();
+            techSearchInput.value = '';
+            currentSearchQuery = '';
+            applyArchiveFilterAndSearch();
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            const hit = archiveChipRefs.find((r) => r.btn.classList.contains('is-search-match'));
+            if (hit) {
+              setCategoryFilter(hit.catId, false);
+              selectTechnology(hit.skill.id, false);
+            }
+          }
+        });
+      }
+
+      if (techSearchClear && techSearchInput) {
+        techSearchClear.addEventListener('click', () => {
+          techSearchInput.value = '';
+          currentSearchQuery = '';
+          applyArchiveFilterAndSearch();
+          techSearchInput.focus();
+        });
+      }
 
       const constellationStage = document.getElementById('constellationStage');
       let constellationVisible = false;
@@ -6294,8 +7635,8 @@
               const bx = parseFloat(el.dataset.baseX);
               const by = parseFloat(el.dataset.baseY);
               const ph = parseFloat(el.dataset.phase);
-              const cx = bx + Math.sin(t * 0.7 + ph) * 3.5;
-              const cy = by + Math.cos(t * 0.6 + ph) * 3.5;
+              const cx = bx + Math.sin(t * 0.65 + ph) * 3.2;
+              const cy = by + Math.cos(t * 0.55 + ph) * 3.2;
               el.dataset.curX = cx.toFixed(1);
               el.dataset.curY = cy.toFixed(1);
               el.setAttribute('transform', `translate(${cx.toFixed(1)}, ${cy.toFixed(1)})`);
@@ -6322,7 +7663,7 @@
               const ay = parseFloat(na.dataset.curY);
               const bx = parseFloat(nb.dataset.curX);
               const by = parseFloat(nb.dataset.curY);
-              const prog = (t * 0.48 + parseFloat(pulse.dataset.offset)) % 1;
+              const prog = (t * 0.45 + parseFloat(pulse.dataset.offset)) % 1;
               pulse.setAttribute('cx', (ax + (bx - ax) * prog).toFixed(1));
               pulse.setAttribute('cy', (ay + (by - ay) * prog).toFixed(1));
             });
