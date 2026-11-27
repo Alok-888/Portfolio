@@ -79,22 +79,39 @@
       --accent-primary: var(--neon-violet);
       --accent-secondary: var(--electric-lavender);
       --accent-muted: rgba(181, 107, 255, 0.45);
+      --accent-glow: rgba(118, 43, 255, 0.42);
 
       --text-primary: var(--crystal-lavender);
-      --text-secondary: rgba(228, 210, 255, 0.8);
-      --text-muted: rgba(228, 210, 255, 0.58);
+      --text-secondary: rgba(228, 210, 255, 0.84);
+      --text-muted: rgba(228, 210, 255, 0.66);
 
       --border: rgba(181, 107, 255, 0.16);
       --border-strong: rgba(181, 107, 255, 0.34);
       --border-glow: rgba(181, 107, 255, 0.62);
 
       --grad-atmosphere: linear-gradient(180deg, #080610 0%, #170D29 100%);
+      --grad-obsidian-surface: linear-gradient(155deg, rgba(56, 32, 91, 0.24) 0%, #120B20 55%, #080610 100%);
       --grad-interactive: linear-gradient(135deg, #38205B 0%, #762BFF 100%);
       --grad-accent: linear-gradient(90deg, #762BFF 0%, #B56BFF 100%);
 
       --fx-ambient: 1;
+      --fx-glass: 1;
       --fx-motion: 1;
 
+      /* Liquid-Glass Surface Tokens */
+      --glass-bg: rgba(18, 11, 32, 0.68);
+      --glass-bg-strong: rgba(18, 11, 32, 0.84);
+      --glass-border: rgba(228, 210, 255, 0.14);
+      --glass-border-hover: rgba(181, 107, 255, 0.48);
+      --glass-highlight: rgba(228, 210, 255, 0.22);
+      --glass-blur: calc(18px * var(--fx-glass));
+      --glass-shadow:
+        0 24px 56px -18px rgba(8, 6, 16, 0.94),
+        0 0 32px -16px rgba(118, 43, 255, 0.34),
+        inset 0 1px 0 var(--glass-highlight),
+        inset 0 -1px 0 rgba(118, 43, 255, 0.12);
+
+      /* Elevation & Motion Tokens */
       --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       --font-body: 'Inter', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
@@ -102,9 +119,18 @@
       --max-w: 1320px;
       --gutter: clamp(20px, 4vw, 56px);
       --section-py: clamp(80px, 9vw, 132px);
-      --header-h: 72px;
+      --header-h: 76px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
 
+      --dur-fast: 180ms;
+      --dur-med: 320ms;
+      --dur-slow: 560ms;
       --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --focus-ring: 0 0 0 2px #080610, 0 0 0 4px #B56BFF;
+
       --shadow-obsidian:
         0 26px 56px -20px rgba(8, 6, 16, 0.96),
         0 0 0 1px rgba(56, 32, 91, 0.72),
@@ -184,6 +210,42 @@
       display: none !important;
     }
 
+    body.reduced-fx .liquid-glass,
+    body.reduced-fx .liquid-glass--strong,
+    body.reduced-fx .site-header-dock,
+    body.reduced-fx .fx-panel,
+    body.reduced-fx .cmd-dialog,
+    body.reduced-fx .project-modal-dialog,
+    body.reduced-fx .terminal-drawer {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: #120B20 !important;
+    }
+
+    /* Selective Liquid Glass Surface Class */
+    .liquid-glass {
+      background-color: #120B20;
+      background-image: linear-gradient(155deg, rgba(228, 210, 255, 0.055) 0%, rgba(56, 32, 91, 0.22) 38%, rgba(18, 11, 32, 0.9) 100%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+
+    @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+      .liquid-glass {
+        background-color: var(--glass-bg);
+        background-image: linear-gradient(155deg, rgba(228, 210, 255, 0.07) 0%, rgba(56, 32, 91, 0.22) 40%, rgba(8, 6, 16, 0.56) 100%);
+        backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+        -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+      }
+
+      .liquid-glass--strong {
+        background-color: var(--glass-bg-strong);
+        background-image: linear-gradient(160deg, rgba(56, 32, 91, 0.36) 0%, rgba(18, 11, 32, 0.88) 46%, rgba(8, 6, 16, 0.92) 100%);
+        backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+        -webkit-backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      }
+    }
+
     ::selection {
       background: var(--accent-secondary);
       color: var(--bg-primary);
@@ -215,6 +277,7 @@
     [tabindex]:focus-visible {
       outline: 2px solid var(--accent-secondary);
       outline-offset: 3px;
+      box-shadow: var(--focus-ring);
     }
 
     .sr-only {
@@ -521,7 +584,7 @@
       line-height: 1.7;
     }
 
-    /* Floating Section Progress Rail (Wide Desktop) */
+    /* Floating Section Progress Rail (Wide Desktop — Liquid Glass) */
     .section-rail {
       position: fixed;
       right: 18px;
@@ -531,10 +594,13 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding: 10px 6px;
-      border: 1px solid var(--border);
-      background: rgba(18, 11, 32, 0.85);
-      box-shadow: var(--shadow-obsidian);
+      padding: 12px 7px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      background: rgba(18, 11, 32, 0.72);
+      backdrop-filter: blur(calc(14px * var(--fx-glass)));
+      -webkit-backdrop-filter: blur(calc(14px * var(--fx-glass)));
+      box-shadow: var(--glass-shadow);
     }
 
     .rail-dot {
@@ -564,10 +630,12 @@
 
     .rail-tooltip {
       position: absolute;
-      right: 24px;
-      padding: 3px 8px;
+      right: 26px;
+      padding: 4px 9px;
+      border-radius: 6px;
       border: 1px solid var(--border-strong);
-      background: var(--bg-elevated);
+      background: rgba(18, 11, 32, 0.92);
+      backdrop-filter: blur(12px);
       font-family: var(--font-mono);
       font-size: 0.66rem;
       letter-spacing: 0.08em;
@@ -663,6 +731,7 @@
       gap: 10px;
       min-height: 44px;
       padding: 12px 22px;
+      border-radius: var(--radius-sm);
       font-family: var(--font-mono);
       font-size: 0.78rem;
       font-weight: 500;
@@ -670,36 +739,40 @@
       text-transform: uppercase;
       border: 1px solid var(--border-strong);
       color: var(--text-primary);
-      background: linear-gradient(155deg, rgba(56, 32, 91, 0.28) 0%, var(--bg-elevated) 60%);
-      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.14);
+      background: linear-gradient(155deg, rgba(56, 32, 91, 0.32) 0%, var(--bg-elevated) 65%);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.16);
       transition:
         background-color 0.25s ease,
         border-color 0.25s ease,
         color 0.25s ease,
         box-shadow 0.28s ease,
-        transform 0.28s var(--ease-expo);
+        transform 0.24s var(--ease-expo);
       will-change: transform;
     }
 
     .btn:hover {
       border-color: var(--accent-secondary);
       background: var(--bg-hover);
-      box-shadow: 0 10px 28px -12px rgba(181, 107, 255, 0.42), inset 0 1px 0 rgba(228, 210, 255, 0.22);
+      box-shadow: 0 12px 28px -12px rgba(181, 107, 255, 0.44), inset 0 1px 0 rgba(228, 210, 255, 0.26);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.985);
     }
 
     .btn-primary {
-      background: var(--accent-primary);
+      background: var(--grad-interactive);
       border-color: var(--accent-primary);
       color: var(--text-primary);
       font-weight: 600;
-      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.3), 0 10px 26px -10px rgba(118, 43, 255, 0.56);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.32), 0 10px 26px -10px rgba(118, 43, 255, 0.56);
     }
 
     .btn-primary:hover {
-      background: var(--accent-secondary);
+      background: linear-gradient(135deg, #762BFF 0%, #B56BFF 100%);
       border-color: var(--text-primary);
       color: var(--bg-primary);
-      box-shadow: 0 14px 36px -8px rgba(181, 107, 255, 0.58), inset 0 1px 0 rgba(228, 210, 255, 0.45);
+      box-shadow: 0 14px 36px -8px rgba(181, 107, 255, 0.62), inset 0 1px 0 rgba(228, 210, 255, 0.5);
     }
 
     .btn .btn-arrow {
@@ -720,29 +793,49 @@
     }
 
     /* ==========================================================================
-       04. Header, Navigation, Control Trigger & Mobile Drawer
+       04. Floating Liquid-Glass Navigation Dock, Control Trigger & Mobile Drawer
        ========================================================================== */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 400;
-      height: var(--header-h);
-      background: rgba(8, 6, 16, 0.52);
-      border-bottom: 1px solid var(--border);
-      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      padding: 12px var(--gutter) 4px;
+      pointer-events: none;
     }
 
-    .site-header.is-scrolled {
-      background: rgba(8, 6, 16, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom-color: var(--border-strong);
-      box-shadow: 0 14px 34px -18px rgba(8, 6, 16, 0.95);
+    .site-header-dock {
+      pointer-events: auto;
+      width: 100%;
+      max-width: calc(var(--max-w) - var(--gutter) * 2 + 36px);
+      margin: 0 auto;
+      height: 58px;
+      padding: 0 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      background-color: rgba(18, 11, 32, 0.72);
+      background-image: linear-gradient(155deg, rgba(228, 210, 255, 0.065) 0%, rgba(56, 32, 91, 0.22) 38%, rgba(8, 6, 16, 0.62) 100%);
+      backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(140%);
+      -webkit-backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(140%);
+      box-shadow: var(--glass-shadow);
+      transition:
+        background-color var(--dur-med) var(--ease-smooth),
+        border-color var(--dur-med) var(--ease-smooth),
+        box-shadow var(--dur-med) var(--ease-smooth),
+        transform var(--dur-med) var(--ease-expo);
     }
 
-    .site-header.is-calibrated {
-      border-bottom-color: var(--accent-secondary);
-      box-shadow: 0 12px 32px -12px rgba(181, 107, 255, 0.42);
+    .site-header.is-scrolled .site-header-dock {
+      background-color: rgba(8, 6, 16, 0.84);
+      border-color: var(--glass-border-hover);
+      box-shadow:
+        0 20px 44px -16px rgba(8, 6, 16, 0.96),
+        0 0 28px -12px rgba(118, 43, 255, 0.42),
+        inset 0 1px 0 rgba(228, 210, 255, 0.24);
+    }
+
+    .site-header.is-calibrated .site-header-dock {
+      border-color: var(--accent-secondary);
+      box-shadow: 0 12px 34px -10px rgba(181, 107, 255, 0.55), inset 0 1px 0 rgba(228, 210, 255, 0.35);
     }
 
     .nav-bar {
@@ -750,19 +843,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 14px;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       min-width: 0;
     }
 
     .monogram {
       font-family: var(--font-display);
-      font-size: 1.38rem;
+      font-size: 1.32rem;
       font-weight: 700;
       letter-spacing: -0.04em;
       color: var(--text-primary);
@@ -782,17 +875,20 @@
 
     .monogram-echo {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent-secondary);
       opacity: 0;
-      transition: opacity 0.25s ease;
+      max-width: 0;
+      overflow: hidden;
+      transition: opacity 0.25s ease, max-width 0.32s var(--ease-expo);
       white-space: nowrap;
     }
 
     .monogram-echo.is-shown {
       opacity: 1;
+      max-width: 240px;
     }
 
     .availability-indicator {
@@ -800,14 +896,15 @@
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 0.71rem;
+      font-size: 0.69rem;
       letter-spacing: 0.04em;
       color: var(--text-secondary);
       white-space: nowrap;
-      padding: 5px 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(18, 11, 32, 0.86);
-      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.1);
+      background: rgba(18, 11, 32, 0.65);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.12);
     }
 
     .availability-dot {
@@ -834,51 +931,57 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: clamp(12px, 1.8vw, 22px);
+      gap: clamp(10px, 1.5vw, 18px);
     }
 
     .nav-list {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: clamp(12px, 1.6vw, 22px);
+      gap: 4px;
       list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 4px;
+      border-radius: 10px;
+      background: rgba(8, 6, 16, 0.36);
+      border: 1px solid rgba(228, 210, 255, 0.07);
+    }
+
+    .nav-active-pill {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 0;
+      border-radius: 7px;
+      background: rgba(118, 43, 255, 0.24);
+      border: 1px solid rgba(181, 107, 255, 0.48);
+      box-shadow: 0 0 18px -6px rgba(118, 43, 255, 0.65), inset 0 1px 0 rgba(228, 210, 255, 0.24);
+      pointer-events: none;
+      opacity: 0;
+      transition: transform 0.36s var(--ease-expo), width 0.36s var(--ease-expo), opacity 0.22s ease;
+    }
+
+    .nav-active-pill.is-ready {
+      opacity: 1;
     }
 
     .nav-link {
       position: relative;
+      z-index: 1;
       display: inline-block;
-      padding: 6px 0;
-      font-size: 0.86rem;
+      padding: 6px 11px;
+      border-radius: 7px;
+      font-size: 0.83rem;
       font-weight: 500;
       color: var(--text-secondary);
       transition: color 0.2s ease;
       white-space: nowrap;
     }
 
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--accent-secondary);
-      box-shadow: 0 0 8px rgba(181, 107, 255, 0.65);
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 0.28s var(--ease-expo);
-    }
-
     .nav-link:hover,
     .nav-link.is-active {
       color: var(--text-primary);
-    }
-
-    .nav-link.is-active::after,
-    .nav-link:hover::after {
-      transform: scaleX(1);
     }
 
     .header-actions {
@@ -892,18 +995,19 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
       min-height: 36px;
-      padding: 6px 11px;
+      padding: 5px 11px;
+      border-radius: 8px;
       border: 1px solid var(--border-strong);
-      background: var(--bg-elevated);
-      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.12);
+      background: rgba(18, 11, 32, 0.72);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.14);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.06em;
       color: var(--text-secondary);
       white-space: nowrap;
-      transition: border-color 0.22s ease, color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+      transition: border-color 0.22s ease, color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s var(--ease-expo);
     }
 
     .cmd-trigger:hover,
@@ -912,47 +1016,54 @@
       border-color: var(--accent-secondary);
       color: var(--text-primary);
       background: var(--bg-hover);
-      box-shadow: 0 0 16px -4px rgba(118, 43, 255, 0.45);
+      box-shadow: 0 0 18px -4px rgba(118, 43, 255, 0.5), inset 0 1px 0 rgba(228, 210, 255, 0.22);
+    }
+
+    .cmd-trigger:active,
+    .fx-trigger:active {
+      transform: scale(0.97);
     }
 
     .cmd-kbd {
       padding: 1px 5px;
+      border-radius: 4px;
       border: 1px solid var(--border);
-      background: var(--bg-primary);
+      background: rgba(8, 6, 16, 0.85);
       color: var(--accent-secondary);
-      font-size: 0.68rem;
+      font-size: 0.67rem;
     }
 
     .menu-toggle {
       display: none;
       align-items: center;
       gap: 8px;
-      min-height: 40px;
-      padding: 8px 14px;
+      min-height: 38px;
+      padding: 6px 13px;
+      border-radius: 8px;
       border: 1px solid var(--border-strong);
-      background: var(--bg-elevated);
+      background: rgba(18, 11, 32, 0.78);
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-primary);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.14);
     }
 
     .menu-toggle:hover {
       border-color: var(--accent-secondary);
     }
 
-    /* Mobile Navigation Drawer */
+    /* Mobile Navigation Drawer (Liquid Glass Sheet) */
     .mobile-drawer {
       position: fixed;
-      top: var(--header-h);
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
+      padding: calc(var(--header-h) + 18px) var(--gutter) 32px;
       z-index: 390;
-      background: rgba(8, 6, 16, 0.98);
-      border-top: 1px solid var(--border);
-      padding: 24px var(--gutter) 36px;
+      background-color: rgba(8, 6, 16, 0.9);
+      background-image: linear-gradient(180deg, rgba(23, 13, 41, 0.88) 0%, rgba(8, 6, 16, 0.96) 100%);
+      backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(135%);
+      -webkit-backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(135%);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -960,7 +1071,7 @@
       overflow-y: auto;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-8px);
+      transform: translateY(-10px);
       transition: opacity 0.28s var(--ease-expo), transform 0.28s var(--ease-expo), visibility 0.28s;
     }
 
@@ -985,19 +1096,20 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      padding: 16px 0;
+      padding: 15px 4px;
       min-height: 52px;
       font-family: var(--font-display);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text-primary);
       transition: color 0.2s ease, padding-left 0.25s var(--ease-expo);
     }
 
-    .mobile-nav-link:hover {
+    .mobile-nav-link:hover,
+    .mobile-nav-link.is-active {
       color: var(--accent-secondary);
-      padding-left: 8px;
+      padding-left: 10px;
     }
 
     .mobile-nav-num {
@@ -1022,26 +1134,37 @@
     }
 
     /* ==========================================================================
-       05. Obsidian Experience Control Panel Popover
+       05. Obsidian Experience Control Panel Popover (Liquid Glass)
        ========================================================================== */
     .fx-panel {
       position: fixed;
-      top: calc(var(--header-h) + 10px);
-      right: var(--gutter);
+      top: calc(var(--header-h) + 8px);
+      right: max(var(--gutter), calc((100vw - var(--max-w)) / 2));
       z-index: 480;
-      width: min(340px, calc(100vw - 32px));
-      border: 1px solid var(--border-strong);
-      background-color: #0e081a;
-      background-image: linear-gradient(160deg, rgba(56, 32, 91, 0.36) 0%, #120B20 42%, #080610 100%);
-      box-shadow: 0 28px 64px -16px rgba(8, 6, 16, 0.96), 0 0 36px -14px rgba(118, 43, 255, 0.42), inset 0 1px 0 rgba(228, 210, 255, 0.18);
+      width: min(352px, calc(100vw - 24px));
+      max-height: calc(100vh - var(--header-h) - 24px);
+      overflow-y: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border-hover);
+      background-color: rgba(18, 11, 32, 0.86);
+      background-image: linear-gradient(160deg, rgba(56, 32, 91, 0.42) 0%, rgba(18, 11, 32, 0.92) 48%, rgba(8, 6, 16, 0.95) 100%);
+      backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      -webkit-backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      box-shadow: var(--glass-shadow);
       padding: 18px;
       display: none;
       flex-direction: column;
-      gap: 14px;
+      gap: 13px;
     }
 
     .fx-panel.is-open {
       display: flex;
+      animation: glass-pop 0.24s var(--ease-expo) both;
+    }
+
+    @keyframes glass-pop {
+      from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .fx-panel-head {
@@ -1075,12 +1198,13 @@
     .fx-seg {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      gap: 5px;
     }
 
     .fx-opt {
       min-height: 32px;
       padding: 5px 8px;
+      border-radius: 6px;
       border: 1px solid var(--border);
       background: rgba(8, 6, 16, 0.65);
       font-family: var(--font-mono);
@@ -1089,10 +1213,16 @@
       transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     }
 
+    .fx-opt:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
     .fx-opt.is-active {
       border-color: var(--accent-secondary);
-      background: rgba(118, 43, 255, 0.28);
+      background: rgba(118, 43, 255, 0.3);
       color: var(--text-primary);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.22);
     }
 
     .fx-toggle-row {
@@ -1100,7 +1230,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding-top: 6px;
+      padding-top: 8px;
       border-top: 1px solid var(--border);
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -1111,6 +1241,7 @@
       min-width: 56px;
       min-height: 30px;
       padding: 4px 10px;
+      border-radius: 6px;
       border: 1px solid var(--border-strong);
       background: rgba(8, 6, 16, 0.7);
       font-family: var(--font-mono);
@@ -1126,6 +1257,7 @@
 
     .fx-sys-readout {
       padding: 10px;
+      border-radius: 6px;
       border: 1px solid var(--border);
       background: rgba(8, 6, 16, 0.72);
       font-family: var(--font-mono);
@@ -1361,10 +1493,11 @@
     /* Dynamic Currently Exploring Research Panel */
     .exploring-panel {
       margin: 24px 0 0;
-      padding: 14px 16px;
+      padding: 15px 17px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
-      background: linear-gradient(155deg, rgba(56, 32, 91, 0.24) 0%, rgba(18, 11, 32, 0.88) 70%);
-      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.12);
+      background: linear-gradient(155deg, rgba(56, 32, 91, 0.24) 0%, rgba(18, 11, 32, 0.9) 70%);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.14), 0 14px 30px -20px rgba(8, 6, 16, 0.9);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -1513,6 +1646,8 @@
     .hero-aside {
       display: flex;
       flex-direction: column;
+      border-radius: var(--radius-md);
+      overflow: hidden;
       border: 1px solid var(--border-strong);
       background: linear-gradient(142deg, rgba(56, 32, 91, 0.36) 0%, rgba(18, 11, 32, 0.96) 48%), #120B20;
       box-shadow: var(--shadow-obsidian);
@@ -1661,6 +1796,7 @@
     .about-dossier-col {
       grid-column: 8 / 13;
       min-width: 0;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
       border-top: 1px solid var(--border-strong);
       background: linear-gradient(155deg, rgba(56, 32, 91, 0.22) 0%, var(--bg-elevated) 60%);
@@ -1759,10 +1895,11 @@
 
     .constellation-stage {
       position: relative;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border-strong);
       background:
-        radial-gradient(circle at 50% 50%, rgba(118, 43, 255, 0.12), transparent 70%),
-        linear-gradient(135deg, rgba(181, 107, 255, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(118, 43, 255, 0.14), transparent 70%),
+        linear-gradient(135deg, rgba(181, 107, 255, 0.055) 0%, transparent 45%),
         var(--bg-elevated);
       box-shadow: var(--shadow-obsidian);
       overflow: hidden;
@@ -1788,7 +1925,7 @@
     }
 
     .constellation-edge.is-dimmed {
-      opacity: 0.12;
+      opacity: 0.14;
     }
 
     .edge-pulse-dot {
@@ -1808,7 +1945,11 @@
     }
 
     .skill-node.is-dimmed {
-      opacity: 0.42;
+      opacity: 0.56;
+    }
+
+    .skill-node.is-dimmed-filter {
+      opacity: 0.22;
     }
 
     .skill-node-facet {
@@ -1877,16 +2018,20 @@
       outline: none;
     }
 
-    /* Skill Inspector Panel */
+    /* Skill Inspector Panel (Liquid Glass contrast over Obsidian Constellation) */
     .skill-inspector {
-      border: 1px solid var(--border-strong);
-      background: linear-gradient(155deg, rgba(56, 32, 91, 0.26) 0%, var(--bg-elevated) 55%);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border-hover);
+      background-color: rgba(18, 11, 32, 0.78);
+      background-image: linear-gradient(155deg, rgba(56, 32, 91, 0.34) 0%, rgba(18, 11, 32, 0.86) 56%);
+      backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(135%);
+      -webkit-backdrop-filter: blur(calc(18px * var(--fx-glass))) saturate(135%);
       padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 20px;
-      box-shadow: var(--shadow-obsidian);
+      box-shadow: var(--glass-shadow);
     }
 
     .inspector-kicker {
@@ -2057,8 +2202,9 @@
 
     .project-frame {
       position: relative;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border-strong);
-      background: linear-gradient(135deg, rgba(181, 107, 255, 0.05) 0%, rgba(18, 11, 32, 0.98) 46%), #120B20;
+      background: linear-gradient(135deg, rgba(181, 107, 255, 0.055) 0%, rgba(18, 11, 32, 0.98) 46%), #120B20;
       overflow: hidden;
       box-shadow: var(--shadow-obsidian);
       transition:
@@ -2087,7 +2233,9 @@
       gap: 8px;
       padding: 11px 16px;
       border-bottom: 1px solid var(--border);
-      background: rgba(8, 6, 16, 0.72);
+      background: rgba(8, 6, 16, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.08em;
@@ -2104,6 +2252,7 @@
     .mini-tab {
       min-height: 28px;
       padding: 3px 10px;
+      border-radius: 5px;
       border: 1px solid var(--border);
       background: rgba(18, 11, 32, 0.85);
       font-family: var(--font-mono);
@@ -2111,7 +2260,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-secondary);
-      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .mini-tab:hover,
@@ -2119,6 +2268,7 @@
       border-color: var(--accent-secondary);
       background: rgba(118, 43, 255, 0.28);
       color: var(--text-primary);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.22);
     }
 
     .project-visual-stage {
@@ -2260,7 +2410,39 @@
       color: var(--text-primary);
     }
 
-    /* 3D Vector Stage HUD */
+    /* 3D Vector Stage Controls & Similarity HUD */
+    .vector-controls-bar {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      background: rgba(18, 11, 32, 0.76);
+      backdrop-filter: blur(calc(12px * var(--fx-glass)));
+      -webkit-backdrop-filter: blur(calc(12px * var(--fx-glass)));
+    }
+
+    .vector-token-btn {
+      min-height: 26px;
+      padding: 3px 9px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.72);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-secondary);
+      transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .vector-token-btn:hover,
+    .vector-token-btn.is-active {
+      border-color: var(--accent-secondary);
+      background: rgba(118, 43, 255, 0.28);
+      color: var(--text-primary);
+    }
+
     .vector-hud {
       position: absolute;
       left: 14px;
@@ -2405,12 +2587,25 @@
     .expand-panel-content {
       margin-top: 10px;
       padding: 14px 16px;
-      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
       border-left: 2px solid var(--accent-secondary);
-      background: var(--bg-elevated);
+      background: rgba(18, 11, 32, 0.76);
+      backdrop-filter: blur(calc(12px * var(--fx-glass)));
+      -webkit-backdrop-filter: blur(calc(12px * var(--fx-glass)));
       font-size: 0.89rem;
       line-height: 1.6;
       color: var(--text-secondary);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.12);
+    }
+
+    .project-expand-icon {
+      display: inline-block;
+      transition: transform 0.25s var(--ease-expo);
+    }
+
+    .project-expand-btn[aria-expanded="true"] .project-expand-icon {
+      transform: rotate(45deg);
     }
 
     .project-note {
@@ -2822,6 +3017,8 @@
     .contact-profiles {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-radius: var(--radius-md);
+      overflow: hidden;
       border: 1px solid var(--border-strong);
       background: linear-gradient(155deg, rgba(56, 32, 91, 0.2) 0%, var(--bg-elevated) 60%);
       box-shadow: var(--shadow-obsidian);
@@ -2928,15 +3125,15 @@
     }
 
     /* ==========================================================================
-       13. Command Palette, Project Explorer Modal & Developer Terminal
+       13. Command Palette, Project Explorer Modal & Developer Terminal (Liquid Glass)
        ========================================================================== */
     .modal-backdrop {
       position: fixed;
       inset: 0;
       z-index: 900;
-      background: rgba(8, 6, 16, 0.84);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(8, 6, 16, 0.78);
+      backdrop-filter: blur(calc(12px * var(--fx-glass)));
+      -webkit-backdrop-filter: blur(calc(12px * var(--fx-glass)));
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -2955,12 +3152,16 @@
     .cmd-dialog,
     .project-modal-dialog {
       width: 100%;
-      max-width: 620px;
-      border: 1px solid var(--border-strong);
-      background: linear-gradient(155deg, rgba(56, 32, 91, 0.34) 0%, #170D29 45%, #120B20 100%);
-      box-shadow: 0 32px 72px -18px rgba(8, 6, 16, 0.96), 0 0 44px -14px rgba(118, 43, 255, 0.45), inset 0 1px 0 rgba(228, 210, 255, 0.2);
+      max-width: 640px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border-hover);
+      background-color: rgba(18, 11, 32, 0.84);
+      background-image: linear-gradient(160deg, rgba(56, 32, 91, 0.44) 0%, rgba(23, 13, 41, 0.88) 46%, rgba(18, 11, 32, 0.94) 100%);
+      backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      -webkit-backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      box-shadow: var(--glass-shadow);
       transform: translateY(-10px) scale(0.98);
-      transition: transform 0.25s var(--ease-expo);
+      transition: transform 0.28s var(--ease-expo);
       overflow: hidden;
     }
 
@@ -2980,6 +3181,7 @@
       gap: 12px;
       padding: 16px 18px;
       border-bottom: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.35);
     }
 
     .cmd-prompt-icon {
@@ -2996,6 +3198,15 @@
       font-family: var(--font-body);
       font-size: 1rem;
       outline: none;
+    }
+
+    .cmd-input:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .cmd-input-wrap:focus-within {
+      border-bottom-color: var(--accent-secondary);
     }
 
     .cmd-input::placeholder {
@@ -3026,6 +3237,7 @@
       justify-content: space-between;
       gap: 14px;
       padding: 11px 12px;
+      border-radius: 8px;
       text-align: left;
       border: 1px solid transparent;
       border-left: 2px solid transparent;
@@ -3039,11 +3251,28 @@
       border-color: var(--border);
       border-left-color: var(--accent-secondary);
       color: var(--text-primary);
+      box-shadow: inset 0 1px 0 rgba(228, 210, 255, 0.12);
     }
 
     .cmd-item-title {
       font-weight: 500;
       color: var(--text-primary);
+    }
+
+    .cmd-hl {
+      background: rgba(181, 107, 255, 0.28);
+      color: var(--text-primary);
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .cmd-empty {
+      padding: 26px 16px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text-muted);
     }
 
     .cmd-item-meta {
@@ -3052,6 +3281,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--accent-secondary);
+      white-space: nowrap;
     }
 
     .cmd-footer {
@@ -3061,7 +3291,7 @@
       gap: 10px;
       padding: 10px 18px;
       border-top: 1px solid var(--border);
-      background: var(--bg-primary);
+      background: rgba(8, 6, 16, 0.78);
       font-family: var(--font-mono);
       font-size: 0.68rem;
       color: var(--text-muted);
@@ -3079,7 +3309,9 @@
 
     .pm-close {
       padding: 6px 12px;
+      border-radius: 6px;
       border: 1px solid var(--border-strong);
+      background: rgba(8, 6, 16, 0.65);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       color: var(--text-secondary);
@@ -3097,44 +3329,49 @@
       gap: 14px;
     }
 
-    /* Interactive Terminal Drawer */
+    /* Interactive Terminal Drawer (Liquid Glass) */
     .terminal-drawer {
       position: fixed;
-      right: var(--gutter);
+      right: max(var(--gutter), calc((100vw - var(--max-w)) / 2));
       bottom: 20px;
       z-index: 850;
-      width: min(540px, calc(100vw - 32px));
-      border: 1px solid var(--border-strong);
-      background-color: #080610;
-      background-image: linear-gradient(180deg, rgba(18, 11, 32, 0.98) 0%, #080610 100%);
-      box-shadow: 0 28px 64px -16px rgba(8, 6, 16, 0.96), 0 0 40px -14px rgba(118, 43, 255, 0.42), inset 0 1px 0 rgba(228, 210, 255, 0.16);
+      width: min(560px, calc(100vw - 24px));
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--glass-border-hover);
+      background-color: rgba(8, 6, 16, 0.88);
+      background-image: linear-gradient(170deg, rgba(56, 32, 91, 0.34) 0%, rgba(18, 11, 32, 0.92) 45%, rgba(8, 6, 16, 0.95) 100%);
+      backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      -webkit-backdrop-filter: blur(calc(24px * var(--fx-glass))) saturate(140%);
+      box-shadow: var(--glass-shadow);
       display: none;
       flex-direction: column;
     }
 
     .terminal-drawer.is-open {
       display: flex;
+      animation: glass-pop 0.24s var(--ease-expo) both;
     }
 
     .terminal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 14px;
+      padding: 11px 15px;
       border-bottom: 1px solid var(--border);
-      background: var(--bg-secondary);
+      background: rgba(23, 13, 41, 0.76);
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: var(--text-primary);
     }
 
     .terminal-body {
-      padding: 14px;
-      max-height: 250px;
+      padding: 14px 16px;
+      max-height: 256px;
       overflow-y: auto;
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      line-height: 1.55;
+      line-height: 1.58;
       color: var(--text-primary);
     }
 
@@ -3154,12 +3391,17 @@
       color: var(--accent-secondary);
     }
 
+    .terminal-line.is-muted {
+      color: var(--text-muted);
+    }
+
     .terminal-form {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 10px 15px;
       border-top: 1px solid var(--border);
+      background: rgba(8, 6, 16, 0.45);
       font-family: var(--font-mono);
       font-size: 0.78rem;
     }
@@ -3184,7 +3426,7 @@
 
     .terminal-form:focus-within {
       border-top-color: var(--accent-secondary);
-      background: rgba(56, 32, 91, 0.2);
+      background: rgba(56, 32, 91, 0.24);
     }
 
     .terminal-input {
@@ -3199,10 +3441,11 @@
 
     .terminal-input:focus-visible {
       outline: none;
+      box-shadow: none;
     }
 
     /* ==========================================================================
-       14. Entrance & Scroll-Triggered Reveals
+       14. Entrance & Scroll-Triggered Reveals (Cinematic Stagger)
        ========================================================================== */
     .js-enhanced .reveal {
       opacity: 0;
@@ -3215,15 +3458,27 @@
       transform: translateY(0);
     }
 
+    .js-enhanced .reveal-stagger {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.48s var(--ease-expo), transform 0.48s var(--ease-expo);
+      transition-delay: calc(var(--stagger-i, 0) * 55ms);
+    }
+
+    .js-enhanced .reveal.is-visible .reveal-stagger {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .js-enhanced .hero-stagger {
       transform: translateY(10px);
       animation: hero-enter 0.48s var(--ease-expo) forwards;
     }
 
     .js-enhanced .hero-stagger-1 { animation-delay: 0.02s; }
-    .js-enhanced .hero-stagger-2 { animation-delay: 0.06s; }
-    .js-enhanced .hero-stagger-3 { animation-delay: 0.1s; }
-    .js-enhanced .hero-stagger-4 { animation-delay: 0.14s; }
+    .js-enhanced .hero-stagger-2 { animation-delay: 0.07s; }
+    .js-enhanced .hero-stagger-3 { animation-delay: 0.12s; }
+    .js-enhanced .hero-stagger-4 { animation-delay: 0.17s; }
 
     @keyframes hero-enter {
       to { transform: translateY(0); }
@@ -3375,6 +3630,16 @@
     }
 
     @media (max-width: 540px) {
+      .site-header {
+        padding: 8px 10px 4px;
+      }
+
+      .site-header-dock {
+        height: 52px;
+        padding: 0 12px;
+        border-radius: 11px;
+      }
+
       .hero-ledger {
         grid-template-columns: 1fr;
       }
@@ -3416,6 +3681,7 @@
       }
 
       .js-enhanced .reveal,
+      .js-enhanced .reveal-stagger,
       .js-enhanced .hero-stagger,
       .js-enhanced .hero-char {
         opacity: 1 !important;
@@ -3454,74 +3720,77 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Header & Top Navigation -->
+  <!-- Header & Floating Liquid-Glass Dock -->
   <header class="site-header" id="siteHeader">
-    <div class="container nav-bar">
-      <div class="nav-left">
-        <a href="#hero" class="monogram" id="agMonogram" data-cursor="link" aria-label="Alok Gupta — Home">AG<span class="dot">.</span></a>
-        <span class="monogram-echo" id="monogramEcho" aria-live="polite"></span>
-        <div class="availability-indicator" aria-label="Availability status: Open to SWE and AI/ML Internships">
-          <span class="availability-dot" aria-hidden="true"></span>
-          <span>Open to SWE &amp; AI/ML Internships</span>
+    <div class="site-header-dock obsidian-reflective">
+      <div class="nav-bar">
+        <div class="nav-left">
+          <a href="#hero" class="monogram" id="agMonogram" data-cursor="link" aria-label="Alok Gupta — Home">AG<span class="dot">.</span></a>
+          <span class="monogram-echo" id="monogramEcho" aria-live="polite"></span>
+          <div class="availability-indicator" aria-label="Availability status: Open to SWE and AI/ML Internships">
+            <span class="availability-dot" aria-hidden="true"></span>
+            <span>Open to SWE &amp; AI/ML Internships</span>
+          </div>
         </div>
-      </div>
 
-      <div class="nav-right">
-        <nav aria-label="Primary navigation">
-          <ul class="nav-list" id="desktopNav">
-            <li><a href="#about" class="nav-link" data-cursor="link">About</a></li>
-            <li><a href="#expertise" class="nav-link" data-cursor="link">Expertise</a></li>
-            <li><a href="#projects" class="nav-link" data-cursor="link">Projects</a></li>
-            <li><a href="#open-source" class="nav-link" data-cursor="link">Open Source</a></li>
-            <li><a href="#education" class="nav-link" data-cursor="link">Education</a></li>
-            <li><a href="#contact" class="nav-link" data-cursor="link">Contact</a></li>
-          </ul>
-        </nav>
+        <div class="nav-right">
+          <nav aria-label="Primary navigation">
+            <ul class="nav-list" id="desktopNav">
+              <li aria-hidden="true" class="nav-active-pill" id="navActivePill"></li>
+              <li><a href="#about" class="nav-link" data-cursor="link">About</a></li>
+              <li><a href="#expertise" class="nav-link" data-cursor="link">Expertise</a></li>
+              <li><a href="#projects" class="nav-link" data-cursor="link">Projects</a></li>
+              <li><a href="#open-source" class="nav-link" data-cursor="link">Open Source</a></li>
+              <li><a href="#education" class="nav-link" data-cursor="link">Education</a></li>
+              <li><a href="#contact" class="nav-link" data-cursor="link">Contact</a></li>
+            </ul>
+          </nav>
 
-        <div class="header-actions">
-          <button
-            type="button"
-            class="fx-trigger"
-            id="fxControlBtn"
-            aria-expanded="false"
-            aria-controls="fxControlPanel"
-            aria-label="Open experience controls"
-            data-cursor="button"
-            title="Experience Controls"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" />
-              <line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" />
-              <line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />
-            </svg>
-          </button>
+          <div class="header-actions">
+            <button
+              type="button"
+              class="fx-trigger"
+              id="fxControlBtn"
+              aria-expanded="false"
+              aria-controls="fxControlPanel"
+              aria-label="Open experience controls"
+              data-cursor="button"
+              title="Appearance &amp; Experience Controls"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" />
+                <line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" />
+                <line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />
+              </svg>
+            </button>
 
-          <button type="button" class="cmd-trigger" id="cmdTrigger" data-cursor="button" data-magnetic aria-label="Open command palette">
-            <span>Command</span>
-            <kbd class="cmd-kbd" id="cmdShortcutLabel">&#8984;K</kbd>
-          </button>
+            <button type="button" class="cmd-trigger" id="cmdTrigger" data-cursor="button" data-magnetic aria-label="Open command palette">
+              <span>Command</span>
+              <kbd class="cmd-kbd" id="cmdShortcutLabel">&#8984;K</kbd>
+            </button>
 
-          <button
-            type="button"
-            class="menu-toggle"
-            id="menuToggle"
-            aria-expanded="false"
-            aria-controls="mobileDrawer"
-            aria-label="Open navigation menu"
-          >
-            <span id="menuToggleText">Menu</span>
-          </button>
+            <button
+              type="button"
+              class="menu-toggle"
+              id="menuToggle"
+              aria-expanded="false"
+              aria-controls="mobileDrawer"
+              aria-label="Open navigation menu"
+            >
+              <span id="menuToggleText">Menu</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
   <!-- Interactive Obsidian Control Panel -->
-  <aside class="fx-panel" id="fxControlPanel" role="dialog" aria-label="Experience visual controls" aria-hidden="true">
+  <aside class="fx-panel" id="fxControlPanel" role="dialog" aria-label="Appearance and experience controls" aria-hidden="true">
     <div class="fx-panel-head">
       <span>Obsidian Controls</span>
-      <button type="button" id="fxCloseBtn" aria-label="Close experience controls">CLOSE</button>
+      <button type="button" id="fxCloseBtn" aria-label="Close appearance controls">CLOSE</button>
     </div>
 
     <div class="fx-group">
@@ -3533,6 +3802,18 @@
         <button type="button" class="fx-opt" data-fx-ambient="0.4">Low</button>
         <button type="button" class="fx-opt is-active" data-fx-ambient="1">Balanced</button>
         <button type="button" class="fx-opt" data-fx-ambient="1.45">High</button>
+      </div>
+    </div>
+
+    <div class="fx-group">
+      <div class="fx-label-row">
+        <span>Glass Intensity</span>
+        <span id="fxGlassLabel">Balanced</span>
+      </div>
+      <div class="fx-seg" role="group" aria-label="Liquid glass blur intensity">
+        <button type="button" class="fx-opt" data-fx-glass="0.55">Subtle</button>
+        <button type="button" class="fx-opt is-active" data-fx-glass="1">Balanced</button>
+        <button type="button" class="fx-opt" data-fx-glass="1.45">Frosted</button>
       </div>
     </div>
 
@@ -3801,7 +4082,7 @@
         </div>
 
         <div class="about-grid reveal">
-          <div class="about-prose-col">
+          <div class="about-prose-col reveal-stagger" style="--stagger-i:0">
             <p class="about-prose-lead" data-cursor="text">
               I'm a first-year B.Tech Computer Science student specialising in Artificial Intelligence and Machine Learning at Newton School of Technology, ADYPU.
             </p>
@@ -3810,7 +4091,7 @@
             </p>
           </div>
 
-          <div class="about-dossier-col obsidian-reflective">
+          <div class="about-dossier-col obsidian-reflective reveal-stagger" style="--stagger-i:1">
             <dl class="dossier-list">
               <div class="dossier-row">
                 <dt>Degree</dt>
@@ -4182,9 +4463,17 @@
                   <canvas id="vectorCanvas" aria-label="Interactive 3D embedding space preview with connected points and hoverable labels"></canvas>
                   <div class="vector-stage-overlay" id="vectorLabels"></div>
                   <div class="vector-hud">
-                    <span class="vector-hud-active" id="vectorCoordsHud">NODE: vector (0.9, 0.8, -0.3) [SIMULATED]</span>
+                    <span class="vector-hud-active" id="vectorCoordsHud">NODE: vector (0.9, 0.8, -0.3) · cos=1.00 [SIMULATED]</span>
                     <span id="vectorEngineBadge">3D PROJECTION</span>
                   </div>
+                </div>
+                <div class="vector-controls-bar" id="vectorTokenControls" role="group" aria-label="Inspect embedding vector node">
+                  <button type="button" class="vector-token-btn" data-vector-idx="0" aria-pressed="false">token</button>
+                  <button type="button" class="vector-token-btn is-active" data-vector-idx="1" aria-pressed="true">vector</button>
+                  <button type="button" class="vector-token-btn" data-vector-idx="2" aria-pressed="false">embedding</button>
+                  <button type="button" class="vector-token-btn" data-vector-idx="3" aria-pressed="false">position</button>
+                  <button type="button" class="vector-token-btn" data-vector-idx="4" aria-pressed="false">context</button>
+                  <button type="button" class="vector-token-btn" data-vector-idx="5" aria-pressed="false">attention</button>
                 </div>
               </div>
             </div>
@@ -4628,7 +4917,7 @@
         </div>
 
         <div class="background-grid reveal">
-          <div class="chronology-col">
+          <div class="chronology-col reveal-stagger" style="--stagger-i:0">
             <h3 class="chronology-heading">Academic Track</h3>
             <ol class="timeline">
               <li class="timeline-item is-current">
@@ -4655,7 +4944,7 @@
             </ol>
           </div>
 
-          <div class="chronology-col">
+          <div class="chronology-col reveal-stagger" style="--stagger-i:1">
             <h3 class="chronology-heading">Development &amp; Open-Source Milestones</h3>
             <ol class="timeline">
               <li class="timeline-item is-current">
@@ -4888,6 +5177,7 @@
       const PREF_KEY = 'ag_obsidian_rtx_prefs_v1';
       const defaultPrefs = {
         ambient: 1,
+        glass: 1,
         density: 1,
         motion: 1,
         reducedFx: prefersReducedMotion,
@@ -5012,6 +5302,13 @@
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', (event) => {
           const href = anchor.getAttribute('href');
+          if (href === '#hero' && anchor.id === 'backToTopBtn') {
+            event.preventDefault();
+            triggerTransitionPulse();
+            playCrystalTone(520);
+            window.scrollTo({ top: 0, behavior: prefersReducedMotion || prefs.reducedFx ? 'auto' : 'smooth' });
+            return;
+          }
           if (href && href.length > 1) {
             const target = document.querySelector(href);
             if (target) {
@@ -5151,17 +5448,25 @@
 
       if (heroSection && isFinePointer && !prefersReducedMotion) {
         if (heroTagline) heroTagline.classList.add('has-spotlight');
+        let heroMoveRaf = null;
+        let lastHeroEv = null;
         heroSection.addEventListener('pointermove', (event) => {
           if (prefs.reducedFx) return;
-          const rect = heroSection.getBoundingClientRect();
-          heroSection.style.setProperty('--hx', `${event.clientX - rect.left}px`);
-          heroSection.style.setProperty('--hy', `${event.clientY - rect.top}px`);
-          if (heroTagline) {
-            const tRect = heroTagline.getBoundingClientRect();
-            heroTagline.style.setProperty('--tx', `${event.clientX - tRect.left}px`);
-            heroTagline.style.setProperty('--ty', `${event.clientY - tRect.top}px`);
-          }
-        });
+          lastHeroEv = event;
+          if (heroMoveRaf) return;
+          heroMoveRaf = requestAnimationFrame(() => {
+            heroMoveRaf = null;
+            if (!lastHeroEv) return;
+            const rect = heroSection.getBoundingClientRect();
+            heroSection.style.setProperty('--hx', `${lastHeroEv.clientX - rect.left}px`);
+            heroSection.style.setProperty('--hy', `${lastHeroEv.clientY - rect.top}px`);
+            if (heroTagline) {
+              const tRect = heroTagline.getBoundingClientRect();
+              heroTagline.style.setProperty('--tx', `${lastHeroEv.clientX - tRect.left}px`);
+              heroTagline.style.setProperty('--ty', `${lastHeroEv.clientY - tRect.top}px`);
+            }
+          });
+        }, { passive: true });
       }
 
       if (heroPlate && heroReticle && isFinePointer && !prefersReducedMotion) {
@@ -5471,18 +5776,70 @@
       }
 
       const navLinks = Array.from(document.querySelectorAll('#desktopNav .nav-link'));
+      const navActivePill = document.getElementById('navActivePill');
+      const mobileNavLinks = Array.from(document.querySelectorAll('.mobile-drawer .mobile-nav-link'));
       const railDots = Array.from(document.querySelectorAll('.rail-dot'));
       const trackedSections = Array.from(document.querySelectorAll('main section[id]'));
+      let currentActiveNavId = 'about';
+
+      function moveNavPill(targetLink) {
+        if (!navActivePill || !targetLink) return;
+        const w = targetLink.offsetWidth;
+        if (!w || window.innerWidth <= 920) {
+          navActivePill.classList.remove('is-ready');
+          return;
+        }
+        navActivePill.style.width = `${w}px`;
+        navActivePill.style.transform = `translate3d(${targetLink.offsetLeft}px, 0, 0)`;
+        navActivePill.classList.add('is-ready');
+      }
+
+      function syncActiveNav(id) {
+        currentActiveNavId = id;
+        document.body.setAttribute('data-section', id);
+        let activeDesktopLink = null;
+        navLinks.forEach((link) => {
+          const isMatch = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('is-active', isMatch);
+          if (isMatch) activeDesktopLink = link;
+        });
+        mobileNavLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+        });
+        railDots.forEach((dot) => dot.classList.toggle('is-active', dot.dataset.rail === id));
+        if (activeDesktopLink) {
+          moveNavPill(activeDesktopLink);
+        } else if (navActivePill) {
+          navActivePill.classList.remove('is-ready');
+        }
+      }
+
+      navLinks.forEach((link) => {
+        link.addEventListener('pointerenter', () => moveNavPill(link));
+      });
+      const desktopNavEl = document.getElementById('desktopNav');
+      if (desktopNavEl) {
+        desktopNavEl.addEventListener('pointerleave', () => {
+          const activeLink = navLinks.find((l) => l.classList.contains('is-active'));
+          if (activeLink) moveNavPill(activeLink);
+          else if (navActivePill) navActivePill.classList.remove('is-ready');
+        });
+      }
+      window.addEventListener('resize', () => {
+        const activeLink = navLinks.find((l) => l.classList.contains('is-active'));
+        if (activeLink) moveNavPill(activeLink);
+      }, { passive: true });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          const activeLink = navLinks.find((l) => l.classList.contains('is-active'));
+          if (activeLink) moveNavPill(activeLink);
+        });
+      }
 
       if (trackedSections.length && 'IntersectionObserver' in window) {
         const navObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              document.body.setAttribute('data-section', id);
-              navLinks.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-              railDots.forEach((dot) => dot.classList.toggle('is-active', dot.dataset.rail === id));
-            }
+            if (entry.isIntersecting) syncActiveNav(entry.target.id);
           });
         }, { rootMargin: '-28% 0px -55% 0px', threshold: 0 });
         trackedSections.forEach((section) => navObserver.observe(section));
@@ -5875,7 +6232,8 @@
 
           el.classList.toggle('is-active', id === activeSkillId || isFocus);
           el.classList.toggle('is-connected', isConn);
-          el.classList.toggle('is-dimmed', (!matchesFilter) || (currentSkillFilter === 'all' && !isFocus && !isConn));
+          el.classList.toggle('is-dimmed-filter', !matchesFilter);
+          el.classList.toggle('is-dimmed', matchesFilter && currentSkillFilter === 'all' && !isFocus && !isConn);
         });
 
         edgeElements.forEach((line) => {
@@ -6280,6 +6638,7 @@
 
         projectModalBackdrop.classList.add('is-open');
         projectModalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
         playCrystalTone(640);
         if (pmCloseBtn) setTimeout(() => pmCloseBtn.focus(), 20);
       }
@@ -6288,6 +6647,7 @@
         if (!projectModalBackdrop) return;
         projectModalBackdrop.classList.remove('is-open');
         projectModalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = (cmdBackdrop && cmdBackdrop.classList.contains('is-open')) || (mobileDrawer && mobileDrawer.classList.contains('is-open')) ? 'hidden' : '';
         if (lastFocusBeforePm && lastFocusBeforePm.focus) lastFocusBeforePm.focus();
       }
 
@@ -6335,6 +6695,40 @@
         let threeMounted = false;
         let hoveredNodeIdx = 1;
         let lastProjected = [];
+        const vectorTokenButtons = Array.from(document.querySelectorAll('#vectorTokenControls [data-vector-idx]'));
+        const refPoint = points[1];
+
+        function calcCosineSim(a, b) {
+          const dot = a.x * b.x + a.y * b.y + a.z * b.z;
+          const magA = Math.hypot(a.x, a.y, a.z);
+          const magB = Math.hypot(b.x, b.y, b.z);
+          return magA && magB ? dot / (magA * magB) : 0;
+        }
+
+        function updateVectorHudAndPills(idx) {
+          hoveredNodeIdx = idx;
+          const pt = points[idx];
+          if (vectorCoordsHud && pt) {
+            const sim = calcCosineSim(pt, refPoint).toFixed(2);
+            vectorCoordsHud.textContent = `NODE: ${pt.label} (${pt.x}, ${pt.y}, ${pt.z}) · cos=${sim} [SIMULATED]`;
+          }
+          vectorTokenButtons.forEach((b) => {
+            const active = Number(b.dataset.vectorIdx) === idx;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', String(active));
+          });
+        }
+
+        vectorTokenButtons.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const idx = Number(btn.dataset.vectorIdx);
+            if (!Number.isFinite(idx) || !points[idx]) return;
+            playCrystalTone(620);
+            updateVectorHudAndPills(idx);
+            if (!threeMounted) renderCanvas3D();
+          });
+        });
 
         const vCtx = vectorCanvas.getContext('2d');
 
@@ -6350,7 +6744,7 @@
 
           const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
           const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
-          const scale = Math.min(w, h) * 0.25;
+          const scale = Math.min(w, h) * 0.22;
 
           function project(pt) {
             const x1 = pt.x * cosY - pt.z * sinY;
@@ -6358,7 +6752,7 @@
             const y2 = pt.y * cosX - z1 * sinX;
             const z2 = pt.y * sinX + z1 * cosX;
             const p = 3.6 / (3.6 - z2);
-            return { sx: w / 2 + x1 * scale * p, sy: h / 2 - y2 * scale * p, z: z2, p };
+            return { sx: w / 2 + x1 * scale * p, sy: h * 0.44 - y2 * scale * p, z: z2, p };
           }
 
           // Illuminated Axes with tick marks
@@ -6441,11 +6835,7 @@
             }
           });
           if (closestIdx !== hoveredNodeIdx) {
-            hoveredNodeIdx = closestIdx;
-            const pt = points[hoveredNodeIdx];
-            if (vectorCoordsHud && pt) {
-              vectorCoordsHud.textContent = `NODE: ${pt.label} (${pt.x}, ${pt.y}, ${pt.z}) [SIMULATED]`;
-            }
+            updateVectorHudAndPills(closestIdx);
             if (!threeMounted) renderCanvas3D();
           }
         });
@@ -6657,21 +7047,26 @@
 
       function applyPreferences(rebuildShards = false) {
         document.documentElement.style.setProperty('--fx-ambient', String(prefs.reducedFx ? 0.35 : prefs.ambient));
+        document.documentElement.style.setProperty('--fx-glass', String(prefs.reducedFx ? 0.35 : prefs.glass));
         document.documentElement.style.setProperty('--fx-motion', String(prefs.reducedFx ? 0 : prefs.motion));
         document.body.classList.toggle('reduced-fx', !!prefs.reducedFx);
 
         const ambMap = { '0.4': 'Low', '1': 'Balanced', '1.45': 'High' };
+        const glassMap = { '0.55': 'Subtle', '1': 'Balanced', '1.45': 'Frosted' };
         const denMap = { '0.45': 'Minimal', '1': 'Standard', '1.45': 'Dense' };
         const motMap = { '0.4': 'Calm', '1': 'Standard', '1.35': 'Dynamic' };
 
         const aLbl = document.getElementById('fxAmbientLabel');
+        const gLbl = document.getElementById('fxGlassLabel');
         const dLbl = document.getElementById('fxDensityLabel');
         const mLbl = document.getElementById('fxMotionLabel');
         if (aLbl) aLbl.textContent = ambMap[String(prefs.ambient)] || 'Balanced';
+        if (gLbl) gLbl.textContent = glassMap[String(prefs.glass)] || 'Balanced';
         if (dLbl) dLbl.textContent = denMap[String(prefs.density)] || 'Standard';
         if (mLbl) mLbl.textContent = motMap[String(prefs.motion)] || 'Standard';
 
         document.querySelectorAll('[data-fx-ambient]').forEach((b) => b.classList.toggle('is-active', Number(b.dataset.fxAmbient) === prefs.ambient));
+        document.querySelectorAll('[data-fx-glass]').forEach((b) => b.classList.toggle('is-active', Number(b.dataset.fxGlass) === prefs.glass));
         document.querySelectorAll('[data-fx-density]').forEach((b) => b.classList.toggle('is-active', Number(b.dataset.fxDensity) === prefs.density));
         document.querySelectorAll('[data-fx-motion]').forEach((b) => b.classList.toggle('is-active', Number(b.dataset.fxMotion) === prefs.motion));
 
@@ -6690,22 +7085,34 @@
         wakeScheduler();
       }
 
-      function setFxPanel(open) {
+      function setFxPanel(open, restoreFocus = false) {
         if (!fxControlPanel || !fxControlBtn) return;
         fxControlPanel.classList.toggle('is-open', open);
         fxControlPanel.setAttribute('aria-hidden', String(!open));
         fxControlBtn.setAttribute('aria-expanded', String(open));
-        if (open) updateSysReadout();
+        if (open) {
+          updateSysReadout();
+          const firstOpt = fxControlPanel.querySelector('button');
+          if (firstOpt) setTimeout(() => firstOpt.focus(), 20);
+        } else if (restoreFocus) {
+          fxControlBtn.focus();
+        }
       }
 
       if (fxControlBtn && fxControlPanel) {
-        fxControlBtn.addEventListener('click', () => {
+        fxControlBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
           const open = !fxControlPanel.classList.contains('is-open');
           playCrystalTone(540);
-          setFxPanel(open);
+          setFxPanel(open, !open);
+        });
+        document.addEventListener('click', (e) => {
+          if (fxControlPanel.classList.contains('is-open') && !fxControlPanel.contains(e.target) && !fxControlBtn.contains(e.target)) {
+            setFxPanel(false);
+          }
         });
       }
-      if (fxCloseBtn) fxCloseBtn.addEventListener('click', () => setFxPanel(false));
+      if (fxCloseBtn) fxCloseBtn.addEventListener('click', () => setFxPanel(false, true));
 
       document.querySelectorAll('[data-fx-ambient]').forEach((b) => {
         b.addEventListener('click', () => {
@@ -6713,6 +7120,15 @@
           savePrefs();
           applyPreferences(false);
           playCrystalTone(580);
+        });
+      });
+
+      document.querySelectorAll('[data-fx-glass]').forEach((b) => {
+        b.addEventListener('click', () => {
+          prefs.glass = Number(b.dataset.fxGlass);
+          savePrefs();
+          applyPreferences(false);
+          playCrystalTone(590);
         });
       });
 
@@ -6799,11 +7215,49 @@
 
       let filteredCmds = commands.slice();
       let selectedCmdIndex = 0;
+      let lastFocusBeforeCmd = null;
+
+      function createHighlightedTitle(text, query) {
+        const span = document.createElement('span');
+        span.className = 'cmd-item-title';
+        if (!query) {
+          span.textContent = text;
+          return span;
+        }
+        const lower = text.toLowerCase();
+        const idx = lower.indexOf(query);
+        if (idx < 0) {
+          span.textContent = text;
+          return span;
+        }
+        if (idx > 0) span.appendChild(document.createTextNode(text.slice(0, idx)));
+        const mark = document.createElement('mark');
+        mark.className = 'cmd-hl';
+        mark.textContent = text.slice(idx, idx + query.length);
+        span.appendChild(mark);
+        if (idx + query.length < text.length) {
+          span.appendChild(document.createTextNode(text.slice(idx + query.length)));
+        }
+        return span;
+      }
 
       function renderCommands() {
         if (!cmdResults) return;
+        const query = cmdInput ? cmdInput.value.trim().toLowerCase() : '';
         cmdResults.innerHTML = '';
+
+        if (!filteredCmds.length) {
+          const emptyLi = document.createElement('li');
+          emptyLi.className = 'cmd-empty';
+          emptyLi.textContent = query
+            ? `No commands matching "${cmdInput.value.trim()}". Try "projects", "github", "controls", or press Esc.`
+            : 'No commands available.';
+          cmdResults.appendChild(emptyLi);
+          return;
+        }
+
         let lastGroup = '';
+        let selectedBtn = null;
         filteredCmds.forEach((cmd, idx) => {
           if (cmd.group !== lastGroup) {
             lastGroup = cmd.group;
@@ -6816,14 +7270,26 @@
           const li = document.createElement('li');
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = `cmd-item${idx === selectedCmdIndex ? ' is-selected' : ''}`;
+          const isSel = idx === selectedCmdIndex;
+          btn.className = `cmd-item${isSel ? ' is-selected' : ''}`;
           btn.setAttribute('role', 'option');
-          btn.setAttribute('aria-selected', String(idx === selectedCmdIndex));
-          btn.innerHTML = `<span class="cmd-item-title">${cmd.title}</span><span class="cmd-item-meta">${cmd.meta}</span>`;
+          btn.setAttribute('aria-selected', String(isSel));
+
+          const metaSpan = document.createElement('span');
+          metaSpan.className = 'cmd-item-meta';
+          metaSpan.textContent = cmd.meta;
+
+          btn.appendChild(createHighlightedTitle(cmd.title, query));
+          btn.appendChild(metaSpan);
           btn.addEventListener('click', () => executeCommand(idx));
           li.appendChild(btn);
           cmdResults.appendChild(li);
+          if (isSel) selectedBtn = btn;
         });
+
+        if (selectedBtn && typeof selectedBtn.scrollIntoView === 'function') {
+          selectedBtn.scrollIntoView({ block: 'nearest' });
+        }
       }
 
       function executeCommand(idx) {
@@ -6834,10 +7300,12 @@
         cmd.run();
       }
 
-      function setCommandPalette(open) {
+      function setCommandPalette(open, restoreFocus = false) {
         if (!cmdBackdrop) return;
+        if (open) lastFocusBeforeCmd = document.activeElement;
         cmdBackdrop.classList.toggle('is-open', open);
         cmdBackdrop.setAttribute('aria-hidden', String(!open));
+        document.body.style.overflow = open || (projectModalBackdrop && projectModalBackdrop.classList.contains('is-open')) || (mobileDrawer && mobileDrawer.classList.contains('is-open')) ? 'hidden' : '';
         if (open) {
           setFxPanel(false);
           if (cmdInput) {
@@ -6847,13 +7315,15 @@
             renderCommands();
             setTimeout(() => cmdInput.focus(), 20);
           }
+        } else if (restoreFocus && lastFocusBeforeCmd && typeof lastFocusBeforeCmd.focus === 'function') {
+          lastFocusBeforeCmd.focus();
         }
       }
 
       if (cmdTrigger) cmdTrigger.addEventListener('click', () => setCommandPalette(true));
       if (cmdBackdrop) {
         cmdBackdrop.addEventListener('click', (e) => {
-          if (e.target === cmdBackdrop) setCommandPalette(false);
+          if (e.target === cmdBackdrop) setCommandPalette(false, true);
         });
       }
       if (cmdInput) {
@@ -6971,12 +7441,13 @@
           } else if (cmd === 'whoami') {
             appendTermLine('alok@nst-adypu — exploring AI/ML, backend development, and software engineering.');
           } else if (cmd === 'rtx' || cmd === 'obsidian') {
-            appendTermLine(`Obsidian RTX Render: ${shards.length} crystalline shards · Ambient ${prefs.ambient}x · Motion ${prefs.motion}x · ReducedFX=${prefs.reducedFx}`);
+            appendTermLine(`Obsidian RTX Render: ${shards.length} crystalline shards · Ambient ${prefs.ambient}x · Glass ${prefs.glass}x · Motion ${prefs.motion}x · ReducedFX=${prefs.reducedFx}`);
           } else if (cmd === 'controls') {
             setFxPanel(true);
             appendTermLine('Opened Obsidian Experience Controls panel.');
           } else if (cmd === 'clear') {
             terminalOutput.innerHTML = '';
+            appendTermLine('Console cleared. Type "help" for available commands.', false);
           } else if (cmd === 'exit' || cmd === 'quit') {
             toggleTerminal(false);
           } else {
@@ -6985,7 +7456,23 @@
         });
       }
 
-      /* Global Keyboard Shortcuts (Cmd/Ctrl+K, `, Escape) */
+      function trapDialogTab(event, container) {
+        if (!container) return;
+        const focusables = Array.from(container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+          .filter((el) => el.offsetParent !== null);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
+      /* Global Keyboard Shortcuts (Cmd/Ctrl+K, `, Escape, Dialog Focus Trap) */
       document.addEventListener('keydown', (event) => {
         const tag = (event.target && event.target.tagName) || '';
         const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || (event.target && event.target.isContentEditable);
@@ -6993,8 +7480,19 @@
         if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
           event.preventDefault();
           const isOpen = cmdBackdrop && cmdBackdrop.classList.contains('is-open');
-          setCommandPalette(!isOpen);
+          setCommandPalette(!isOpen, isOpen);
           return;
+        }
+
+        if (event.key === 'Tab') {
+          if (projectModalBackdrop && projectModalBackdrop.classList.contains('is-open')) {
+            trapDialogTab(event, projectModalBackdrop);
+            return;
+          }
+          if (cmdBackdrop && cmdBackdrop.classList.contains('is-open')) {
+            trapDialogTab(event, cmdBackdrop);
+            return;
+          }
         }
 
         if (!isTyping && (event.key === '`' || event.key === '~')) {
@@ -7007,9 +7505,9 @@
           if (projectModalBackdrop && projectModalBackdrop.classList.contains('is-open')) {
             closeProjectDossier();
           } else if (cmdBackdrop && cmdBackdrop.classList.contains('is-open')) {
-            setCommandPalette(false);
+            setCommandPalette(false, true);
           } else if (fxControlPanel && fxControlPanel.classList.contains('is-open')) {
-            setFxPanel(false);
+            setFxPanel(false, true);
           } else if (terminalDrawer && terminalDrawer.classList.contains('is-open')) {
             toggleTerminal(false);
           } else if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
