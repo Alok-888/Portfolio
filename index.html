@@ -1996,7 +1996,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.88fr);
       gap: 24px;
-      align-items: stretch;
+      align-items: start;
     }
 
     .constellation-stage {
@@ -2009,7 +2009,6 @@
         var(--bg-primary);
       box-shadow: var(--shadow-obsidian);
       overflow: hidden;
-      min-height: 430px;
       display: flex;
       flex-direction: column;
     }
@@ -2036,9 +2035,10 @@
     }
 
     .constellation-svg {
+      display: block;
       width: 100%;
-      flex: 1 1 auto;
-      min-height: 390px;
+      height: auto;
+      aspect-ratio: 740 / 420;
     }
 
     .constellation-motif {
@@ -2049,6 +2049,7 @@
     .constellation-edge {
       stroke: rgba(181, 107, 255, 0.18);
       stroke-width: 1.1;
+      pointer-events: none;
       transition: stroke 0.28s ease, stroke-width 0.28s ease, opacity 0.28s ease;
     }
 
@@ -2078,6 +2079,11 @@
       transition: opacity 0.28s ease;
     }
 
+    .skill-node-hit {
+      fill: transparent;
+      pointer-events: all;
+    }
+
     .skill-node.is-dimmed {
       opacity: 0.56;
     }
@@ -2090,7 +2096,7 @@
       fill: var(--bg-primary);
       stroke: rgba(181, 107, 255, 0.42);
       stroke-width: 1.25;
-      transition: stroke 0.25s ease, fill 0.25s ease, transform 0.28s var(--ease-expo);
+      transition: stroke 0.25s ease, fill 0.25s ease;
     }
 
     .skill-node.is-featured .skill-node-facet {
@@ -2255,8 +2261,20 @@
 
     .inspector-work-list {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    @media (min-width: 961px) {
+      .constellation-stage,
+      .skill-inspector {
+        min-height: 538px;
+      }
+
+      .constellation-svg {
+        margin-block: auto;
+      }
     }
 
     .inspector-work-empty {
@@ -7224,6 +7242,11 @@
           g.dataset.phase = (idx * 0.72).toFixed(2);
           g.setAttribute('transform', `translate(${x}, ${y})`);
 
+          const hit = document.createElementNS(svgNS, 'circle');
+          hit.setAttribute('r', skill.featured ? '30' : '26');
+          hit.setAttribute('class', 'skill-node-hit');
+          g.appendChild(hit);
+
           if (skill.isConcept) {
             const hex = document.createElementNS(svgNS, 'polygon');
             hex.setAttribute('points', '0,-20 20,0 0,20 -20,0');
@@ -7635,11 +7658,16 @@
               const bx = parseFloat(el.dataset.baseX);
               const by = parseFloat(el.dataset.baseY);
               const ph = parseFloat(el.dataset.phase);
-              const cx = bx + Math.sin(t * 0.65 + ph) * 3.2;
-              const cy = by + Math.cos(t * 0.55 + ph) * 3.2;
-              el.dataset.curX = cx.toFixed(1);
-              el.dataset.curY = cy.toFixed(1);
-              el.setAttribute('transform', `translate(${cx.toFixed(1)}, ${cy.toFixed(1)})`);
+              const prevX = parseFloat(el.dataset.curX ?? bx);
+              const prevY = parseFloat(el.dataset.curY ?? by);
+              const isHoveredNode = el.dataset.skillId === hoveredSkillId;
+              const targetX = isHoveredNode ? prevX : bx + Math.sin(t * 0.65 + ph) * 2.8;
+              const targetY = isHoveredNode ? prevY : by + Math.cos(t * 0.55 + ph) * 2.8;
+              const cx = isHoveredNode ? prevX : prevX + (targetX - prevX) * 0.16;
+              const cy = isHoveredNode ? prevY : prevY + (targetY - prevY) * 0.16;
+              el.dataset.curX = cx.toFixed(2);
+              el.dataset.curY = cy.toFixed(2);
+              el.setAttribute('transform', `translate(${cx.toFixed(2)}, ${cy.toFixed(2)})`);
             });
 
             edgeElements.forEach((line) => {
